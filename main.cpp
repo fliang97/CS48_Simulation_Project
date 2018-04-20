@@ -1,3 +1,10 @@
+//Compile with g++ main.cpp -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
+
+//Desired changes:
+//Make it so every update doesn't create new Class but rather makes parent point to it and sets its pointer to new parent
+//Hopefully could get rid of delete Entity loop (set to NULL)
+//Make Cow duplicate after eating enough grass.
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
@@ -86,14 +93,15 @@ public:
   Grass(GameSquare* parentSquare): Entity(parentSquare) { }
   void update(vector< vector<GameSquare*> >* nextIterboard) override {
     //Fix rand() to make it change.
-    (*nextIterboard)[parentSquare->x][parentSquare->y]->e = new Grass((*nextIterboard)[parentSquare->x][parentSquare->y]);
+    GameSquare* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
+    if (!s->e) s->e = new Grass(s);
     if (rand() % 10 == 0) {
       int x = rand() % 3 - 1;
       int y = rand() % 3 - 1;
       vector< vector<GameSquare*> > br = (*parentSquare->g->bufferboard);
       if (parentSquare->x + x >= 0 && parentSquare->x + x < br.size()
     && parentSquare->y + y >= 0 && parentSquare->y + y < br[0].size()) {
-        GameSquare* s = br[parentSquare->x + x][parentSquare->y + y];
+        s = br[parentSquare->x + x][parentSquare->y + y];
         //Square must know Entity
         if (!s->e) s->e = new Grass(s);
       }
@@ -125,12 +133,13 @@ public:
     && parentSquare->y + y >= 0 && parentSquare->y + y < br[0].size()) {
         GameSquare* s = br[parentSquare->x + x][parentSquare->y + y];
         //Square must know Entity
-        cout << parentSquare->x + x << endl;
-        if (!s->e) s->e = new Cow(s);
+        cout << parentSquare->x + x << " " << parentSquare->y + y << endl;
+        s->e = new Cow(s);
       } else {
         GameSquare* s = br[parentSquare->x][parentSquare->y];
         //Square must know Entity
-        if (!s->e) s->e = new Cow(s);
+        //if (!s->e) //gets overriden if something moves into it. This now overrides anything on it.
+        s->e = new Cow(s);
       }
     //}
   }
