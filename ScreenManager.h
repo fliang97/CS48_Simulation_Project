@@ -30,6 +30,7 @@ class ScreenManager {
   //  delete eh;
   //}
   void mousePressed() {
+    cout << "Clicked01" << endl;
     screens[current_screen]->mousePressed();
   }
   void update() {

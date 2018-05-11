@@ -63,10 +63,11 @@ int main(int argc, char *argv[]) {
             eh.running = false;
         }
         if(event.type == SDL_MOUSEMOTION) {
-            SDL_GetGlobalMouseState(&eh.xMouse, &eh.yMouse);
+            SDL_GetMouseState(&eh.xMouse, &eh.yMouse);
         }
         if(event.type == SDL_MOUSEBUTTONDOWN) {
             sc.mousePressed();
+            cout << "Clicked0" << endl;
         }
     }
     // update game logic as lag permits

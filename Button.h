@@ -4,6 +4,10 @@
 #include "Component.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+using namespace std;
 
 class Button : public Component{
 public:
@@ -11,7 +15,7 @@ public:
   }
 
   virtual void clicked() override {
-
+   cout << "Clicked1" << endl;
   }
   virtual void render()  override {
 

@@ -5,6 +5,11 @@
 #include "Button.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+
+using namespace std;
 class ScreenManager;
 
 class StartButton : public Button {
@@ -15,6 +20,7 @@ public:
   //  delete current_screen;
   //}
   void clicked() override {
+    cout << "Clicked2" << endl;
     current_screen = 1;
   }
   void render() override {

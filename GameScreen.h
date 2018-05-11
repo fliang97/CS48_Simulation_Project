@@ -9,6 +9,7 @@
 
 #include "Screen.h"
 #include "EventHandler.h"
+using namespace std;
 //#include "ScreenManager.h"
 class ScreenManager;
 

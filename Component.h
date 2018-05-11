@@ -3,6 +3,10 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+using namespace std;
 
 class Component {
 public:
@@ -12,10 +16,12 @@ public:
   //  delete renderer;
   //}
   virtual bool isOver(int mousex, int mousey) {
-    return (mousex >= xpos && mousex < xpos + width && mousey >= ypos && mousey < ypos + height);
+    bool over = (mousex >= xpos && mousex < (xpos + width) && mousey >= ypos && mousey < (ypos + height));
+    cout << over << endl;
+    return over;
   }
   virtual void clicked() {
-
+    cout << "Clicked3" << endl;
   }
   virtual void render() {
 

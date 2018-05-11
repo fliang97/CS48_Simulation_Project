@@ -26,6 +26,7 @@ class Screen {
   //}
   virtual void mousePressed() {
     //cout << "somewhere clicked" << end;
+    cout << "Clicked02" << endl;
     for (Component* c : components) {
       if (c->isOver(eh->xMouse, eh->yMouse)) {
         c->clicked();
