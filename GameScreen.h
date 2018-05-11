@@ -1,10 +1,14 @@
 #ifndef GAMESCREEN_H_DEFINED
 #define GAMESCREEN_H_DEFINED
 
+#include "Screen.h"
+#include "EventHandler.h"
+//#include "ScreenManager.h"
+class ScreenManager;
 
 class GameScreen : public Screen {
   public:
-  GameScreen(EventHandler &eh, ScreenManager* sm): Screen(eh, sm) {
+  GameScreen(EventHandler* eh, ScreenManager* sm, SDL_Renderer* r, int w, int h): Screen(eh, sm, r, w, h) {
   }
 
   void update() {
@@ -15,5 +19,5 @@ class GameScreen : public Screen {
     SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
     SDL_RenderFillRect( renderer, &rect);
   }
-}
+};
 #endif /* MAINMENUSCREEN_H_DEFINED */

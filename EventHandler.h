@@ -1,8 +1,8 @@
 #ifndef EVENTHANDLER_H_DEFINED
 #define EVENTHANDLER_H_DEFINED
 
-
 class EventHandler {
+public:
   EventHandler() {
     running = true;
     xMouse = 0;
@@ -11,6 +11,6 @@ class EventHandler {
   bool running;
   int xMouse;
   int yMouse;
-}
+};
 
 #endif /* EVENTHANDLER_H_DEFINED */
