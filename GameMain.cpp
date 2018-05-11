@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
   std::chrono::nanoseconds lag(0ns);
   auto time_start = clock::now();
 
-  EventHandler eh(); //#PossibleChange to EventConstants
+  EventHandler eh; //#PossibleChange to EventConstants
   ScreenManager sc(&eh, renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
   while (eh.running) {
     auto delta_time = clock::now() - time_start;

@@ -1,6 +1,12 @@
 #ifndef SCREENMANAGER_H_DEFINED
 #define SCREENMANAGER_H_DEFINED
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+
 #include "Screen.h"
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
@@ -8,31 +14,43 @@
 
 using namespace std;
 
+
 class ScreenManager {
   public:
-  ScreenManager(EventHandler* eh, SDL_Renderer* r, int w, int h):width(w), height(h), renderer(r) {
-    MainMenuScreen mms(eh, this, r, width, height);
-    GameScreen gs(eh, this, r, width, height);
+  ScreenManager(EventHandler* eh, SDL_Renderer* r, const int w, const int h):width(w), height(h), renderer(r) {
+    MainMenuScreen* mms = new MainMenuScreen(eh, this, r, width, height, current_screen);
+    GameScreen* gs = new GameScreen(eh, this, r, width, height, current_screen);
     screens = {mms, gs};
     current_screen = 0;
     this->eh = eh;
   }
+
+  //~ScreenManager() {
+  //  delete renderer;
+  //  delete eh;
+  //}
   void mousePressed() {
-    screens[current_screen].mousePressed();
+    screens[current_screen]->mousePressed();
   }
   void update() {
-    screens[current_screen].update();
+    screens[current_screen]->update();
   }
   void render() {
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear(renderer);
-    screens[current_screen].render();
+    screens[current_screen]->render();
+    //SDL_Rect rect = {0, 0, width, height};
+    //SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
+    //SDL_SetRenderDrawColor( renderer, 100, 0, 100, 255 );
+    //SDL_RenderFillRect( renderer, &rect);
+    //cout <<  current_screen << endl;
+
     SDL_RenderPresent(renderer);
   }
 private:
   SDL_Renderer* renderer;
   int current_screen;
-  vector<Screen> screens;
+  vector<Screen*> screens;
   EventHandler* eh;
   int width;
   int height;
