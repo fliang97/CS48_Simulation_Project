@@ -16,7 +16,7 @@ class ScreenManager;
 
 class WorldScreen : public Screen {
   public:
-  WorldScreen(EventHandler* eh, SDL_Renderer* r, int x, int, int y, int w, int h, int& cs, GameState& gs): Screen(eh, r, w, h), gamestate(gs), xpos(x), ypos(y), width(w), height(h) {
+  WorldScreen(EventHandler* eh, SDL_Renderer* r, int x, int y, int w, int h, int& cs, GameState& gs): Screen(eh, r, w, h), gamestate(gs), xpos(x), ypos(y), width(w), height(h) {
   }
 
   using namespace std;
@@ -42,7 +42,7 @@ class WorldScreen : public Screen {
     SDL_RenderFillRect( renderer, &rect);
     for (int i = 0; i < width; ++i) {
       for (int j = 0; j < height; ++j) {
-        (*gamestate.board)[i][j]->render(xpos, ypos, width/gamestate.width, height/gamestate.height); //change to include zoom value and whatnot
+        (*gamestate.board)[i][j]->render(xpos, ypos, width/gamestate.width, height/gamestate.height, renderer); //change to include zoom value and whatnot
       }
     }
   }

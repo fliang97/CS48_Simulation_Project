@@ -21,7 +21,7 @@ public:
     return over;
   }
   virtual void clicked() {
-    cout << "Clicked3" << endl;
+    //cout << "Clicked3" << endl;
   }
   virtual void render() {
 

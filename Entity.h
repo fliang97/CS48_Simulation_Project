@@ -16,10 +16,10 @@ public:
     this->parentSquare = parentSquare;
   }
 //don't move
-  virtual void update() {
+  virtual void update(vector< vector<GameSquare*> >* nextIterboard) {
     //(*nextIterboard)[parentSquare->x][parentSquare->y]->e = new Entity((*nextIterboard)[parentSquare->x][parentSquare->y]);
   }
-  virtual void render(int x, int y, int w, int h) {
+  virtual void render(int x, int y, int w, int h, SDL_Renderer* r) {
     //cout << "Entity" << endl;
   }
   GameSquare* parentSquare;

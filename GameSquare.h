@@ -8,12 +8,12 @@
 #include <cstdlib>
 #include "WorldScreen.h"
 #include "Entity.h"
-//#include "Component.h"
+#include "Component.h"
 
 class GameState;
 using namespace std;
 
-class GameSquare { //will extend components
+class GameSquare{ //will extend components
 public:
   GameSquare(int x, int y, GameState* g) {
     this->x = x;
@@ -25,9 +25,9 @@ public:
   void update(vector< vector<GameSquare*> >* nextIterboard) {
     if (e) e->update(nextIterboard);
   }
-  void render(int screenX, int screenY, int scaleX, int scaleY) {
+  void render(int screenX, int screenY, int scaleX, int scaleY, SDL_Renderer* r) {
     //render self
-    if (e) e->render(screenX + x * scaleX, screenY + y * scaleY, scaleX, scaleY); //change for zoom/scale
+    if (e) e->render(screenX + x * scaleX, screenY + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
   }
 
   Entity* e; //change to multiple layers

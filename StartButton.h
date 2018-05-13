@@ -24,18 +24,14 @@ public:
   //  delete current_screen;
   //}
   void clicked() override {
-    gs(10, 10);
+    gamestate = GameState(10, 10);
 
-    GameSquare* s = gs.(*board)[5][5];
+    GameSquare* s = (*gamestate.board)[5][5];
     //Square must know Entity
-    Entity g = new Grass(s);
-    gs.entities.push_back(g);
-    s->e = g;
-    s = gs.(*board)[3][5];
+    s->e = new Grass(s);
+    //s = (*gamestate.board)[3][5];
+    //s->e = new Cow(s);
 
-    //Entity c = new Cow(s)
-    //gs.entities.push_back(g);
-    //s->e = c;
     //delete g;
     //delete c;
 
@@ -52,6 +48,6 @@ public:
     SDL_RenderFillRect(renderer, &rect);
   }
   int& current_screen;
-  GameState& gs;
+  GameState& gamestate;
 };
 #endif /* START_H_DEFINED */

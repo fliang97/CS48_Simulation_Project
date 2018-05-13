@@ -28,20 +28,20 @@ class GameScreen : public Screen {
         c->clicked();
       }
     }
-    ws.mousePressed();
+    ws->mousePressed();
   }
 
   void update() override {
-    ws.update();
+    ws->update();
   }
   void render() override {
     SDL_Rect rect = {0, 0, width, height};
     //SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
     SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
     SDL_RenderFillRect( renderer, &rect);
-    ws.render();
+    ws->render();
   }
-  WorldScreen ws;
+  WorldScreen* ws;
   GameState& gamestate;
 };
-#endif /* MAINMENUSCREEN_H_DEFINED */
+#endif /* GAMESCREEN_H_DEFINED */

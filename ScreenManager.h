@@ -18,10 +18,10 @@ using namespace std;
 class ScreenManager {
   public:
   ScreenManager(EventHandler* eh, SDL_Renderer* r, const int w, const int h):width(w), height(h), renderer(r) {
+    currentGameState = GameState(4, 4); //possibly remove
     MainMenuScreen* mms = new MainMenuScreen(eh, r, width, height, current_screen, currentGameState);
     GameScreen* gs = new GameScreen(eh, r, width, height, current_screen, currentGameState);
     screens = {mms, gs};
-    currentGameState = WorldGenerator::newGameState(); //possibly remove
     current_screen = 0;
     this->eh = eh;
   }
