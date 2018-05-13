@@ -18,9 +18,10 @@ using namespace std;
 class ScreenManager {
   public:
   ScreenManager(EventHandler* eh, SDL_Renderer* r, const int w, const int h):width(w), height(h), renderer(r) {
-    MainMenuScreen* mms = new MainMenuScreen(eh, this, r, width, height, current_screen);
-    GameScreen* gs = new GameScreen(eh, this, r, width, height, current_screen);
+    MainMenuScreen* mms = new MainMenuScreen(eh, r, width, height, current_screen, currentGameState);
+    GameScreen* gs = new GameScreen(eh, r, width, height, current_screen, currentGameState);
     screens = {mms, gs};
+    currentGameState = WorldGenerator::newGameState(); //possibly remove
     current_screen = 0;
     this->eh = eh;
   }
@@ -30,7 +31,7 @@ class ScreenManager {
   //  delete eh;
   //}
   void mousePressed() {
-    cout << "Clicked01" << endl;
+    //cout << "Clicked01" << endl;
     screens[current_screen]->mousePressed();
   }
   void update() {
@@ -51,11 +52,11 @@ class ScreenManager {
 private:
   SDL_Renderer* renderer;
   int current_screen;
+  GameState currentGameState;
   vector<Screen*> screens;
   EventHandler* eh;
   int width;
   int height;
 };
-
 
 #endif /* SCREENMANAGER_H_DEFINED */

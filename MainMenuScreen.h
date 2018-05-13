@@ -17,8 +17,8 @@ class ScreenManager;
 
 class MainMenuScreen : public Screen {
   public:
-  MainMenuScreen(EventHandler* eh, ScreenManager* sm, SDL_Renderer* r, int w, int h, int& cs): Screen(eh, sm, r, w, h) {
-    sb = new StartButton(width/3, height/3, width/3, height/3, r, cs);
+  MainMenuScreen(EventHandler* eh, SDL_Renderer* r, int w, int h, int& cs, GameState& gs): Screen(eh, r, w, h) {
+    sb = new StartButton(width/3, height/3, width/3, height/3, r, cs, gs);
     components.push_back(sb);
   }
 

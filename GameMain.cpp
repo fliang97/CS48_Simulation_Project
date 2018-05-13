@@ -1,4 +1,5 @@
 //Use command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h GameScreen.h MainMenuScreen.h Screen.h ScreenManager.h StartButton.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
+//New Command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h GameScreen.h MainMenuScreen.h Screen.h ScreenManager.h StartButton.h WorldScreen.h Entity.h Grass.h GameState.h GameSquare.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
 
 
 #include <SDL2/SDL.h>
@@ -67,7 +68,7 @@ int main(int argc, char *argv[]) {
         }
         if(event.type == SDL_MOUSEBUTTONDOWN) {
             sc.mousePressed();
-            cout << "Clicked0" << endl;
+            //cout << "Clicked0" << endl;
         }
     }
     // update game logic as lag permits
