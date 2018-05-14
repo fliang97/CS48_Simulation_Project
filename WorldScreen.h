@@ -54,7 +54,7 @@ class WorldScreen : public Screen {
 					(*gamestate.board)[i][j]->update(gamestate.bufferboard);
 				}
 			}
-			vector< vector<GameSquare*> >* temp = gamestate.board;
+			vector< vector<Tile*> >* temp = gamestate.board;
 			gamestate.board = gamestate.bufferboard;
 			gamestate.bufferboard = temp;
 			counter = COUNTER;

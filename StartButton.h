@@ -28,7 +28,7 @@ public:
   void clicked() override {
     gamestate = GameState(10, 10);
 
-    GameSquare* s = (*gamestate.board)[5][5];
+    Tile* s = (*gamestate.board)[5][5];
     //Square must know Entity
     s->e = new Grass(s);
     s = (*gamestate.board)[3][5];

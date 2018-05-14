@@ -9,17 +9,17 @@
 #include <cstdlib>
 
 #include "GameState.h"
-#include "GameSquare.h"
+#include "Tile.h"
 #include "Entity.h"
 using namespace std;
 
 class Grass : public Entity {
 public:
-  Grass(GameSquare* parentSquare): Entity(parentSquare) { }
-  void update(vector< vector<GameSquare*> >* nextIterboard) override {
+  Grass(Tile* parentSquare): Entity(parentSquare) { }
+  void update(vector< vector<Tile*> >* nextIterboard) override {
     //cout << "GrassUpdate" << endl;
     //Fix rand() to make it change.
-    GameSquare* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
+    Tile* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
     if (!s->e) {
       s->e = this;
       parentSquare->e = NULL;

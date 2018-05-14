@@ -14,16 +14,16 @@
 class GameState;
 using namespace std;
 
-class GameSquare{ //will extend components
+class Tile{ //will extend components
 public:
-	GameSquare(int x, int y, GameState* g) {
+	Tile(int x, int y, GameState* g) {
 		this->x = x;
 		this->y = y;
 		this->g = g;
 		this->e = NULL;
 	}
 
-	void update(vector< vector<GameSquare*> >* nextIterboard) {
+	void update(vector< vector<Tile*> >* nextIterboard) {
 	    //cout << "GameSquareUpdate" << endl;
 	    if (e) e->update(nextIterboard);
 	}

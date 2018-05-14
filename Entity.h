@@ -3,7 +3,7 @@
 
 ///Unnecessary includes:
 //#include <cstdlib>
-//#include "GameSquare.h"
+//#include "Tile.h"
 
 
 #include <SDL2/SDL.h>
@@ -12,17 +12,17 @@
 #include <iostream>
 #include <vector>
 
-class GameSquare;
+class Tile;
 
 using namespace std;
 
 class Entity {
 public:
-	Entity(GameSquare* parentSquare);
+	Entity(Tile* parentSquare);
 
-	virtual void update(vector< vector<GameSquare*> > *nextIterboard);
+	virtual void update(vector< vector<Tile*> > *nextIterboard);
 	virtual void render(int x, int y, int w, int h, SDL_Renderer* r);
-	GameSquare* parentSquare;
+	Tile* parentSquare;
 };
 
 #endif /* ENTITY_H_DEFINED */

@@ -7,7 +7,7 @@
 //#include <cstdlib>
 
 //#include "GameState.h"
-//#include "GameSquare.h"
+//#include "Tile.h"
 //#include "Entity.h"
 #include "Cow.h"
 
@@ -16,11 +16,11 @@ using namespace std;
 
 //PUBLIC FUNCTIONS
 
-Cow::Cow(GameSquare* parentSquare) : Entity(parentSquare) { }
+Cow::Cow(Tile* parentSquare) : Entity(parentSquare) { }
 
-void Cow::update(vector< vector<GameSquare*> >* nextIterboard) {
+void Cow::update(vector< vector<Tile*> >* nextIterboard) {
 	//cout << "CowUpdate" << endl;
-	GameSquare* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
+	Tile* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
 	int x = rand() % 3 - 1;
 	int y = rand() % 3 - 1;
 	if (parentSquare->x + x >= 0 && parentSquare->x + x < static_cast<int>(nextIterboard->size())
@@ -32,7 +32,7 @@ void Cow::update(vector< vector<GameSquare*> >* nextIterboard) {
 		parentSquare = s;
 	}
 	else {
-		GameSquare* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
+		Tile* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
 		//Square must know Entity
 		//if (!s->e) //gets overriden if something moves into it. This now overrides anything on it.
 		s->e = this;

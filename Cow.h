@@ -9,14 +9,14 @@
 #include <cstdlib>
 
 #include "GameState.h"
-#include "GameSquare.h"
+#include "Tile.h"
 #include "Entity.h"
 using namespace std;
 
 class Cow : public Entity {
 public:
-	Cow(GameSquare* parentSquare);
-	void update(vector< vector<GameSquare*> >* nextIterboard) override;
+	Cow(Tile* parentSquare);
+	void update(vector< vector<Tile*> >* nextIterboard) override;
 	void render(int x, int y, int w, int h, SDL_Renderer* r) override;
 
 };

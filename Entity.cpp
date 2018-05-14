@@ -4,21 +4,21 @@
 //#include <iostream>
 ///#include <vector>
 //#include <cstdlib>
-//#include "GameSquare.h"
+//#include "Tile.h"
 
 #include "Entity.h"
-class GameSquare;
+class Tile;
 
 using namespace std;
 
 
 //PUBLIC FUNCTIONS
 
-Entity::Entity(GameSquare* parentSquare) {
+Entity::Entity(Tile* parentSquare) {
 	this->parentSquare = parentSquare;
 }
 //don't move
-void Entity::update(vector< vector<GameSquare*> >* nextIterboard) {
+void Entity::update(vector< vector<Tile*> >* nextIterboard) {
 	//cout << "EntityUpdate" << endl;
 	//(*nextIterboard)[parentSquare->x][parentSquare->y]->e = new Entity((*nextIterboard)[parentSquare->x][parentSquare->y]);
 }

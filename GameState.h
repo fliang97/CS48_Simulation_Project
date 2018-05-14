@@ -5,18 +5,18 @@
 #include <vector>
 #include <cstdlib>
 
-#include "GameSquare.h"
+#include "Tile.h"
 
 class GameState {
 public:
 	GameState(int wi, int he): width(wi), height(he) {
 	    //cout << "BuildGameState" << endl;
-	    board = new vector< vector<GameSquare*> >(wi, vector<GameSquare*>(he));
-	    bufferboard = new vector< vector<GameSquare*> >(wi, vector<GameSquare*>(he));
+	    board = new vector< vector<Tile*> >(wi, vector<Tile*>(he));
+	    bufferboard = new vector< vector<Tile*> >(wi, vector<Tile*>(he));
 	    for (int i = 0; i < wi; ++i) {
 			for (int j = 0; j < he; ++j) {
-				(*board)[i][j] = new GameSquare(i, j, this);
-				(*bufferboard)[i][j] = new GameSquare(i, j, this);
+				(*board)[i][j] = new Tile(i, j, this);
+				(*bufferboard)[i][j] = new Tile(i, j, this);
 			}
 		}
 	}
@@ -25,8 +25,8 @@ public:
 		//cout << "BuildGameState2" << endl;
 	}
 
-    vector< vector<GameSquare*> >* board;
-    vector< vector<GameSquare*> >* bufferboard;
+    vector< vector<Tile*> >* board;
+    vector< vector<Tile*> >* bufferboard;
     //Possibly add list of Entities, Plants/ Animals for added effieciency in search.
     int width;
     int height;
