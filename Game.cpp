@@ -1,6 +1,5 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-//#include <SDL.h>
 
 #include <iostream>
 #include <vector>
@@ -13,92 +12,70 @@
 
 using namespace std;
 
-SDL_Window *window = NULL;
-static SDL_Renderer *renderer = NULL;
-SDL_Event event;
-
+SDL_Renderer* Game::renderer = nullptr;
+SDL_Event Game::event;
+EventHandler* Game::eventHandler;
+ScreenManager* Game::screenManager;
 
 Game::Game(){
 }
 
-void Game::init(){
+Game::~Game() {
+	delete eventHandler;
+	eventHandler = NULL;
+
+	//combine destructor and close method?
+}
+
+void Game::init(int SCREEN_WIDTH, int SCREEN_HEIGHT){
     SDL_Init(SDL_INIT_VIDEO);
     window = SDL_CreateWindow("Game of Life", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	eventHandler = new EventHandler;
+	screenManager = new ScreenManager(eventHandler, renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    //SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-    SDL_RenderClear(renderer);
+    //SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); //why is this here?
+
+    //SDL_RenderClear(renderer); // Seems unnecessary
 }
 
-void close()
-{
+void Game::close(){
     SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer)
+	SDL_DestroyRenderer(renderer);
     SDL_Quit();
+
+	delete this; 
+
+	//combine destructor and close method?
 }
 
-int main(int argc, char *argv[]) {
-  Init();
-//  using clock = std::chrono::high_resolution_clock;
 
-//  std::chrono::nanoseconds lag(0ns);
-//  auto time_start = clock::now();
-
-  const int FPS = 60;
-  const int minFrameTime = 1000 / FPS;
-  Uint32 frameStartTime;
-  int currentFrameTime;
-
-  EventHandler eventHandler; //#PossibleChange to EventConstants
-  ScreenManager screenManager(&eventHandler, renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-  while (eventHandler.running) {
-//    auto delta_time = clock::now() - time_start;
-//    time_start = clock::now();
-
-//    lag += std::chrono::duration_cast<std::chrono::nanoseconds>(delta_time);
-
-	  frameStartTime = SDL_GetTicks();
-
-    //#Possibly move into seperate class
-
-	  void Game::handleEvents() {
-		  while (SDL_PollEvent(&event) != 0) //To exit loop, call exit(-1)
-		  {
-			  if (event.type == SDL_QUIT) {
-				  eventHandler.running = false;
-			  }
-			  if (event.type == SDL_MOUSEMOTION) {
-				  SDL_GetMouseState(&eventHandler.xMouse, &eventHandler.yMouse);
-			  }
-			  if (event.type == SDL_MOUSEBUTTONDOWN) {
-				  screenManager.mousePressed();
-				  //cout << "Clicked0" << endl;
-			  }
-		  }
-	  }
-    // update game logic as lag permits
-//    while(lag >= timestep) {
-//      lag -= timestep;
-//      screenManager.update(); // update at a fixed rate each time
-//    }
-
-	////Tyler's troubleshooting code:
-	//screenManager.update();
-	//SDL_Delay(1000);
-
-	screenManager.update();
-
-    screenManager.render();
-
-	currentFrameTime = SDL_GetTicks() - frameStartTime;
-
-	if (currentFrameTime < minFrameTime){
-		SDL_Delay(minFrameTime - currentFrameTime);
+void Game::handleEvents() {
+	while (SDL_PollEvent(&event) != 0) //To exit loop, call exit(-1)
+	{
+		if (event.type == SDL_QUIT) {
+			eventHandler->setRunning(false);
+		}
+		if (event.type == SDL_MOUSEMOTION) {
+			SDL_GetMouseState(&eventHandler->xMouse, &eventHandler->yMouse);
+		}
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			screenManager->mousePressed();
+			//cout << "Clicked0" << endl;
+		}
 	}
-
-
-  }
-
-  return 0;
 }
+
+bool Game::eventHandlerIsRunning() {
+	return eventHandler->isRunning();
+}
+
+void Game::update() {
+	screenManager->update();
+}
+
+void Game::render() {
+	screenManager->render();
+}
+

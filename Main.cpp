@@ -6,14 +6,12 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-//#include <SDL.h>
 
 //#include <iostream>
 //#include <vector>
 //#include <cstdlib>
 //#include <typeinfo>
 //#include <chrono>
-
 #include "Game.h"
 
 using namespace std;
@@ -22,8 +20,6 @@ using namespace std;
 const int SCREEN_WIDTH = 1000;
 const int SCREEN_HEIGHT = 800;
 //constexpr std::chrono::nanoseconds timestep(16ms);
-
-
 
 
 int main(int argc, char *argv[]) {
@@ -41,14 +37,13 @@ int main(int argc, char *argv[]) {
 	Uint32 frameStartTime;
 	int currentFrameTime;
 
-	while (game->running()) {
+	while (game->eventHandlerIsRunning()) {
 		//    auto delta_time = clock::now() - time_start;
 		//    time_start = clock::now();
 
 		//    lag += std::chrono::duration_cast<std::chrono::nanoseconds>(delta_time);
 
 		frameStartTime = SDL_GetTicks();
-
 		game->handleEvents();
 
 		// update game logic as lag permits
@@ -65,7 +60,6 @@ int main(int argc, char *argv[]) {
 		if (currentFrameTime < minFrameTime) {
 			SDL_Delay(minFrameTime - currentFrameTime);
 		}
-
 	}
 
 	game->close();

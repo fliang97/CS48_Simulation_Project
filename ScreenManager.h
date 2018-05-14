@@ -3,7 +3,6 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-//#include <SDL.h>
 
 #include <iostream>
 #include <vector>
@@ -31,6 +30,7 @@ class ScreenManager {
   //  delete renderer;
   //  delete eventHandler;
   //}
+
   void mousePressed() {
     //cout << "Clicked01" << endl;
     screens[current_screen]->mousePressed();
