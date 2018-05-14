@@ -25,21 +25,24 @@ public:
       parentSquare = s;
     }
     if (rand() % 10 == 0) {
+      cout << "Time to spread" << endl;
       int x = rand() % 3 - 1;
       int y = rand() % 3 - 1;
-      vector< vector<GameSquare*> > br = (*parentSquare->g->bufferboard);
-      if (parentSquare->x + x >= 0 && parentSquare->x + x < br.size()
-    && parentSquare->y + y >= 0 && parentSquare->y + y < br[0].size()) {
-        s = br[parentSquare->x + x][parentSquare->y + y];
+      if (parentSquare->x + x >= 0 && parentSquare->x + x < nextIterboard->size()
+    && parentSquare->y + y >= 0 && parentSquare->y + y < (*nextIterboard)[0].size()) {
+        cout << "Time to spread20" << endl;
+        s = (*nextIterboard)[parentSquare->x + x][parentSquare->y + y];
+        cout << "Time to spread2" << endl;
         //Square must know Entity
         if (!s->e) {
           s->e = new Grass(s);
+          cout << "Time to spread3" << endl;
         }
       }
     }
   }
   void render(int x, int y, int w, int h, SDL_Renderer* r) override {
-    cout << "GrassRender" << endl;
+    //cout << "GrassRender" << endl;
     //SDL_Surface *screenSurface = SDL_GetWindowSurface(window);
     SDL_Rect rect = {x, y, w, h};
     //SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
