@@ -32,9 +32,11 @@ class GameScreen : public Screen {
   }
 
   void update() override {
+    cout << "GameScreenUpdate" << endl;
     ws->update();
   }
   void render() override {
+    cout << "GameScreenRender" << endl;
     SDL_Rect rect = {0, 0, width, height};
     //SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
     SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );

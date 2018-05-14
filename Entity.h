@@ -17,9 +17,11 @@ public:
   }
 //don't move
   virtual void update(vector< vector<GameSquare*> >* nextIterboard) {
+    cout << "EntityUpdate" << endl;
     //(*nextIterboard)[parentSquare->x][parentSquare->y]->e = new Entity((*nextIterboard)[parentSquare->x][parentSquare->y]);
   }
   virtual void render(int x, int y, int w, int h, SDL_Renderer* r) {
+    cout << "EntityRender" << endl;
     //cout << "Entity" << endl;
   }
   GameSquare* parentSquare;

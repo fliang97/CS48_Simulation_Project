@@ -10,6 +10,7 @@
 class GameState {
 public:
   GameState(int wi, int he): width(wi), height(he) {
+    cout << "BuildGameState" << endl;
     board = new vector< vector<GameSquare*> >(wi, vector<GameSquare*>(he));
     bufferboard = new vector< vector<GameSquare*> >(wi, vector<GameSquare*>(he));
     for (int i = 0; i < wi; ++i) {
@@ -20,6 +21,7 @@ public:
     }
   }
   GameState(): width(0), height(0) {
+    cout << "BuildGameState2" << endl;
   }
     vector< vector<GameSquare*> >* board;
     vector< vector<GameSquare*> >* bufferboard;

@@ -23,9 +23,11 @@ public:
   }
 
   void update(vector< vector<GameSquare*> >* nextIterboard) {
+    cout << "GameSquareUpdate" << endl;
     if (e) e->update(nextIterboard);
   }
   void render(int screenX, int screenY, int scaleX, int scaleY, SDL_Renderer* r) {
+    cout << "GameSquareRender" << endl;
     //render self
     if (e) e->render(screenX + x * scaleX, screenY + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
   }

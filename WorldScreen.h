@@ -21,6 +21,7 @@ class WorldScreen : public Screen {
   }
 
   void update() override {
+    cout << "WorldScreenUpdate" << endl;
     int counter = 30;
     if (counter == 0) {
       for (int i = 0; i < width; ++i) {
@@ -36,12 +37,14 @@ class WorldScreen : public Screen {
     --counter;
   }
   void render() override {
+    cout << "WorldScreenRender" << endl;
     SDL_Rect rect = {xpos, ypos, width, height};
     //SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
     SDL_SetRenderDrawColor( renderer, 0, 240, 220, 205 );
     SDL_RenderFillRect( renderer, &rect);
-    for (int i = 0; i < width; ++i) {
-      for (int j = 0; j < height; ++j) {
+    for (int i = 0; i < gamestate.width; ++i) {
+      for (int j = 0; j < gamestate.height; ++j) {
+        cout << i << " " << j << endl;
         (*gamestate.board)[i][j]->render(xpos, ypos, width/gamestate.width, height/gamestate.height, renderer); //change to include zoom value and whatnot
       }
     }
