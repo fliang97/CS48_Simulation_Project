@@ -19,6 +19,8 @@ public:
       }
     }
   }
+  GameState(): width(0), height(0) {
+  }
     vector< vector<GameSquare*> >* board;
     vector< vector<GameSquare*> >* bufferboard;
     //Possibly add list of Entities, Plants/ Animals for added effieciency in search.
