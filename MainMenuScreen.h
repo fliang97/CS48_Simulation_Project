@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+//#include <SDL.h>
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -17,13 +19,13 @@ class ScreenManager;
 
 class MainMenuScreen : public Screen {
   public:
-  MainMenuScreen(EventHandler* eh, SDL_Renderer* r, int w, int h, int& cs, GameState& gs): Screen(eh, r, w, h) {
-    sb = new StartButton(width/3, height/3, width/3, height/3, r, cs, gs);
-    components.push_back(sb);
+  MainMenuScreen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, GameState& gameState): Screen(eventHandler, r, w, h) {
+    startButton = new StartButton(width/3, height/3, width/3, height/3, r, cs, gameState);
+    components.push_back(startButton);
   }
 
   //~MainMenuScreen() {
-  //  delete sb;
+  //  delete startButton;
   //}
 
   void update() override{
@@ -34,10 +36,10 @@ class MainMenuScreen : public Screen {
     SDL_SetRenderDrawColor( renderer, 100, 0, 100, 255 );
     SDL_RenderFillRect( renderer, &rect);
     //cout <<  rect.w << endl;
-    sb->render();
+    startButton->render();
   }
 private:
-  StartButton* sb;
+  StartButton* startButton;
 };
 
 

@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+//#include <SDL.h>
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -16,18 +18,18 @@ using namespace std;
 
 class ScreenManager {
   public:
-  ScreenManager(EventHandler* eh, SDL_Renderer* r, const int w, const int h): width(w), height(h),renderer(r){
+  ScreenManager(EventHandler* eventHandler, SDL_Renderer* r, const int w, const int h): width(w), height(h),renderer(r){
     currentGameState = GameState(4, 4); //possibly remove
-    MainMenuScreen* mms = new MainMenuScreen(eh, r, width, height, current_screen, currentGameState);
-    GameScreen* gs = new GameScreen(eh, r, width, height, current_screen, currentGameState);
-    screens = {mms, gs};
+    MainMenuScreen* mainMenuScreen = new MainMenuScreen(eventHandler, r, width, height, current_screen, currentGameState);
+    GameScreen* gameScreen = new GameScreen(eventHandler, r, width, height, current_screen, currentGameState);
+    screens = {mainMenuScreen, gameScreen};
     current_screen = 0;
-    this->eh = eh;
+    this->eventHandler = eventHandler;
   }
 
   //~ScreenManager() {
   //  delete renderer;
-  //  delete eh;
+  //  delete eventHandler;
   //}
   void mousePressed() {
     //cout << "Clicked01" << endl;
@@ -53,7 +55,7 @@ private:
   int current_screen;
   GameState currentGameState;
   vector<Screen*> screens;
-  EventHandler* eh;
+  EventHandler* eventHandler;
   int width;
   int height;
 };

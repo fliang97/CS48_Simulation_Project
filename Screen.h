@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+//#include <SDL.h>
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -20,7 +22,7 @@ class Screen {
   Screen(EventHandler* e, SDL_Renderer* r, int w, int h): width(w), height(h), renderer(r), eh(e){
   }
   //~Screen() {
-  //  delete eh;
+  //  delete eventHandler;
   //  delete sm;
   //delete renderer;
   //}

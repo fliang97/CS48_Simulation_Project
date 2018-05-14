@@ -2,8 +2,11 @@
 #define BUTTON_H_DEFINED
 
 #include "Component.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+//#include <SDL.h>
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>

@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Tyler's stuff
+
+.vs/
+.git/
+CS48_Simulation_Project_Soln/

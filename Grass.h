@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+//#include <SDL.h>
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -28,8 +30,8 @@ public:
       //cout << "Time to spread" << endl;
       int x = rand() % 3 - 1;
       int y = rand() % 3 - 1;
-      if (parentSquare->x + x >= 0 && parentSquare->x + x < nextIterboard->size()
-    && parentSquare->y + y >= 0 && parentSquare->y + y < (*nextIterboard)[0].size()) {
+      if (parentSquare->x + x >= 0 && parentSquare->x + x < static_cast<int>(nextIterboard->size())
+    && parentSquare->y + y >= 0 && parentSquare->y + y < static_cast<int>((*nextIterboard)[0].size())) {
         //cout << "Time to spread20" << endl;
         s = (*nextIterboard)[parentSquare->x + x][parentSquare->y + y];
         //cout << "Time to spread2" << endl;
