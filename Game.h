@@ -1,5 +1,5 @@
-//Use command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h GameScreen.h MainMenuScreen.h Screen.h ScreenManager.h StartButton.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
-//New Command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h GameScreen.h MainMenuScreen.h Screen.h ScreenManager.h StartButton.h WorldScreen.h Entity.h Grass.h GameState.h Tile.h Cow.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
+//Use command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h Screen_Game.h Screen_MainMenu.h Screen.h ScreenManager.h Button_Start.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
+//New Command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h Screen_Game.h Screen_MainMenu.h Screen.h ScreenManager.h Button_Start.h Screen_World.h Entity.h Grass.h Map.h Tile.h Cow.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
 
 #ifndef GAMES_H_DEFINED
 #define GAMES_H_DEFINED

@@ -8,35 +8,35 @@
 #include <vector>
 #include <cstdlib>
 
-#include "GameState.h"
+#include "Map.h"
 #include "Tile.h"
 #include "Entity.h"
 using namespace std;
 
 class Grass : public Entity {
 public:
-  Grass(Tile* parentSquare): Entity(parentSquare) { }
+  Grass(Tile* parentTile): Entity(parentTile) { }
   void update(vector< vector<Tile*> >* nextIterboard) override {
     //cout << "GrassUpdate" << endl;
     //Fix rand() to make it change.
-    Tile* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
-    if (!s->e) {
-      s->e = this;
-      parentSquare->e = NULL;
-      parentSquare = s;
+    Tile* tile = (*nextIterboard)[parentTile->x][parentTile->y];
+    if (!tile->entity) {
+      tile->entity = this;
+      parentTile->entity = NULL;
+      parentTile = tile;
     }
     if (rand() % 10 == 0) {
       //cout << "Time to spread" << endl;
       int x = rand() % 3 - 1;
       int y = rand() % 3 - 1;
-      if (parentSquare->x + x >= 0 && parentSquare->x + x < static_cast<int>(nextIterboard->size())
-    && parentSquare->y + y >= 0 && parentSquare->y + y < static_cast<int>((*nextIterboard)[0].size())) {
+      if (parentTile->x + x >= 0 && parentTile->x + x < static_cast<int>(nextIterboard->size())
+    && parentTile->y + y >= 0 && parentTile->y + y < static_cast<int>((*nextIterboard)[0].size())) {
         //cout << "Time to spread20" << endl;
-        s = (*nextIterboard)[parentSquare->x + x][parentSquare->y + y];
+        tile = (*nextIterboard)[parentTile->x + x][parentTile->y + y];
         //cout << "Time to spread2" << endl;
         //Square must know Entity
-        if (!s->e) {
-          s->e = new Grass(s);
+        if (!tile->entity) {
+          tile->entity = new Grass(tile);
           //cout << "Time to spread3" << endl;
         }
       }

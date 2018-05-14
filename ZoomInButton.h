@@ -1,24 +1,22 @@
-#ifndef ZOOMINBUTTON_H_DEFINED
-#define ZOOMINBUTTON_H_DEFINED
-
+#ifndef BUTTON_ZOOMIN_H_DEFINED
+#define BUTTON_ZOOMIN_H_DEFINED
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-
 #include "Button.h"
 
 
 using namespace std;
 
-class ZoomInButton : public Button {
+class Button_ZoomIn : public Button {
 public:
-	ZoomInButton(int x, int y, int w, int h, SDL_Renderer* r) : Button(x, y, w, h, r) {
+	Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r) : Button(x, y, w, h, r) {
 	}
-	//~StartButton() {
-	//  delete current_screen;
+	//~Button_Start() {
+	//  delete currentScreen;
 	//}
 	void clicked() override {
 
@@ -35,4 +33,4 @@ public:
 	}
 
 };
-#endif /* ZOOMIN_H_DEFINED */
+#endif /* BUTTON_ZOOMIN_H_DEFINED */

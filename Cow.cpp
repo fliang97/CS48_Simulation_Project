@@ -6,7 +6,7 @@
 //#include <vector>
 //#include <cstdlib>
 
-//#include "GameState.h"
+//#include "Map.h"
 //#include "Tile.h"
 //#include "Entity.h"
 #include "Cow.h"
@@ -16,28 +16,28 @@ using namespace std;
 
 //PUBLIC FUNCTIONS
 
-Cow::Cow(Tile* parentSquare) : Entity(parentSquare) { }
+Cow::Cow(Tile* parentTile) : Entity(parentTile) { }
 
 void Cow::update(vector< vector<Tile*> >* nextIterboard) {
 	//cout << "CowUpdate" << endl;
-	Tile* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
+	Tile* s = (*nextIterboard)[parentTile->x][parentTile->y];
 	int x = rand() % 3 - 1;
 	int y = rand() % 3 - 1;
-	if (parentSquare->x + x >= 0 && parentSquare->x + x < static_cast<int>(nextIterboard->size())
-		&& parentSquare->y + y >= 0 && parentSquare->y + y < static_cast<int>((*nextIterboard)[0].size())) {
-		s = (*nextIterboard)[parentSquare->x + x][parentSquare->y + y];
+	if (parentTile->x + x >= 0 && parentTile->x + x < static_cast<int>(nextIterboard->size())
+		&& parentTile->y + y >= 0 && parentTile->y + y < static_cast<int>((*nextIterboard)[0].size())) {
+		s = (*nextIterboard)[parentTile->x + x][parentTile->y + y];
 		//Square must know Entity
-		s->e = this;
-		parentSquare->e = NULL;
-		parentSquare = s;
+		s->entity = this;
+		parentTile->entity = NULL;
+		parentTile = s;
 	}
 	else {
-		Tile* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
+		Tile* tile = (*nextIterboard)[parentTile->x][parentTile->y];
 		//Square must know Entity
-		//if (!s->e) //gets overriden if something moves into it. This now overrides anything on it.
-		s->e = this;
-		parentSquare->e = NULL;
-		parentSquare = s;
+		//if (!tile->entity) //gets overriden if something moves into it. This now overrides anything on it.
+		tile->entity = this;
+		parentTile->entity = NULL;
+		parentTile = tile;
 	}
 }
 

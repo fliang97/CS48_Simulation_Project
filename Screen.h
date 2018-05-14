@@ -18,7 +18,7 @@ class ScreenManager;
 
 class Screen {
 public:
-	Screen(EventHandler* e, SDL_Renderer* r, int w, int h): width(w), height(h), renderer(r), eh(e){
+	Screen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h): width(w), height(h), renderer(r), eventHandler(eventHandler){
 	}
 	
 	//~Screen() {
@@ -31,7 +31,7 @@ public:
 		//cout << "somewhere clicked" << end;
 		//cout << "Clicked02" << endl;
 		for (Component* c : components) {
-			if (c->isOver(eh->xMouse, eh->yMouse)) {
+			if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
 				c->clicked();
 			}
 		}
@@ -52,7 +52,7 @@ public:
 
 	SDL_Renderer* renderer;
 	vector< Component* > components;
-	EventHandler* eh;
+	EventHandler* eventHandler;
 	int width;
 	int height;
 };

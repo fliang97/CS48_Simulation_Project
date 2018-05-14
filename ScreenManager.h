@@ -9,20 +9,21 @@
 #include <cstdlib>
 
 #include "Screen.h"
-#include "GameScreen.h"
-#include "MainMenuScreen.h"
+#include "Screen_Game.h"
+#include "Screen_MainMenu.h"
 #include "Component.h"
+#include "Map.h"
 
 using namespace std;
 
 class ScreenManager {
  public:
 	ScreenManager(EventHandler* eventHandler, SDL_Renderer* r, const int w, const int h): width(w), height(h),renderer(r){
-		currentGameState = GameState(10, 10); //possibly remove
-		MainMenuScreen* mainMenuScreen = new MainMenuScreen(eventHandler, r, width, height, current_screen, currentGameState);
-		GameScreen* gameScreen = new GameScreen(eventHandler, r, width, height, current_screen, currentGameState);
+		currentMap = Map(10, 10); //possibly remove
+		Screen_MainMenu* mainMenuScreen = new Screen_MainMenu(eventHandler, r, width, height, currentScreen, currentMap);
+		Screen_Game* gameScreen = new Screen_Game(eventHandler, r, width, height, currentScreen, currentMap);
 		screens = {mainMenuScreen, gameScreen};
-		current_screen = 0;
+		currentScreen = 0;
 		this->eventHandler = eventHandler;
 	}
 
@@ -33,23 +34,23 @@ class ScreenManager {
 
 	void mousePressedUp() {
 	    //cout << "Clicked01" << endl;
-	    screens[current_screen]->mousePressedUp();
+	    screens[currentScreen]->mousePressedUp();
 	}
 
 	void mousePressedDown() {
 		//cout << "Clicked01" << endl;
-		screens[current_screen]->mousePressedDown();
+		screens[currentScreen]->mousePressedDown();
 	}
 
 	void mouseDown() {
 		//cout << "Clicked01" << endl;
-		if (current_screen == 1) { //possibly remove
-			screens[current_screen]->mouseDown();
+		if (currentScreen == 1) { //possibly remove
+			screens[currentScreen]->mouseDown();
 		}
 	}
 
 	void update() {
-		screens[current_screen]->update();
+		screens[currentScreen]->update();
 	}
 
 
@@ -57,20 +58,20 @@ class ScreenManager {
 	void render() {
 		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(renderer);
-		screens[current_screen]->render();
+		screens[currentScreen]->render();
 		//SDL_Rect rect = {0, 0, width, height};
 		//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
 		//SDL_SetRenderDrawColor( renderer, 100, 0, 100, 255 );
 		//SDL_RenderFillRect( renderer, &rect);
-		//cout <<  current_screen << endl;
+		//cout <<  currentScreen << endl;
 
 	    SDL_RenderPresent(renderer);
 	}
 
 private:
 	SDL_Renderer* renderer;
-	int current_screen;
-	GameState currentGameState;
+	int currentScreen;
+	Map currentMap;
 	vector<Screen*> screens;
 	EventHandler* eventHandler;
 	int width;

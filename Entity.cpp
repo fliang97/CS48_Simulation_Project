@@ -14,13 +14,13 @@ using namespace std;
 
 //PUBLIC FUNCTIONS
 
-Entity::Entity(Tile* parentSquare) {
-	this->parentSquare = parentSquare;
+Entity::Entity(Tile* parentTile) {
+	this->parentTile = parentTile;
 }
 //don't move
 void Entity::update(vector< vector<Tile*> >* nextIterboard) {
 	//cout << "EntityUpdate" << endl;
-	//(*nextIterboard)[parentSquare->x][parentSquare->y]->e = new Entity((*nextIterboard)[parentSquare->x][parentSquare->y]);
+	//(*nextIterboard)[parentTile->x][parentTile->y]->entity = new Entity((*nextIterboard)[parentTile->x][parentTile->y]);
 }
 void Entity::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//cout << "EntityRender" << endl;

@@ -1,5 +1,5 @@
-#ifndef WORLDSCREEN_H_DEFINED
-#define WORLDSCREEN_H_DEFINED
+#ifndef SCREEN_WORLD_H_DEFINED
+#define SCREEN_WORLD_H_DEFINED
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -10,7 +10,7 @@
 
 #include "Screen.h"
 #include "EventHandler.h"
-#include "GameState.h"
+#include "Map.h"
 
 const int COUNTER = 30;
 
@@ -18,12 +18,12 @@ using namespace std;
 //#include "ScreenManager.h"
 class ScreenManager;
 
-class WorldScreen : public Screen {
+class Screen_World : public Screen {
  public:
-	WorldScreen(EventHandler* eh, SDL_Renderer* r, int x, int y, int w, int h, int& cs, GameState& gs) : Screen(eh, r, w, h), gamestate(gs), xpos(x), ypos(y), width(w),
+	Screen_World(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map) : Screen(eventHandler, r, w, h), map(map), xpos(x), ypos(y), width(w),
 		height(h), counter(COUNTER), worldposX(0), worldposY(0) {
-		scaleX = width / gamestate.width;
-		scaleY = height / gamestate.height;
+		scaleX = width / map.width;
+		scaleY = height / map.height;
 
 	}
 
@@ -33,15 +33,15 @@ class WorldScreen : public Screen {
 	void mousePressedDown() override {
 		cout << "mousePressedDown" << endl;
 
-		mouseInitX = eh->xMouse;
-		mouseInitY = eh->yMouse;
+		mouseInitX = eventHandler->xMouse;
+		mouseInitY = eventHandler->yMouse;
 		worldInitX = worldposX;
 		worldInitY = worldposY;
 	}
 
 	void mouseDown() override {
-		worldposX = worldInitX - (eh->xMouse - mouseInitX);
-		worldposY = worldInitY - (eh->yMouse - mouseInitY);
+		worldposX = worldInitX - (eventHandler->xMouse - mouseInitX);
+		worldposY = worldInitY - (eventHandler->yMouse - mouseInitY);
 		cout << worldposX << " " << worldposY << endl;
 	}
 
@@ -49,14 +49,14 @@ class WorldScreen : public Screen {
 		//cout << "WorldScreenUpdate" << endl;
 		if (counter == 0) {
 			//cout << "SuccessfulUpdate" << endl;
-			for (int i = 0; i < gamestate.width; ++i) {
-				for (int j = 0; j < gamestate.height; ++j) {
-					(*gamestate.board)[i][j]->update(gamestate.bufferboard);
+			for (int i = 0; i < map.width; ++i) {
+				for (int j = 0; j < map.height; ++j) {
+					(*map.mapGrid)[i][j]->update(map.bufferboard);
 				}
 			}
-			vector< vector<Tile*> >* temp = gamestate.board;
-			gamestate.board = gamestate.bufferboard;
-			gamestate.bufferboard = temp;
+			vector< vector<Tile*> >* temp = map.mapGrid;
+			map.mapGrid = map.bufferboard;
+			map.bufferboard = temp;
 			counter = COUNTER;
 		}
 		--counter;
@@ -70,10 +70,10 @@ class WorldScreen : public Screen {
 		SDL_SetRenderDrawColor(renderer, 0, 240, 220, 205);
 		SDL_RenderFillRect(renderer, &rect);
 		
-		for (int i = 0; i < gamestate.width; ++i) {
-			for (int j = 0; j < gamestate.height; ++j) {
+		for (int i = 0; i < map.width; ++i) {
+			for (int j = 0; j < map.height; ++j) {
 				//cout << i << " " << j << endl;
-				(*gamestate.board)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer); //change to include zoom value and whatnot
+				(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer); //change to include zoom value and whatnot
 			}
 		}
 	}
@@ -92,7 +92,7 @@ class WorldScreen : public Screen {
 	int scaleY;
 	int width;
 	int height;
-	GameState& gamestate;
+	Map& map;
 };
 
-#endif /* WORLDSCREEN_H_DEFINED */
+#endif /* SCREEN_WORLD_H_DEFINED */

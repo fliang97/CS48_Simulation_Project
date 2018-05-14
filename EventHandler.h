@@ -37,8 +37,6 @@ public:
 		this->mouseLeftDown = leftDown;
 	}
 
-
-
 	EventHandler() {
 		running = true;
 		xMouse = 0;

@@ -1,5 +1,5 @@
-#ifndef MAINMENUSCREEN_H_DEFINED
-#define MAINMENUSCREEN_H_DEFINED
+#ifndef SCREEN_MAINMENU_H_DEFINED
+#define SCREEN_MAINMENU_H_DEFINED
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -8,7 +8,7 @@
 #include <vector>
 #include <cstdlib>
 
-#include "StartButton.h"
+#include "Button_Start.h"
 #include "Screen.h"
 #include "EventHandler.h"
 using namespace std;
@@ -16,15 +16,15 @@ using namespace std;
 class ScreenManager;
 
 
-class MainMenuScreen : public Screen {
+class Screen_MainMenu : public Screen {
   public:
-  MainMenuScreen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, GameState& gameState): Screen(eventHandler, r, w, h) {
-    startButton = new StartButton(width/3, height/3, width/3, height/3, r, cs, gameState);
-    components.push_back(startButton);
+  Screen_MainMenu(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map): Screen(eventHandler, r, w, h) {
+    button_start = new Button_Start(width/3, height/3, width/3, height/3, r, cs, map);
+    components.push_back(button_start);
   }
 
-  //~MainMenuScreen() {
-  //  delete startButton;
+  //~Screen_MainMenu() {
+  //  delete button_start;
   //}
 
   void update() override{
@@ -35,11 +35,11 @@ class MainMenuScreen : public Screen {
     SDL_SetRenderDrawColor( renderer, 100, 0, 100, 255 );
     SDL_RenderFillRect( renderer, &rect);
     //cout <<  rect.w << endl;
-    startButton->render();
+    button_start->render();
   }
 private:
-  StartButton* startButton;
+  Button_Start* button_start;
 };
 
 
-#endif /* MAINMENUSCREEN_H_DEFINED */
+#endif /* SCREEN_MAINMENU_H_DEFINED */

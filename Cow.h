@@ -8,14 +8,14 @@
 #include <vector>
 #include <cstdlib>
 
-#include "GameState.h"
+#include "Map.h"
 #include "Tile.h"
 #include "Entity.h"
 using namespace std;
 
 class Cow : public Entity {
 public:
-	Cow(Tile* parentSquare);
+	Cow(Tile* parentTile);
 	void update(vector< vector<Tile*> >* nextIterboard) override;
 	void render(int x, int y, int w, int h, SDL_Renderer* r) override;
 

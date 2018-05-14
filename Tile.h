@@ -1,5 +1,5 @@
-#ifndef GAMESQUARE_H_DEFINED
-#define GAMESQUARE_H_DEFINED
+#ifndef TILE_H_DEFINED
+#define TILE_H_DEFINED
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -11,33 +11,33 @@
 #include "Entity.h"
 
 
-class GameState;
+class Map;
 using namespace std;
 
 class Tile{ //will extend components
 public:
-	Tile(int x, int y, GameState* g) {
+	Tile(int x, int y, Map* map) {
 		this->x = x;
 		this->y = y;
-		this->g = g;
-		this->e = NULL;
+		this->map = map;
+		this->entity = NULL;
 	}
 
 	void update(vector< vector<Tile*> >* nextIterboard) {
-	    //cout << "GameSquareUpdate" << endl;
-	    if (e) e->update(nextIterboard);
+	    //cout << "TileUpdate" << endl;
+	    if (entity) entity->update(nextIterboard);
 	}
 
 	void render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r) {
 	    //cout << "GameSquareRender" << endl;
 	    //render self
-	    if (e) e->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
+	    if (entity) entity->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
 	}
 
-	Entity* e; //change to multiple layers
+	Entity* entity; //change to multiple layers
 	int x;
 	int y;
-	GameState* g;
+	Map* map;
 };
 
-#endif /* GAMESQUARE_H_DEFINED */
+#endif /* TILE_H_DEFINED */

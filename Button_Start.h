@@ -13,31 +13,31 @@
 #include "Entity.h"
 #include "Grass.h"
 #include "Cow.h"
-#include "GameState.h"
+#include "Map.h"
 
 using namespace std;
 class ScreenManager;
 
-class StartButton : public Button {
+class Button_Start : public Button {
 public:
-  StartButton(int x, int y, int w, int h, SDL_Renderer* r, int& cr, GameState& gs): Button(x, y, w, h, r), current_screen(cr), gamestate(gs){
+  Button_Start(int x, int y, int w, int h, SDL_Renderer* r, int& currentScreen, Map& map): Button(x, y, w, h, r), currentScreen(currentScreen), map(map){
   }
-  //~StartButton() {
-  //  delete current_screen;
+  //~Button_Start() {
+  //  delete currentScreen;
   //}
   void clicked() override {
-    gamestate = GameState(10, 10);
+    map = Map(10, 10);
 
-    Tile* s = (*gamestate.board)[5][5];
+    Tile* tile = (*map.mapGrid)[5][5];
     //Square must know Entity
-    s->e = new Grass(s);
-    s = (*gamestate.board)[3][5];
-    s->e = new Cow(s);
+    tile->entity = new Grass(tile);
+    tile = (*map.mapGrid)[3][5];
+    tile->entity = new Cow(tile);
 
-    //delete g;
+    //delete map;
     //delete c;
 
-    current_screen = 1;
+    currentScreen = 1;
   }
   void render() override {
     SDL_Rect rect;
@@ -49,7 +49,7 @@ public:
     SDL_SetRenderDrawColor( renderer, 100, 50, 0, 255 );
     SDL_RenderFillRect(renderer, &rect);
   }
-  int& current_screen;
-  GameState& gamestate;
+  int& currentScreen;
+  Map& map;
 };
-#endif /* START_H_DEFINED */
+#endif /* STARTBUTTON_H_DEFINED */

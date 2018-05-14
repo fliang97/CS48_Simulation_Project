@@ -18,11 +18,11 @@ using namespace std;
 
 class Entity {
 public:
-	Entity(Tile* parentSquare);
+	Entity(Tile* parentTile);
 
 	virtual void update(vector< vector<Tile*> > *nextIterboard);
 	virtual void render(int x, int y, int w, int h, SDL_Renderer* r);
-	Tile* parentSquare;
+	Tile* parentTile;
 };
 
 #endif /* ENTITY_H_DEFINED */
