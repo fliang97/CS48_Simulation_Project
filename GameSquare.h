@@ -6,9 +6,9 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-#include "WorldScreen.h"
+
 #include "Entity.h"
-#include "Component.h"
+
 
 class GameState;
 using namespace std;

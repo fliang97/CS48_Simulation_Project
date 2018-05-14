@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstdlib>
 
+#include "GameState.h"
 #include "GameSquare.h"
 #include "Entity.h"
 using namespace std;

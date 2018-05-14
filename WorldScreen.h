@@ -11,6 +11,7 @@
 #include "EventHandler.h"
 #include "GameState.h"
 
+using namespace std;
 //#include "ScreenManager.h"
 class ScreenManager;
 
@@ -19,7 +20,6 @@ class WorldScreen : public Screen {
   WorldScreen(EventHandler* eh, SDL_Renderer* r, int x, int y, int w, int h, int& cs, GameState& gs): Screen(eh, r, w, h), gamestate(gs), xpos(x), ypos(y), width(w), height(h) {
   }
 
-  using namespace std;
   void update() override {
     int counter = 30;
     if (counter == 0) {
