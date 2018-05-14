@@ -17,7 +17,7 @@ class Grass : public Entity {
 public:
   Grass(GameSquare* parentSquare): Entity(parentSquare) { }
   void update(vector< vector<GameSquare*> >* nextIterboard) override {
-    cout << "GrassUpdate" << endl;
+    //cout << "GrassUpdate" << endl;
     //Fix rand() to make it change.
     GameSquare* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
     if (!s->e) {

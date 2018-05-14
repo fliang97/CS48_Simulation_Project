@@ -26,7 +26,7 @@ public:
   //  delete current_screen;
   //}
   void clicked() override {
-    gamestate = GameState(20, 20);
+    gamestate = GameState(10, 10);
 
     GameSquare* s = (*gamestate.board)[5][5];
     //Square must know Entity

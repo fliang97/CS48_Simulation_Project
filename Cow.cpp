@@ -19,7 +19,7 @@ using namespace std;
 Cow::Cow(GameSquare* parentSquare) : Entity(parentSquare) { }
 
 void Cow::update(vector< vector<GameSquare*> >* nextIterboard) {
-	cout << "CowUpdate" << endl;
+	//cout << "CowUpdate" << endl;
 	GameSquare* s = (*nextIterboard)[parentSquare->x][parentSquare->y];
 	int x = rand() % 3 - 1;
 	int y = rand() % 3 - 1;

@@ -21,9 +21,9 @@ using namespace std;
 
 class Game {
 public:
-	static SDL_Renderer* renderer;
 
-	//can these be moved to private?
+	// Can any of these be moved to private?
+	static SDL_Renderer* renderer;
 	static EventHandler* eventHandler;
 	static ScreenManager* screenManager;
 	static SDL_Event event; //make this a pointer?

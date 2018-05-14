@@ -16,27 +16,28 @@ using namespace std;
 
 class GameSquare{ //will extend components
 public:
-  GameSquare(int x, int y, GameState* g) {
-    this->x = x;
-    this->y = y;
-    this->g = g;
-    this->e = NULL;
-  }
+	GameSquare(int x, int y, GameState* g) {
+		this->x = x;
+		this->y = y;
+		this->g = g;
+		this->e = NULL;
+	}
 
-  void update(vector< vector<GameSquare*> >* nextIterboard) {
-    cout << "GameSquareUpdate" << endl;
-    if (e) e->update(nextIterboard);
-  }
-  void render(int screenX, int screenY, int scaleX, int scaleY, SDL_Renderer* r) {
-    //cout << "GameSquareRender" << endl;
-    //render self
-    if (e) e->render(screenX + x * scaleX, screenY + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
-  }
+	void update(vector< vector<GameSquare*> >* nextIterboard) {
+	    //cout << "GameSquareUpdate" << endl;
+	    if (e) e->update(nextIterboard);
+	}
 
-  Entity* e; //change to multiple layers
-  int x;
-  int y;
-  GameState* g;
+	void render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r) {
+	    //cout << "GameSquareRender" << endl;
+	    //render self
+	    if (e) e->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
+	}
+
+	Entity* e; //change to multiple layers
+	int x;
+	int y;
+	GameState* g;
 };
 
 #endif /* GAMESQUARE_H_DEFINED */

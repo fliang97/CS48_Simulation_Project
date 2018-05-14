@@ -12,17 +12,18 @@
 
 using namespace std;
 
+// Is it good practice to initialize these pointers to null here?
 SDL_Renderer* Game::renderer = nullptr;
+EventHandler* Game::eventHandler = nullptr;
+ScreenManager* Game::screenManager = nullptr;
 SDL_Event Game::event;
-EventHandler* Game::eventHandler;
-ScreenManager* Game::screenManager;
 
 Game::Game(){
 }
 
 Game::~Game() {
 	delete eventHandler;
-	eventHandler = NULL;
+	eventHandler = nullptr;
 
 	//combine destructor and close method?
 }
@@ -52,18 +53,35 @@ void Game::close(){
 
 
 void Game::handleEvents() {
+	
+	Uint8 mousestate = SDL_GetMouseState(&eventHandler->xMouse, &eventHandler->yMouse);
+	eventHandler->setMouseLeftDown(mousestate & SDL_BUTTON(SDL_BUTTON_LEFT));
+	if (eventHandler->getMouseLeftDown()) {
+		screenManager->mouseDown();
+	}
+
 	while (SDL_PollEvent(&event) != 0) //To exit loop, call exit(-1)
 	{
 		if (event.type == SDL_QUIT) {
 			eventHandler->setRunning(false);
 		}
-		if (event.type == SDL_MOUSEMOTION) {
-			SDL_GetMouseState(&eventHandler->xMouse, &eventHandler->yMouse);
-		}
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			screenManager->mousePressed();
+		//if (event.type == SDL_MOUSEMOTION) {
+		//	SDL_GetMouseState(&eventHandler->xMouse, &eventHandler->yMouse);
+		//}
+
+		//if (event.type == SDL_MOUSEBUTTONDOWN) {
+		//	screenManager->mousePressed();
+		//	//cout << "Clicked0" << endl;
+		//}
+		if (event.type == SDL_MOUSEBUTTONUP) {
+			screenManager->mousePressedUp();
 			//cout << "Clicked0" << endl;
 		}
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			screenManager->mousePressedDown();
+			//cout << "Clicked0" << endl;
+		}
+
 	}
 }
 

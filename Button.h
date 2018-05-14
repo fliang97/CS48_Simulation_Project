@@ -13,14 +13,16 @@ using namespace std;
 
 class Button : public Component{
 public:
-  Button(int x, int y, int w, int h, SDL_Renderer* r): Component(x, y, w, h, r) {
-  }
+	Button(int x, int y, int w, int h, SDL_Renderer* r): Component(x, y, w, h, r) {
+	}
 
-  virtual void clicked() override {
-   cout << "Clicked1" << endl;
-  }
-  virtual void render()  override {
+	virtual void clicked() override {
+		cout << "Clicked1" << endl;
+	}
 
-  }
+	virtual void render()  override {
+
+	}
+
 };
 #endif /* BUTTON_H_DEFINED */
