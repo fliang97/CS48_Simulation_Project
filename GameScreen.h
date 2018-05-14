@@ -17,7 +17,7 @@ class ScreenManager;
 class GameScreen : public Screen {
   public:
   GameScreen(EventHandler* eh, SDL_Renderer* r, int w, int h, int& cs, GameState& gs): Screen(eh, r, w, h), gamestate(gs) {
-    ws = new WorldScreen(eh, r, width/2, height/2, width/2, height/2, cs, gs);
+    ws = new WorldScreen(eh, r, width/4, 0, 3*width/4, 3*height/4, cs, gs);
   }
 
   void mousePressed() override{

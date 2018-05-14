@@ -11,6 +11,7 @@
 #include "Button.h"
 #include "Entity.h"
 #include "Grass.h"
+#include "Cow.h"
 #include "GameState.h"
 
 using namespace std;
@@ -24,13 +25,13 @@ public:
   //  delete current_screen;
   //}
   void clicked() override {
-    gamestate = GameState(10, 10);
+    gamestate = GameState(20, 20);
 
     GameSquare* s = (*gamestate.board)[5][5];
     //Square must know Entity
     s->e = new Grass(s);
-    //s = (*gamestate.board)[3][5];
-    //s->e = new Cow(s);
+    s = (*gamestate.board)[3][5];
+    s->e = new Cow(s);
 
     //delete g;
     //delete c;
