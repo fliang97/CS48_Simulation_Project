@@ -1,9 +1,4 @@
-//Use command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h Screen_Game.h Screen_MainMenu.h Screen.h ScreenManager.h Button_Start.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
-//New Command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h Screen_Game.h Screen_MainMenu.h Screen.h ScreenManager.h Button_Start.h Screen_World.h Entity.h Grass.h Map.h Tile.h Cow.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
-
-
-//Use command: g++ -std=c++14 Main.cpp Animal.h Button.h Component.h Cow.h Entity.h EntityManager.h EventHandler.h Game.h Screen_Game.h Tile.h Map.h Grass.h Screen_MainMenu.h Screen.h ScreenManager.h Button_Start.h Screen_World.h Button_ZoomIn.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
-//New Command: g++ -std=c++14 GameMain.cpp Button.h Component.h EventHandler.h Screen_Game.h Screen_MainMenu.h Screen.h ScreenManager.h Button_Start.h Screen_World.h Entity.h Grass.h Map.h Tile.h Cow.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
+//New compiling command: g++ -std=c++14 Main.cpp Animal.h Button.h Button_Start.h Component.h Cow.h Entity.h EntityManager.h EventHandler.h Game.h Grass.h Map.h Plant.h Screen.h Screen_Game.h Screen_MainMenu.h Screen_World.h ScreenManager.h Tile.h ZoomInButton.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
 
 
 // Disclaimer:  This main file is based on a file found at https://github.com/carlbirch/BirchEngine/blob/master/BirchEngine/Src/main.cpp
