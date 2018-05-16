@@ -59,11 +59,17 @@ class Screen_Game : public Screen {
 
 	void render() override {
 		//cout << "GameScreenRender" << endl;
-		SDL_Rect rect = {0, 0, width, height};
+		//SDL_Rect rect = {0, 0, width, height};
 		//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
-		SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
-		SDL_RenderFillRect( renderer, &rect);
+		//SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
+		//SDL_RenderFillRect( renderer, &rect);
 		screen_world->render();
+        SDL_Rect rect1 = {0, 0, screen_world->xpos, height};
+        SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
+        SDL_RenderFillRect( renderer, &rect1);
+        SDL_Rect rect2 = {screen_world->xpos, screen_world->height, screen_world->width, height - screen_world->height};
+        SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
+        SDL_RenderFillRect( renderer, &rect2);
 		button_zoomIn->render();
 	}
 	Screen_World* screen_world;

@@ -40,8 +40,9 @@ class Screen_World : public Screen {
 	}
 
 	void mouseDown() override {
-		worldposX = worldInitX - (eventHandler->xMouse - mouseInitX);
-		worldposY = worldInitY - (eventHandler->yMouse - mouseInitY);
+		worldposX = min(max(worldInitX - (eventHandler->xMouse - mouseInitX), 0), map.width * scaleX - width);
+        
+		worldposY = min(max(worldInitY - (eventHandler->yMouse - mouseInitY), 0), map.height * scaleY - height);
 		cout << worldposX << " " << worldposY << endl;
 	}
 

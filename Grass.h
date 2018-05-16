@@ -20,7 +20,7 @@ public:
     //cout << "GrassUpdate" << endl;
     //Fix rand() to make it change.
     Tile* tile = (*nextIterboard)[parentTile->x][parentTile->y];
-    if (!tile->entity) {
+    if (!tile->entity) {   
       tile->entity = this;
       parentTile->entity = NULL;
       parentTile = tile;

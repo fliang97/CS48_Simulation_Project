@@ -26,7 +26,7 @@ public:
   //  delete currentScreen;
   //}
   void clicked() override {
-    map = Map(10, 10);
+    map = Map(20, 20);
 
     Tile* tile = (*map.mapGrid)[5][5];
     //Square must know Entity
