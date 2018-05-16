@@ -5,7 +5,6 @@
 #ifndef GAMES_H_DEFINED
 #define GAMES_H_DEFINED
 
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 

@@ -33,7 +33,7 @@ class Screen_Game : public Screen {
 				c->clicked();
 			}
 		}
-    
+
 		if (eventHandler->xMouse >= screen_world->xpos && eventHandler->yMouse >= screen_world->ypos && eventHandler->xMouse <= screen_world->xpos + screen_world->width && eventHandler->yMouse <= screen_world->ypos + screen_world->height) {
 			screen_world->mousePressedUp();
 		}

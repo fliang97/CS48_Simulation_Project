@@ -21,13 +21,13 @@ class ScreenManager;
 class Screen_World : public Screen {
  public:
 	Screen_World(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map) : Screen(eventHandler, r, w, h), map(map), xpos(x), ypos(y), width(w),
-		height(h), counter(COUNTER), worldposX(0), worldposY(0) {
+		height(h), count(COUNTER), worldposX(0), worldposY(0) {
 		scaleX = width / map.width;
 		scaleY = height / map.height;
-
+    counter = count;
 	}
 
-	void mousePressedUp() override {  
+	void mousePressedUp() override {
 	}
 
 	void mousePressedDown() override {
@@ -41,7 +41,7 @@ class Screen_World : public Screen {
 
 	void mouseDown() override {
 		worldposX = min(max(worldInitX - (eventHandler->xMouse - mouseInitX), 0), map.width * scaleX - width);
-        
+
 		worldposY = min(max(worldInitY - (eventHandler->yMouse - mouseInitY), 0), map.height * scaleY - height);
 		cout << worldposX << " " << worldposY << endl;
 	}
@@ -58,7 +58,7 @@ class Screen_World : public Screen {
 			vector< vector<Tile*> >* temp = map.mapGrid;
 			map.mapGrid = map.bufferboard;
 			map.bufferboard = temp;
-			counter = COUNTER;
+			counter = count;
 		}
 		--counter;
 		//cout << counter << endl;
@@ -70,7 +70,7 @@ class Screen_World : public Screen {
 		//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
 		SDL_SetRenderDrawColor(renderer, 0, 240, 220, 205);
 		SDL_RenderFillRect(renderer, &rect);
-		
+
 		for (int i = 0; i < map.width; ++i) {
 			for (int j = 0; j < map.height; ++j) {
 				//cout << i << " " << j << endl;
@@ -85,6 +85,8 @@ class Screen_World : public Screen {
 	int worldInitY;
 
 	int counter;
+  int count;
+
 	int xpos;
 	int ypos;
 	int worldposX;
