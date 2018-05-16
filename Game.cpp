@@ -46,14 +46,14 @@ void Game::close(){
 	SDL_DestroyRenderer(renderer);
     SDL_Quit();
 
-	delete this; 
+	delete this;
 
 	//combine destructor and close method?
 }
 
 
 void Game::handleEvents() {
-	
+
 	Uint8 mousestate = SDL_GetMouseState(&eventHandler->xMouse, &eventHandler->yMouse);
 	eventHandler->setMouseLeftDown(mousestate & SDL_BUTTON(SDL_BUTTON_LEFT));
 	if (eventHandler->getMouseLeftDown()) {
@@ -96,4 +96,3 @@ void Game::update() {
 void Game::render() {
 	screenManager->render();
 }
-

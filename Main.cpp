@@ -23,7 +23,7 @@ const int SCREEN_HEIGHT = 800;
 
 int main(int argc, char *argv[]) {
 
-	Game* game = new Game();
+	Game* game = new Game(); //No reason for this to be pointer but idk
 	game->init(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//  using clock = std::chrono::high_resolution_clock;
