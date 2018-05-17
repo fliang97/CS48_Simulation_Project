@@ -1,4 +1,4 @@
-//New compiling command: g++ -std=c++14 Main.cpp Animal.h Button.h Button_Start.h Component.h Cow.h Entity.h EntityManager.h EventHandler.h Game.h Grass.h Map.h Plant.h Screen.h Screen_Game.h Screen_MainMenu.h Screen_World.h ScreenManager.h Tile.h ZoomInButton.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
+//New compiling command: g++ -std=c++14 Main.cpp Animal.h Button.h Button_Start.h Component.h Cow.h Entity.h EntityManager.h EventHandler.h Game.h Grass.h Map.h Plant.h Screen.h Screen_Game.h Screen_MainMenu.h Screen_GameMap.h ScreenManager.h Tile.h ZoomInButton.h -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image
 
 
 // Disclaimer:  This main file is based on a file found at https://github.com/carlbirch/BirchEngine/blob/master/BirchEngine/Src/main.cpp

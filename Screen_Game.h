@@ -7,7 +7,7 @@
 
 #include "Screen.h"
 #include "EventHandler.h"
-#include "Screen_World.h"
+#include "Screen_GameMap.h"
 #include "Button_ZoomIn.h"
 
 using namespace std;
@@ -23,7 +23,7 @@ public:
 	void update() override;
 	void render() override;
 
-	Screen_World* screen_world;
+	Screen_GameMap* screen_world;
 	Map& map;
 	Button_ZoomIn* button_zoomIn;
 };

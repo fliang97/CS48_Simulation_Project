@@ -18,9 +18,9 @@ using namespace std;
 class ScreenManager;
 const static int COUNTER = 30;
 
-class Screen_World : public Screen {
+class Screen_GameMap : public Screen {
 public:
-	Screen_World(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map);
+	Screen_GameMap(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map);
 
 	void mousePressedUp() override;
 	void mousePressedDown() override;

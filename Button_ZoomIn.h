@@ -17,4 +17,5 @@ public:
 	void render() override;
 
 };
+
 #endif /* BUTTON_ZOOMIN_H_DEFINED */
