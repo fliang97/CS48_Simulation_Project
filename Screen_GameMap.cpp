@@ -17,10 +17,9 @@ using namespace std;
 class ScreenManager;
 
 Screen_GameMap::Screen_GameMap(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map) : Screen(eventHandler, r, w, h), map(map), xpos(x), ypos(y), width(w),
-height(h), count(COUNTER), worldposX(0), worldposY(0) {
+height(h), worldposX(0), worldposY(0) {
 	scaleX = width / map.width;
 	scaleY = height / map.height;
-	counter = count;
 }
 
 void Screen_GameMap::mousePressedUp() {
@@ -43,22 +42,9 @@ void Screen_GameMap::mouseDown() {
 }
 
 void Screen_GameMap::update() {
-	//cout << "WorldScreenUpdate" << endl;
-	if (counter == 0) {
-		//cout << "SuccessfulUpdate" << endl;
-		for (int i = 0; i < map.width; ++i) {
-			for (int j = 0; j < map.height; ++j) {
-				(*map.mapGrid)[i][j]->update(map.bufferboard);
-			}
-		}
-		vector< vector<Tile*> >* temp = map.mapGrid;
-		map.mapGrid = map.bufferboard;
-		map.bufferboard = temp;
-		counter = count;
-	}
-	--counter;
-	//cout << counter << endl;
+	map.updateEachTile();
 }
+
 
 void Screen_GameMap::render() {
 	//cout << "WorldScreenRender" << endl;

@@ -36,6 +36,8 @@ public:
 	static ScreenManager* screenManager;
 	static SDL_Event event; //make this a pointer?
 
+	const static int COUNTER = 30;
+
 private:
 	SDL_Window* window;
 

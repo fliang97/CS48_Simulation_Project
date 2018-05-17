@@ -16,7 +16,7 @@
 using namespace std;
 
 class ScreenManager;
-const static int COUNTER = 30;
+
 
 class Screen_GameMap : public Screen {
 public:
@@ -26,6 +26,7 @@ public:
 	void mousePressedDown() override;
 	void mouseDown() override;
 	void update() override;
+	void updateEachTile();
 	void render() override;
 
 	int mouseInitX;
@@ -33,8 +34,6 @@ public:
 	int worldInitX;
 	int worldInitY;
 
-	int counter;
-	int count;
 
 	int xpos;
 	int ypos;

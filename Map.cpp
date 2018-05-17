@@ -2,6 +2,7 @@
 
 #include "Tile.h"
 #include "Map.h"
+#include "Game.h"
 
 Map::Map(int width, int height) : width(width), height(height) {
 	//cout << "BuildGameState" << endl;
@@ -13,8 +14,29 @@ Map::Map(int width, int height) : width(width), height(height) {
 			(*bufferboard)[i][j] = new Tile(i, j, this);
 		}
 	}
+	counter = Game::COUNTER;
 }
 
 Map::Map() : width(0), height(0) {
 	//cout << "BuildMap2" << endl;
+	counter = Game::COUNTER;
+}
+
+void Map::updateEachTile() {
+	//cout << "WorldScreenUpdate" << endl;
+	if (counter == 0) {
+		//cout << "SuccessfulUpdate" << endl;
+		for (int i = 0; i < this->width; ++i) {
+			for (int j = 0; j < this->height; ++j) {
+				(*this->mapGrid)[i][j]->update(this->bufferboard);
+			}
+		}
+		vector< vector<Tile*> >* temp = this->mapGrid;
+		this->mapGrid = this->bufferboard;
+		this->bufferboard = temp;
+		counter = Game::COUNTER;
+	}
+	--counter;
+	//cout << counter << endl;
+
 }
