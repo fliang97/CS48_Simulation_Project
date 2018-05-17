@@ -7,7 +7,6 @@
 #include <cstdlib>
 #include "Button.h"
 
-
 using namespace std;
 
 class Button_ZoomIn : public Button {

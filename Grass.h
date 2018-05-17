@@ -4,9 +4,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-
-
-
 #include "Tile.h"
 #include "Entity.h"
 using namespace std;

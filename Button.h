@@ -14,9 +14,7 @@ using namespace std;
 class Button : public Component{
 public:
 	Button(int x, int y, int w, int h, SDL_Renderer* r);
-
 	virtual void clicked() override;
-
 	virtual void render()  override;
 
 };

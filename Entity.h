@@ -1,20 +1,15 @@
 #ifndef ENTITY_H_DEFINED
 #define ENTITY_H_DEFINED
 
-///Unnecessary includes:
-//#include <cstdlib>
-//#include "Tile.h"
-
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
 #include <iostream>
 #include <vector>
 
-class Tile;
-
 using namespace std;
+
+class Tile;
 
 class Entity {
 public:
