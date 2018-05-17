@@ -18,37 +18,13 @@ class ScreenManager;
 
 class Screen {
 public:
-	Screen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h): width(w), height(h), renderer(r), eventHandler(eventHandler){
-	}
-	
-	//~Screen() {
-	//  delete eventHandler;
-	//  delete sm;
-	//delete renderer;
-	//}
-	
-	virtual void mousePressedUp() {
-		//cout << "somewhere clicked" << end;
-		//cout << "Clicked02" << endl;
-		for (Component* c : components) {
-			if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
-				c->clicked();
-			}
-		}
-	}
-  
-	virtual void mousePressedDown() {
-	}
-
-	virtual void mouseDown() {
-	}
-
-	virtual void update() {
-	}
-  
-	virtual void render() {
-		//cout <<  "Problem" << endl;
-	}
+	Screen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h);
+	//~Screen();
+	virtual void mousePressedUp();
+	virtual void mousePressedDown();
+	virtual void mouseDown();
+	virtual void update();
+	virtual void render();
 
 	SDL_Renderer* renderer;
 	vector< Component* > components;

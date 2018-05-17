@@ -25,14 +25,14 @@ void Cow::update(vector< vector<Tile*> >* nextIterboard) {
 	int y = rand() % 3 - 1;
 	if (parentTile->x + x >= 0 && parentTile->x + x < static_cast<int>(nextIterboard->size())
 		&& parentTile->y + y >= 0 && parentTile->y + y < static_cast<int>((*nextIterboard)[0].size())) {
-		s = (*nextIterboard)[parentTile->x + x][parentTile->y + y];
+		s = (*nextIterboard)[parentTile->x + x][parentTile->y + y];//getting tentative location in iter
 		//Square must know Entity
-		s->entity = this;
-		parentTile->entity = NULL;
-		parentTile = s;
+		s->entity = this; //setting iterboard tile entity to this
+		parentTile->entity = NULL; // old tile parent in old board to null
+		parentTile = s; // set parent to new tile
 	}
 	else {
-		Tile* tile = (*nextIterboard)[parentTile->x][parentTile->y];
+		Tile* tile = (*nextIterboard)[parentTile->x][parentTile->y];  //if it cant move then just update new board with old lcoation
 		//Square must know Entity
 		//if (!tile->entity) //gets overriden if something moves into it. This now overrides anything on it.
 		tile->entity = this;

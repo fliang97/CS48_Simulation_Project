@@ -12,37 +12,13 @@ public:
 	// Fully implement getters and setters in other classes.  Some classes still access this data directly.
 	// Make these inline functions?
 
-
-	void setRunning(bool runningVal) {
-		this->running = runningVal;
-	}
-
-	bool isRunning() {
-		return this->running;
-	}
-
-	int getxMousePtr() {
-		return this->xMouse;
-	}
-
-	int getyMousePtr() {
-		return this->yMouse;
-	}
-
-	int getMouseLeftDown() {
-		return this->mouseLeftDown;
-	}
-
-	void setMouseLeftDown(bool leftDown) {
-		this->mouseLeftDown = leftDown;
-	}
-
-	EventHandler() {
-		running = true;
-		xMouse = 0;
-		yMouse = 0;
-		mouseLeftDown = false;
-	}
+	EventHandler();
+	void setRunning(bool runningVal);
+	bool isRunning();
+	int getxMousePtr();
+	int getyMousePtr();
+	int getMouseLeftDown();
+	void setMouseLeftDown(bool leftDown);
 
 };
 

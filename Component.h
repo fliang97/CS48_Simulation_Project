@@ -11,24 +11,11 @@ using namespace std;
 
 class Component {
 public:
-	Component(int x, int y, int w, int h, SDL_Renderer* r): xpos(x), ypos(y), width(w), height(h), renderer(r) {
-	}
-	//~Component() {
-	//  delete renderer;
-	//}
-	virtual bool isOver(int mousex, int mousey) {
-		bool over = (mousex >= xpos && mousex < (xpos + width) && mousey >= ypos && mousey < (ypos + height));
-		//cout << over << endl;
-		return over;
-	}
-
-	virtual void clicked() {
-    //cout << "Clicked3" << endl;
-	}
-
-	virtual void render() {
-
-	}
+	Component(int x, int y, int w, int h, SDL_Renderer* r);
+	//~Component();
+	virtual bool isOver(int mousex, int mousey);
+	virtual void clicked();
+	virtual void render();
 
 	int xpos;
 	int ypos;
