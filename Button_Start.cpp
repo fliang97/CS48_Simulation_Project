@@ -45,6 +45,12 @@ void Button_Start::render() {
 	rect.w = width;
 	rect.h = height;
 	//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
-	SDL_SetRenderDrawColor(renderer, 100, 50, 0, 255);
-	SDL_RenderFillRect(renderer, &rect);
+	//SDL_SetRenderDrawColor( renderer, 100, 50, 0, 255 );
+
+	SDL_Texture *img = NULL;
+	int w, h; // texture width & height
+	img = IMG_LoadTexture(renderer, "StartButtonRed.png");
+	SDL_QueryTexture(img, NULL, NULL, &w, &h); // get the width and height of the texture
+	SDL_RenderCopy(renderer, img, NULL, &rect);
+	//SDL_RenderFillRect(renderer, &rect);
 }
