@@ -23,8 +23,6 @@ Screen_Game::Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int
 }
 
 void Screen_Game::mousePressedUp() {
-	//cout << "somewhere clicked" << end;
-	//cout << "Clicked02" << endl;
 	for (Component* c : components) {
 		if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
 			c->clicked();
@@ -34,7 +32,6 @@ void Screen_Game::mousePressedUp() {
 	if (eventHandler->xMouse >= screen_world->xpos && eventHandler->yMouse >= screen_world->ypos && eventHandler->xMouse <= screen_world->xpos + screen_world->width && eventHandler->yMouse <= screen_world->ypos + screen_world->height) {
 		screen_world->mousePressedUp();
 	}
-	//if ()
 }
 
 void Screen_Game::mousePressedDown() {
@@ -50,16 +47,10 @@ void Screen_Game::mouseDown() {
 }
 
 void Screen_Game::update() {
-	//cout << "GameScreenUpdate" << endl;
 	screen_world->update();
 }
 
 void Screen_Game::render() {
-	//cout << "GameScreenRender" << endl;
-	//SDL_Rect rect = {0, 0, width, height};
-	//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
-	//SDL_SetRenderDrawColor( renderer, 0, 200, 50, 255 );
-	//SDL_RenderFillRect( renderer, &rect);
 	screen_world->render();
 	SDL_Rect rect1 = { 0, 0, screen_world->xpos, height };
 	SDL_SetRenderDrawColor(renderer, 0, 200, 50, 255);

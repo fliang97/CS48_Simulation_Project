@@ -52,8 +52,9 @@ void Screen_GameMap::render() {
 
 	for (int i = 0; i < map.width; ++i) {
 		for (int j = 0; j < map.height; ++j) {
-			//cout << i << " " << j << endl;
-			(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer); //change to include zoom value and whatnot
+
+			//TO ADD: render only elements on display
+			(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer);
 		}
 	}
 }
