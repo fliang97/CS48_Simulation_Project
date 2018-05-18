@@ -10,6 +10,11 @@ class Map {
 public:
 	Map(int width, int height);
 	Map();
+	
+	//Parameters:
+   	//Return Values:
+    	//Precondition:
+    	//Postcondition:  Update the each tile by switching them between mapGrid and bufferboard.
 	void updateEachTile();
 
 	vector< vector<Tile*> >* mapGrid;
