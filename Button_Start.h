@@ -28,12 +28,6 @@ public:
   //Postcondition: Calls constructor of Map. Adds starting elements to map.
 	void clicked() override;
 
-  //Parameters:
-  //Return Values:
-  //Precondition:
-  //Postcondition: Renders current_img at position and size
-	void render() override;
-
 	int& currentScreen;
 	Map& map;
 };

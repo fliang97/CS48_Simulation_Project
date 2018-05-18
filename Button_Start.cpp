@@ -34,13 +34,3 @@ void Button_Start::clicked() {
 
 	currentScreen = 1;
 }
-
-void Button_Start::render() {
-	SDL_Rect rect;
-	rect.x = xpos;
-	rect.y = ypos;
-	rect.w = width;
-	rect.h = height;
-
-	SDL_RenderCopy(renderer, current_img, NULL, &rect);
-}

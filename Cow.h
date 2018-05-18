@@ -16,7 +16,9 @@ using namespace std;
 class Cow : public Entity {
 public:
 	Cow(Tile* parentTile);
+
 	void update(vector< vector<Tile*> >* nextIterboard) override;
+
 	void render(int x, int y, int w, int h, SDL_Renderer* r) override;
 
 };

@@ -15,14 +15,14 @@ public:
 
 	//Parameters:
 	//Return Values:
-	//Precondition:
-	//Postcondition:
+	//Precondition: Mouse is over button border and is released.
+	//Postcondition: Increase values of map scales.
 	void clicked() override;
-	
+
 	//Parameters:
 	//Return Values:
 	//Precondition:
-	//Postcondition:
+	//Postcondition: Renders purple rectangle at position and size (temporary)
 	void render() override;
 
 };

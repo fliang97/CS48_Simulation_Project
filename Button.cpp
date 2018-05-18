@@ -27,5 +27,11 @@ void Button::released() {
 }
 
 void Button::render() {
+	SDL_Rect rect;
+	rect.x = xpos;
+	rect.y = ypos;
+	rect.w = width;
+	rect.h = height;
 
+	SDL_RenderCopy(renderer, current_img, NULL, &rect);
 }

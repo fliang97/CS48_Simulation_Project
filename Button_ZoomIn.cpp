@@ -9,9 +9,12 @@
 using namespace std;
 
 Button_ZoomIn::Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r) : Button(x, y, w, h, r) {
+	//TO DO: Set Images
+	//TO DO: Reference to scale
 }
 
 void Button_ZoomIn::clicked() {
+	//TO DO: Increase Scale
 }
 
 void Button_ZoomIn::render() {

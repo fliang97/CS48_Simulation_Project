@@ -14,20 +14,29 @@ using namespace std;
 class Button : public Component{
 public:
 	Button(int x, int y, int w, int h, SDL_Renderer* r);
+
+	//Parameters:
+  //Return Values:
+  //Precondition: Mouse is over button border and is released.
+  //Postcondition: Abstract functionality
 	virtual void clicked() override; //mouse released on button
 
 	//Parameters:
 	//Return Values:
 	//Precondition: Mouse is over button border and is just pressed.
 	//Postcondition: Sets current_img to clicked_img
-	void pressed() override;
+	virtual void pressed() override;
 
 	//Parameters:
 	//Return Values:
 	//Precondition: Mouse is just released. Note: doesn't have to be over button
 	//Postcondition: Sets current_img to unlicked_img
-	void released() override;
+	virtual void released() override;
 
+	//Parameters:
+  //Return Values:
+  //Precondition:
+  //Postcondition: Renders current_img at position and size
 	virtual void render()  override;
 
 	SDL_Texture *unclicked_img;

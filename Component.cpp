@@ -11,7 +11,7 @@ Component::Component(int x, int y, int w, int h, SDL_Renderer* r) : xpos(x), ypo
 }
 
 
- bool Component::isOver(int mousex, int mousey) {
+bool Component::isOver(int mousex, int mousey) {
 	bool over = (mousex >= xpos && mousex < (xpos + width) && mousey >= ypos && mousey < (ypos + height));
 	return over;
 }
