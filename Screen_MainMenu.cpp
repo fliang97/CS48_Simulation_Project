@@ -23,6 +23,21 @@ Screen_MainMenu::Screen_MainMenu(EventHandler* eventHandler, SDL_Renderer* r, in
 //  delete button_start;
 //}
 
+void Screen_MainMenu::mousePressedUp() {
+ for (Component* c : components) {
+	 if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
+		 c->clicked();
+	 }
+ }
+ button_start->released();
+}
+
+void Screen_MainMenu::mousePressedDown() {
+	if (button_start->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
+		button_start->pressed();
+	}
+}
+
 void Screen_MainMenu::update() {
 }
 
@@ -34,4 +49,3 @@ void Screen_MainMenu::render() {
 	//cout <<  rect.w << endl;
 	button_start->render();
 }
-

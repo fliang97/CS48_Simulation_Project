@@ -14,7 +14,9 @@ using namespace std;
 class Button : public Component{
 public:
 	Button(int x, int y, int w, int h, SDL_Renderer* r);
-	virtual void clicked() override;
+	virtual void clicked() override; //mouse released on button
+	virtual void pressed() override; //mouse first presses button
+	virtual void released() override; //mouse is released
 	virtual void render()  override;
 
 };

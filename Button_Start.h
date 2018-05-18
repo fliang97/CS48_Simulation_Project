@@ -23,7 +23,12 @@ public:
 	Button_Start(int x, int y, int w, int h, SDL_Renderer* r, int& currentScreen, Map& map);
 	//~Button_Start();
 	void clicked() override;
+  void pressed() override;
+  void released() override;
 	void render() override;
+  SDL_Texture *unclicked_img;
+  SDL_Texture *clicked_img;
+  SDL_Texture *current_img;
 	int& currentScreen;
 	Map& map;
 };

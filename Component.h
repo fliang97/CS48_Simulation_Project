@@ -15,6 +15,8 @@ public:
 	//~Component();
 	virtual bool isOver(int mousex, int mousey);
 	virtual void clicked();
+	virtual void pressed();
+	virtual void released();
 	virtual void render();
 
 	int xpos;

@@ -13,7 +13,12 @@ Button::Button(int x, int y, int w, int h, SDL_Renderer* r) : Component(x, y, w,
 }
 
 void Button::clicked() {
-	cout << "Clicked1" << endl;
+}
+
+void Button::pressed() {
+}
+
+void Button::released() {
 }
 
 void Button::render() {
