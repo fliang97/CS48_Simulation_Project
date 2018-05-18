@@ -21,8 +21,23 @@ public:
 
 	Game();
 	~Game();
+
+	//Parameters: int SCREEN_WIDTH, SCREEN_HEIGHT used to define the width and height of the screen window.
+	//Return Values:
+	//Precondition:
+	//Postcondition:  Initializes SDL settings. Creates window at size of SCREEN_WIDTH x SCREEN_HEIGHT. Creates EventHandler and ScreenManager.
 	void init(int SCREEN_WIDTH, int SCREEN_HEIGHT);
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition:  Destroys Window and Renderer.
 	void close();
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition:  Pops event from queue and calls appropriate screen manager functions. Also updates globals (mouse positions and running).
 	void handleEvents();
 	bool eventHandlerIsRunning();
 	void update();

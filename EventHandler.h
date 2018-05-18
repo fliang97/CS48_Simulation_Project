@@ -43,7 +43,6 @@ public:
 	//Precondition:
 	//Postcondition: Getter for mouseLeftDown, which controls the state of the mouses left button
 	bool getMouseLeftDown();
-	//mousestate & SDL_BUTTON(SDL_BUTTON_LEFT)
 
 	//Parameters: bool leftDown: Setter input for mouseLeftDown
 	//Return Values:
