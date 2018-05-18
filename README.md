@@ -33,7 +33,7 @@ Importing SDL Libraries in XCode:
 ## Running the draft project simulation
 For the first draft of this project, we have focused on creating the core game engine and core simulation features. For this reason, most elements still take the apperance of simple, colored rectangular boxes. Further efforts on improving the visuals will be implemented in later iterations, such as adding sprites and animations.
 
-First, click on the large brown button at center of screen to enter the simulation:
+First, click on the center of the initial screen to start the simulation.  There is a known bug here where a start button image will be displayed for some Linux installations, but not on xCode Mac installations.  Despite the image not rendering, the clickable start button area is there and can be clicked on.
 
 ![Main Menu](https://i.imgur.com/M4m9SZJ.png "Main Menu - Draft 1")
 
@@ -43,6 +43,10 @@ In the game/simulation screen, the current simulation automatically runs on its 
 - Brown tile represents a **Cow**, which travels in random directions and eats any Grass (green tile) along its path
 - Purple button in the top left corner is a placeholder for future feature buttons
 - Dark green area is background
-- User can *drag* Entities on the game board (Cows, Grass) and move them along with cursor movement
+- User can *drag* Entities on the game board (Cows, Grass) and move them along with cursor movement (not yet implemented).
 
 ![Game Screen](https://i.imgur.com/lZZNXxw.png "Game Screen - Draft 1")
+
+
+Known bugs
+The intial screen that is displayed should contain a start button in the center.
