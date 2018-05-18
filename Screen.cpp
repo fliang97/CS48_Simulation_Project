@@ -23,6 +23,7 @@ Screen::Screen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h) : widt
 
 	 void Screen::mousePressedUp() {
 		for (Component* c : components) {
+			c->released();
 			if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
 				c->clicked();
 			}

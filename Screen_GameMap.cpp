@@ -26,8 +26,6 @@ void Screen_GameMap::mousePressedUp() {
 }
 
 void Screen_GameMap::mousePressedDown() {
-	cout << "mousePressedDown" << endl;
-
 	mouseInitX = eventHandler->xMouse;
 	mouseInitY = eventHandler->yMouse;
 	worldInitX = worldposX;
@@ -36,9 +34,8 @@ void Screen_GameMap::mousePressedDown() {
 
 void Screen_GameMap::mouseDown() {
 	worldposX = min(max(worldInitX - (eventHandler->xMouse - mouseInitX), 0), map.width * scaleX - width);
-
 	worldposY = min(max(worldInitY - (eventHandler->yMouse - mouseInitY), 0), map.height * scaleY - height);
-	cout << worldposX << " " << worldposY << endl;
+	//cout << worldposX << " " << worldposY << endl;
 }
 
 void Screen_GameMap::update() {

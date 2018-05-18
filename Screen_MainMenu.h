@@ -19,7 +19,6 @@ class Screen_MainMenu : public Screen {
 public:
 	Screen_MainMenu(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map);
 	//~Screen_MainMenu();
-	void mousePressedUp() override;
 	void mousePressedDown() override;
 	void update() override;
 	void render() override;
