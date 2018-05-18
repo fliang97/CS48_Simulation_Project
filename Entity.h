@@ -15,8 +15,21 @@ class Entity {
 public:
 	Entity(Tile* parentTile);
 
+	//Parameters:
+	//vector< vector<Tile*> >* nextIterboard: Pointer to 2d vector of Tiles. Cow changes nextIterboard to affect future actions (e.g. moving)
+	//Return Values:
+	//Precondition: nextIterboard is defined.
+	//Postcondition: Abstract functionality
 	virtual void update(vector< vector<Tile*> > *nextIterboard);
+
+	//Parameters:
+	// x, y represent the coordinates to render at. w, h represent the width and height of the images.
+	// r represents the SDL_Renderer used to render the image in the proper location.
+	//Return Values:
+	//Precondition: all parameters are defined.
+	//Postcondition: Abstract functionality
 	virtual void render(int x, int y, int w, int h, SDL_Renderer* r);
+
 	Tile* parentTile;
 };
 
