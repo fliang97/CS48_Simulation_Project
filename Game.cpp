@@ -71,15 +71,12 @@ void Game::handleEvents() {
 
 		//if (event.type == SDL_MOUSEBUTTONDOWN) {
 		//	screenManager->mousePressed();
-		//	//cout << "Clicked0" << endl;
 		//}
 		if (event.type == SDL_MOUSEBUTTONUP) {
 			screenManager->mousePressedUp();
-			//cout << "Clicked0" << endl;
 		}
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			screenManager->mousePressedDown();
-			//cout << "Clicked0" << endl;
 		}
 
 	}

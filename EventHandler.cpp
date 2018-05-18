@@ -27,7 +27,7 @@ int EventHandler::getyMousePtr() {
 	return this->yMouse;
 }
 
-int EventHandler::getMouseLeftDown() {
+bool EventHandler::getMouseLeftDown() {
 	return this->mouseLeftDown;
 }
 

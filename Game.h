@@ -28,7 +28,7 @@ public:
 	void update();
 	void render();
 
-	// Can any of these be moved to private?
+	// TO DO: Move some of these to private
 	static SDL_Renderer* renderer;
 	static EventHandler* eventHandler;
 	static ScreenManager* screenManager;

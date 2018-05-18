@@ -24,23 +24,17 @@ ScreenManager::ScreenManager(EventHandler* eventHandler, SDL_Renderer* r, const 
 	this->eventHandler = eventHandler;
 }
 
-//~ScreenManager() {
-//  delete renderer;
-//  delete eventHandler;
-//}
+//Possible TO DO: Add destructor
 
 void ScreenManager::mousePressedUp() {
-	//cout << "Clicked01" << endl;
 	screens[currentScreen]->mousePressedUp();
 }
 
 void ScreenManager::mousePressedDown() {
-	//cout << "Clicked01" << endl;
 	screens[currentScreen]->mousePressedDown();
 }
 
 void ScreenManager::mouseDown() {
-	//cout << "Clicked01" << endl;
 	if (currentScreen == 1) { //possibly remove
 		screens[currentScreen]->mouseDown();
 	}
@@ -54,11 +48,6 @@ void ScreenManager::render() {
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
 	screens[currentScreen]->render();
-	//SDL_Rect rect = {0, 0, width, height};
-	//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
-	//SDL_SetRenderDrawColor( renderer, 100, 0, 100, 255 );
-	//SDL_RenderFillRect( renderer, &rect);
-	//cout <<  currentScreen << endl;
 
 	SDL_RenderPresent(renderer);
 }
