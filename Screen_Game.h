@@ -17,10 +17,35 @@ class ScreenManager;
 class Screen_Game : public Screen {
 public:
 	Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map);
+	
+	//Parameters:
+    	//Return Values:
+    	//Precondition: 
+    	//Postcondition:
 	void mousePressedUp() override;
+	
+	//Parameters:
+    	//Return Values:
+    	//Precondition:
+    	//Postcondition:
 	void mousePressedDown() override;
+	
+	//Parameters:
+    	//Return Values:
+    	//Precondition:
+    	//Postcondition:
 	void mouseDown() override;
+	
+	//Parameters:
+    	//Return Values:
+    	//Precondition:
+    	//Postcondition:
 	void update() override;
+	
+	//Parameters:
+    	//Return Values:
+    	//Precondition:
+    	//Postcondition: Renders the menu bar at position and size
 	void render() override;
 
 	Screen_GameMap* screen_world;
