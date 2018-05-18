@@ -12,8 +12,17 @@ using namespace std;
 class Button_ZoomIn : public Button {
 public:
 	Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r);
-	//~Button_Start();
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition:
 	void clicked() override;
+	
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition:
 	void render() override;
 
 };

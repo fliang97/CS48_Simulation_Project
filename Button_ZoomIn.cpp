@@ -11,10 +11,6 @@ using namespace std;
 Button_ZoomIn::Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r) : Button(x, y, w, h, r) {
 }
 
-//~Button_Start() {
-//  delete currentScreen;
-//}
-
 void Button_ZoomIn::clicked() {
 }
 

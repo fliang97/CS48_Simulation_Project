@@ -10,6 +10,9 @@
 using namespace std;
 
 Button::Button(int x, int y, int w, int h, SDL_Renderer* r) : Component(x, y, w, h, r) {
+  clicked_img = NULL;
+  unclicked_img = NULL;
+  current_img = unclicked_img;
 }
 
 void Button::clicked() {

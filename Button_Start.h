@@ -21,14 +21,31 @@ class ScreenManager;
 class Button_Start : public Button {
 public:
 	Button_Start(int x, int y, int w, int h, SDL_Renderer* r, int& currentScreen, Map& map);
-	//~Button_Start();
+
+  //Parameters:
+  //Return Values:
+  //Precondition: Mouse is over button border and is released.
+  //Postcondition: Calls constructor of Map. Adds starting elements to map.
 	void clicked() override;
+
+  //Parameters:
+  //Return Values:
+  //Precondition: Mouse is over button border and is just pressed.
+  //Postcondition: Sets current_img to clicked_img
   void pressed() override;
+
+  //Parameters:
+  //Return Values:
+  //Precondition: Mouse is just released. Note: doesn't have to be over button
+  //Postcondition: Sets current_img to unlicked_img
   void released() override;
+
+  //Parameters:
+  //Return Values:
+  //Precondition:
+  //Postcondition: Renders current_img at position and size
 	void render() override;
-  SDL_Texture *unclicked_img;
-  SDL_Texture *clicked_img;
-  SDL_Texture *current_img;
+
 	int& currentScreen;
 	Map& map;
 };

@@ -19,5 +19,9 @@ public:
 	virtual void released() override; //mouse is released
 	virtual void render()  override;
 
+	SDL_Texture *unclicked_img;
+	SDL_Texture *clicked_img;
+	SDL_Texture *current_img;
+
 };
 #endif /* BUTTON_H_DEFINED */
