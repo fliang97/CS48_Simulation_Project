@@ -36,3 +36,9 @@
 .git/
 CS48_Simulation_Project_Soln/
 .gitattributes
+
+# XCode files
+*.pbxproj
+*.xcworkspacedata
+*.plist
+*.xcuserstate
