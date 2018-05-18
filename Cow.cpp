@@ -19,7 +19,6 @@ using namespace std;
 Cow::Cow(Tile* parentTile) : Entity(parentTile) { }
 
 void Cow::update(vector< vector<Tile*> >* nextIterboard) {
-	//cout << "CowUpdate" << endl;
 	Tile* s = (*nextIterboard)[parentTile->x][parentTile->y];
 	int x = rand() % 3 - 1;
 	int y = rand() % 3 - 1;
