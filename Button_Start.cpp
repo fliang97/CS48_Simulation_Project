@@ -35,14 +35,6 @@ void Button_Start::clicked() {
 	currentScreen = 1;
 }
 
-void Button_Start::pressed() {
-	current_img = clicked_img;
-}
-
-void Button_Start::released() {
-	current_img = unclicked_img;
-}
-
 void Button_Start::render() {
 	SDL_Rect rect;
 	rect.x = xpos;

@@ -15,8 +15,19 @@ class Button : public Component{
 public:
 	Button(int x, int y, int w, int h, SDL_Renderer* r);
 	virtual void clicked() override; //mouse released on button
-	virtual void pressed() override; //mouse first presses button
-	virtual void released() override; //mouse is released
+
+	//Parameters:
+	//Return Values:
+	//Precondition: Mouse is over button border and is just pressed.
+	//Postcondition: Sets current_img to clicked_img
+	void pressed() override;
+
+	//Parameters:
+	//Return Values:
+	//Precondition: Mouse is just released. Note: doesn't have to be over button
+	//Postcondition: Sets current_img to unlicked_img
+	void released() override;
+
 	virtual void render()  override;
 
 	SDL_Texture *unclicked_img;

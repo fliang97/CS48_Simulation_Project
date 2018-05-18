@@ -19,9 +19,11 @@ void Button::clicked() {
 }
 
 void Button::pressed() {
+	current_img = clicked_img;
 }
 
 void Button::released() {
+	current_img = unclicked_img;
 }
 
 void Button::render() {
