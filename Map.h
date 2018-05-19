@@ -14,7 +14,7 @@ public:
 	//Parameters:
    	//Return Values:
     	//Precondition:
-    	//Postcondition:  Update the each tile by switching them between mapGrid and bufferboard.
+    	//Postcondition:  Update each tile by switching them between mapGrid and bufferboard.
 	void updateEachTile();
 
 	vector< vector<Tile*> >* mapGrid;
