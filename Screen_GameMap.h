@@ -22,13 +22,43 @@ class Screen_GameMap : public Screen {
 public:
 	Screen_GameMap(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map);
 
+	//Parameters:
+	//Return Values:
+  //Precondition:
+  //Postcondition:
 	void mousePressedUp() override;
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Sets mouseInit and worldInit to current mouse and world coordinates. Used to remember translational motion during click and drag.
 	void mousePressedDown() override;
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Updates worldposition coordinates to be within the bounds. Attempts to translate worldposition by xMouse - mouseInitX for x and y.
 	void mouseDown() override;
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Calls updateEachTile().
 	void update() override;
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Calls updateEachTile().
 	void updateEachTile();
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Goes through every tile and renders it based of the gamemap coordinates, its coordinates, and zoom level (or scale).
 	void render() override;
 
+//Used for mouse drag computation.
 	int mouseInitX;
 	int mouseInitY;
 	int worldInitX;

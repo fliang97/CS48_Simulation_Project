@@ -39,8 +39,23 @@ public:
 	//Precondition:
 	//Postcondition:  Pops event from queue and calls appropriate screen manager functions. Also updates globals (mouse positions and running).
 	void handleEvents();
+
+	//Parameters:
+	//Return Values: getter for running value. eventHandler->isRunning();
+	//Precondition:
+	//Postcondition: Getter for eventhandler->isRunning(), which controls the whether the game is running.
 	bool eventHandlerIsRunning();
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Calls ScreenManager's update function
 	void update();
+
+	//Parameters:
+	//Return Values:
+	//Precondition:
+	//Postcondition: Calls ScreenManager's render function
 	void render();
 
 	// TO DO: Move some of these to private
@@ -49,7 +64,7 @@ public:
 	static ScreenManager* screenManager;
 	static SDL_Event event; //make this a pointer?
 
-	const static int COUNTER = 30;
+	const static int COUNTER = 30; //60 fps / COUNTER = gamefps.
 
 private:
 	SDL_Window* window;

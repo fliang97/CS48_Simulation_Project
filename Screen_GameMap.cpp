@@ -44,9 +44,8 @@ void Screen_GameMap::update() {
 
 
 void Screen_GameMap::render() {
-	//cout << "WorldScreenRender" << endl;
 	SDL_Rect rect = { xpos, ypos, width, height };
-	//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
+
 	SDL_SetRenderDrawColor(renderer, 0, 240, 220, 205);
 	SDL_RenderFillRect(renderer, &rect);
 

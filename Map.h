@@ -10,11 +10,11 @@ class Map {
 public:
 	Map(int width, int height);
 	Map();
-	
+
 	//Parameters:
-   	//Return Values:
-    	//Precondition:
-    	//Postcondition:  Update each tile by switching them between mapGrid and bufferboard.
+  //Return Values:
+  //Precondition:
+  //Postcondition:  Calls the update function for each Tile. Then switches between mapGrid and bufferboard.
 	void updateEachTile();
 
 	vector< vector<Tile*> >* mapGrid;
@@ -24,7 +24,7 @@ public:
 
 	int counter; //from screen_world / screen_gamemap
 
-	//Possibly add list of Entities, Plants/ Animals for added effieciency in search.
+	//Possibly add list (unordered set) of Entities, Plants/ Animals for added effieciency in search.
 };
 
 #endif /* MAP_H_DEFINED */

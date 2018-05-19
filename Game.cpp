@@ -65,13 +65,7 @@ void Game::handleEvents() {
 		if (event.type == SDL_QUIT) {
 			eventHandler->setRunning(false);
 		}
-		//if (event.type == SDL_MOUSEMOTION) {
-		//	SDL_GetMouseState(&eventHandler->xMouse, &eventHandler->yMouse);
-		//}
 
-		//if (event.type == SDL_MOUSEBUTTONDOWN) {
-		//	screenManager->mousePressed();
-		//}
 		if (event.type == SDL_MOUSEBUTTONUP) {
 			screenManager->mousePressedUp();
 		}

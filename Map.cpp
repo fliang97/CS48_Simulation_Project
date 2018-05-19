@@ -18,14 +18,11 @@ Map::Map(int width, int height) : width(width), height(height) {
 }
 
 Map::Map() : width(0), height(0) {
-	//cout << "BuildMap2" << endl;
 	counter = Game::COUNTER;
 }
 
 void Map::updateEachTile() {
-	//cout << "WorldScreenUpdate" << endl;
 	if (counter == 0) {
-		//cout << "SuccessfulUpdate" << endl;
 		for (int i = 0; i < this->width; ++i) {
 			for (int j = 0; j < this->height; ++j) {
 				(*this->mapGrid)[i][j]->update(this->bufferboard);
