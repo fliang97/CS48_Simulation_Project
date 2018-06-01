@@ -17,7 +17,7 @@ using namespace std;
 class ScreenManager;
 
 Screen_Game::Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map) : Screen(eventHandler, r, w, h), map(map) {
-	screen_world = new Screen_GameMap(eventHandler, r, width / 4, 0, 3 * width / 4, 3 * height / 4, cs, map);
+	screen_world = new Screen_GameMap(eventHandler, r, width / 6, 0, 5 * width / 6, 5 * height / 6, cs, map);
 
 }
 

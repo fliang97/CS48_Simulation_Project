@@ -421,7 +421,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 	plot->textureY = SDL_CreateTextureFromSurface(plot->renderer, plot->captionY);
 	SDL_QueryTexture(plot->textureY, NULL, NULL, &text_caption_y.w, &text_caption_y.h);
 	text_caption_y.x=-1*regular_caption_text_width;
-	text_caption_y.y= params->screen_ypos + plot_mask_position.y+plot_heigth/2+text_caption_y.w/4;
+	text_caption_y.y= params->screen_ypos + plot_mask_position.y+plot_heigth/2 - text_caption_y.w;
 
 	//rotate caption y
 	SDL_Point caption_center={plot_position_x-CAPTION_Y_LABEL_OFFSET,0};

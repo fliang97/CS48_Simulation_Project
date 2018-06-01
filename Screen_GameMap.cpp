@@ -48,7 +48,7 @@ height(h), worldposX(0), worldposY(0) {
 	//strcpy(fontpath, path.c_str());
 
 	params.screen_xpos= xpos + 20;
-	params.screen_ypos= ypos +  8*height/20;
+	params.screen_ypos= ypos +  9*height/20;
 	params.screen_width= width/2;
 	params.screen_heigth= height/2;
 	//params.font_text_path = fontpath;
@@ -158,7 +158,7 @@ void Screen_GameMap::render() {
 		for (int j = 0; j < map.height; ++j) {
 
 			//TO ADD: render only elements on display
-			if ((i+1)*scaleX - worldposX >= 0 && (j+1)*scaleY - worldposY >= 0 && j*scaleY - worldposY <= map.height * scaleY - height && i*scaleX - worldposX <= map.width * scaleX - width) {
+			if ((i+1)*scaleX - worldposX >= 0 && (j+1)*scaleY - worldposY >= 0 && j*scaleY - worldposY <=  height && i*scaleX - worldposX <=  width) {
 				(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer);
 			}
 
