@@ -8,6 +8,8 @@
 #include <algorithm>
 #include "Screen.h"
 #include "EventHandler.h"
+#include "Button_ZoomIn.h"
+#include "Button_ZoomOut.h"
 #include "Map.h"
 #include "Screen_GameMap.h"
 
@@ -20,10 +22,14 @@ Screen_GameMap::Screen_GameMap(EventHandler* eventHandler, SDL_Renderer* r, int 
 height(h), worldposX(0), worldposY(0) {
 	scaleX = width / map.width;
 	scaleY = height / map.height;
+	button_zoomIn = new Button_ZoomIn(xpos + width / 20, ypos + height / 20, width / 10, height / 10, r, scaleX, scaleY);
+	components.push_back(button_zoomIn);
+	button_zoomOut = new Button_ZoomOut(xpos + width / 20, ypos + height / 6, width / 10, height / 10, r, scaleX, scaleY);
+	components.push_back(button_zoomOut);
 }
 
-void Screen_GameMap::mousePressedUp() {
-}
+//void Screen_GameMap::mousePressedUp() {
+//}
 
 void Screen_GameMap::mousePressedDown() {
 	mouseInitX = eventHandler->xMouse;
@@ -40,6 +46,13 @@ void Screen_GameMap::mouseDown() {
 
 void Screen_GameMap::update() {
 	map.updateEachTile();
+
+
+	//move
+	//Eat / Action
+	//Death
+	//Reproduce
+	//update gamestate
 }
 
 
@@ -56,4 +69,6 @@ void Screen_GameMap::render() {
 			(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer);
 		}
 	}
+	button_zoomIn->render();
+	button_zoomOut->render();
 }

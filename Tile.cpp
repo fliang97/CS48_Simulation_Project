@@ -17,16 +17,18 @@ Tile::Tile(int x, int y, Map* map) {
 		this->x = x;
 		this->y = y;
 		this->map = map;
-		this->entity = NULL;
+		this->layer1 = NULL;
+		this->layer2 = NULL;
 	}
-
+/*
 	void Tile::update(vector< vector<Tile*> >* nextIterboard) {
 		//cout << "TileUpdate" << endl;
-		if (entity) entity->update(nextIterboard);
+		//if (layer1) layer1->update(nextIterboard);
+		//if (layer2) layer2->update(nextIterboard);
 	}
-
+*/
 	void Tile::render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r) {
-		//cout << "GameSquareRender" << endl;
 		//render self
-		if (entity) entity->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r); //change for zoom/scale
+		if (layer1) layer1->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
+		if (layer2) layer2->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
 	}

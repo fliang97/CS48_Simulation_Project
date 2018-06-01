@@ -8,7 +8,6 @@
 #include "Screen.h"
 #include "EventHandler.h"
 #include "Screen_GameMap.h"
-#include "Button_ZoomIn.h"
 
 using namespace std;
 //#include "ScreenManager.h"
@@ -51,6 +50,5 @@ public:
 
 	Screen_GameMap* screen_world;
 	Map& map;
-	Button_ZoomIn* button_zoomIn;
 };
 #endif /* SCREEN_GAME_H_DEFINED */

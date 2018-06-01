@@ -4,21 +4,21 @@
 #include <cstdlib>
 
 #include "Button.h"
-#include "Button_ZoomIn.h"
+#include "Button_ZoomOut.h"
 
 using namespace std;
 
-Button_ZoomIn::Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r, int & scaleX, int & scaleY) : Button(x, y, w, h, r), scx(scaleX), scy(scaleY) {
+Button_ZoomOut::Button_ZoomOut(int x, int y, int w, int h, SDL_Renderer* r, int & scaleX, int & scaleY) : Button(x, y, w, h, r), scx(scaleX), scy(scaleY) {
 	//TO DO: Set Images
-	unclicked_img = IMG_LoadTexture(renderer, "ZoomInButtonPurple.png");
-	clicked_img = IMG_LoadTexture(renderer, "ZoomInButtonMagenta.png");
+	unclicked_img = IMG_LoadTexture(renderer, "ZoomOutButtonGreen.png");
+	clicked_img = IMG_LoadTexture(renderer, "ZoomOutButtonCyan.png");
 	current_img = unclicked_img;
 	//TO DO: Reference to scale
 }
 
-void Button_ZoomIn::clicked() {
-	scx *= 1.2;
-	scy *= 1.2;
+void Button_ZoomOut::clicked() {
+	scx /= 1.2;
+	scy /= 1.2;
 }
 
 //void Button_ZoomIn::render() {

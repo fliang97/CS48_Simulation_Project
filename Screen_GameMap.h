@@ -10,6 +10,8 @@
 #include <algorithm>
 #include "Screen.h"
 #include "EventHandler.h"
+#include "Button_ZoomIn.h"
+#include "Button_ZoomOut.h"
 //#include "ScreenManager.h"
 #include "Map.h"
 
@@ -26,7 +28,7 @@ public:
 	//Return Values:
   //Precondition:
   //Postcondition:
-	void mousePressedUp() override;
+	//void mousePressedUp() override;
 
 	//Parameters:
 	//Return Values:
@@ -74,6 +76,8 @@ public:
 	int width;
 	int height;
 	Map& map;
+	Button_ZoomIn* button_zoomIn;
+	Button_ZoomOut* button_zoomOut;
 };
 
 #endif /* SCREEN_WORLD_H_DEFINED */

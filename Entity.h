@@ -20,7 +20,7 @@ public:
 	//Return Values:
 	//Precondition: nextIterboard is defined.
 	//Postcondition: Abstract functionality
-	virtual void update(vector< vector<Tile*> > *nextIterboard);
+	//virtual void update(vector< vector<Tile*> > *nextIterboard);
 
 	//Parameters:
 	// x, y represent the coordinates to render at. w, h represent the width and height of the images.
@@ -31,6 +31,7 @@ public:
 	virtual void render(int x, int y, int w, int h, SDL_Renderer* r);
 
 	Tile* parentTile;
+	int id;
 };
 
 #endif /* ENTITY_H_DEFINED */

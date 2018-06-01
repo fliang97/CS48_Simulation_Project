@@ -16,13 +16,14 @@ using namespace std;
 
 Entity::Entity(Tile* parentTile) {
 	this->parentTile = parentTile;
+	id = 0;
 }
 //don't move
+/*
 void Entity::update(vector< vector<Tile*> >* nextIterboard) {
 	//cout << "EntityUpdate" << endl;
 	//(*nextIterboard)[parentTile->x][parentTile->y]->entity = new Entity((*nextIterboard)[parentTile->x][parentTile->y]);
 }
+*/
 void Entity::render(int x, int y, int w, int h, SDL_Renderer* r) {
-	//cout << "EntityRender" << endl;
-	//cout << "Entity" << endl;
 }

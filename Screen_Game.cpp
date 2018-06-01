@@ -9,7 +9,6 @@
 #include "Screen.h"
 #include "EventHandler.h"
 #include "Screen_GameMap.h"
-#include "Button_ZoomIn.h"
 #include "Screen_Game.h"
 
 using namespace std;
@@ -18,8 +17,6 @@ class ScreenManager;
 
 Screen_Game::Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map) : Screen(eventHandler, r, w, h), map(map) {
 	screen_world = new Screen_GameMap(eventHandler, r, width / 4, 0, 3 * width / 4, 3 * height / 4, cs, map);
-	button_zoomIn = new Button_ZoomIn(width / 20, height / 20, width / 10, height / 10, r);
-	components.push_back(button_zoomIn);
 }
 
 void Screen_Game::mousePressedUp() {
@@ -58,5 +55,4 @@ void Screen_Game::render() {
 	SDL_Rect rect2 = { screen_world->xpos, screen_world->height, screen_world->width, height - screen_world->height };
 	SDL_SetRenderDrawColor(renderer, 0, 200, 50, 255);
 	SDL_RenderFillRect(renderer, &rect2);
-	button_zoomIn->render();
 }

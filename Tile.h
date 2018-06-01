@@ -14,10 +14,11 @@ using namespace std;
 class Tile{ //will extend components
 public:
 	Tile(int x, int y, Map* map);
-	void update(vector< vector<Tile*> >* nextIterboard);
+	//void update(vector< vector<Tile*> >* nextIterboard);
 	void render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r);
 
-	Entity* entity; //change to multiple layers
+	Entity* layer1; //Terrain
+	Entity* layer2; //Object
 	int x;
 	int y;
 	Map* map;

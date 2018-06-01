@@ -7,13 +7,14 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <algorithm>
 
 #include "Map.h"
 #include "Tile.h"
-#include "Entity.h"
+#include "Animal.h"
 using namespace std;
 
-class Cow : public Entity {
+class Cow : public Animal {
 public:
 	Cow(Tile* parentTile);
 
@@ -25,7 +26,7 @@ public:
 	//Sets a random Tile in 3x3 array around center to point to itself, if possible.
 	//On interaction with grass, overrides grass.
 	//Sets this parentTile to that new Tile.
-	void update(vector< vector<Tile*> >* nextIterboard) override;
+	//void update(vector< vector<Tile*> >* nextIterboard) override;
 
 	//Parameters:
 	// x, y represent the coordinates to render at. w, h represent the width and height of the images.
@@ -35,6 +36,11 @@ public:
 	//Postcondition: Image rendered at x, y with width w and height h.
 
 	void render(int x, int y, int w, int h, SDL_Renderer* r) override;
+
+	void checkMove() override;
+	void checkAction() override;
+	void checkDeath() override;
+	void checkReproduce() override;
 
 };
 #endif /* COW_H_DEFINED */

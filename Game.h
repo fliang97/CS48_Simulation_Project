@@ -43,7 +43,7 @@ public:
 	//Parameters:
 	//Return Values: getter for running value. eventHandler->isRunning();
 	//Precondition:
-	//Postcondition: Getter for eventhandler->isRunning(), which controls the whether the game is running.
+	//Postcondition: Getter for eventhandler->isRunning(), which controls whether the game is running.
 	bool eventHandlerIsRunning();
 
 	//Parameters:

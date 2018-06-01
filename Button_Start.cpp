@@ -23,14 +23,36 @@ Button_Start::Button_Start(int x, int y, int w, int h, SDL_Renderer* r, int& cur
 }
 
 void Button_Start::clicked() {
-	map = Map(20, 20);
-
+	map.buildMap(20, 20);
 	Tile* tile = (*map.mapGrid)[5][5];
 
 	//Square must know Entity
-	tile->entity = new Grass(tile);
+	Grass* g = new Grass(tile);
+	map.plants.insert(g);
+	tile->layer1 = g;
+	tile = (*map.mapGrid)[8][5];
+	//Square must know Entity
+	g = new Grass(tile);
+	map.plants.insert(g);
+	tile->layer1 = g;
+	tile = (*map.mapGrid)[7][5];
+	//Square must know Entity
+	g = new Grass(tile);
+	map.plants.insert(g);
+	tile->layer1 = g;
+	tile = (*map.mapGrid)[6][5];
+	//Square must know Entity
+	g = new Grass(tile);
+	map.plants.insert(g);
+	tile->layer1 = g;
+	tile = (*map.mapGrid)[4][5];
+	//Square must know Entity
+	g = new Grass(tile);
+	map.plants.insert(g);
+	tile->layer1 = g;
 	tile = (*map.mapGrid)[3][5];
-	tile->entity = new Cow(tile);
-
+	Cow* c = new Cow(tile);
+	map.animals.insert(c);
+	tile->layer2 = c;
 	currentScreen = 1;
 }
