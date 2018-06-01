@@ -73,7 +73,7 @@ void Cow::checkAction() {
 	hunger -= 2;
 	Entity* e = parentTile->layer1;
 	if (hunger < 75 && e && e->id == 4) {
-		((Animal*) parentTile->layer1)->health -= 50;
+		((Plant*) parentTile->layer1)->health -= 50;
 		hunger = min(100, hunger + 75);
 	}
 }

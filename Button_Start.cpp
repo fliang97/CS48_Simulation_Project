@@ -50,8 +50,14 @@ void Button_Start::clicked() {
 	g = new Grass(tile);
 	map.plants.insert(g);
 	tile->layer1 = g;
+
 	tile = (*map.mapGrid)[3][5];
 	Cow* c = new Cow(tile);
+	map.animals.insert(c);
+	tile->layer2 = c;
+
+	tile = (*map.mapGrid)[9][8];
+	c = new Cow(tile);
 	map.animals.insert(c);
 	tile->layer2 = c;
 	currentScreen = 1;

@@ -32,41 +32,30 @@ void Map::buildMap(int width, int height) {
 }
 
 void Map::updateEachTile() {
-
 		for (Animal* a : animals) {
-
 			a->checkMove();
-
 		}
-
 		for (Animal* a : animals) {
 			a->checkAction();
 		}
-
 		for (Animal* a : animals) {
 			a->checkReproduce();
 		}
-
 		for (Plant* p : plants) {
 			p->checkReproduce();
 		}
-
 		for (Animal* a : animals) {
 			a->checkDeath();
 		}
-
 		for (Plant* p : plants) {
 			p->checkDeath();
 		}
-
 		for (Plant* p : plants) {
 			p->checkDeath();
 		}
-
 		for (Animal* a : toDestroyAnimals) {
 			animals.erase(a);
 		}
-
 		for (Plant* p : toDestroyPlants) {
 			plants.erase(p);
 		}
