@@ -34,6 +34,11 @@ Screen::Screen(EventHandler* eventHandler, SDL_Renderer* r, int w, int h) : widt
 	}
 
 	 void Screen::mouseDown() {
+		 for (Component* c : components) {
+			 if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
+				 c->pressed();
+			 }
+		 }
 	}
 
 	 void Screen::update() {

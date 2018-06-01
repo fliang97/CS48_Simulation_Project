@@ -72,7 +72,7 @@ void Cow::checkAction() {
 	++age;
 	hunger -= 2;
 	Entity* e = parentTile->layer1;
-	if (e && e->id == 4) {
+	if (hunger < 75 && e && e->id == 4) {
 		((Animal*) parentTile->layer1)->health -= 50;
 		hunger = min(100, hunger + 75);
 	}
@@ -82,7 +82,7 @@ void Cow::checkDeath() {
 	if (hunger <= 0) {
 		health += hunger;
 	}
-	if (health <= 0 || age > 500) {
+	if (health <= 0 || age > 300) {
 		parentTile->layer2 = NULL;
 		cout << "TestDestroy: " << health << " " << age << endl;
 		parentTile->map->toDestroyAnimals.insert(this);
@@ -92,8 +92,7 @@ void Cow::checkDeath() {
 }
 
 void Cow::checkReproduce() {
-	if (age > 10 && hunger > 90 && rand() % 10 == 0) {
-		cout << "woot" << endl;
+	if (age > 10 && hunger > 90 && rand() % 12 == 0) {
 		int x = rand() % 3 - 1;
 		int y = rand() % 3 - 1;
 		if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width

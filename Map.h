@@ -27,8 +27,6 @@ public:
 	int width;
 	int height;
 
-	int counter; //from screen_world / screen_gamemap
-
 	//Possibly add list (unordered set) of Entities, Plants/ Animals for added effieciency in search.
 	unordered_set<Entity*> entities; //currently unused
 	unordered_set<Animal*> animals; //for 	//move  //Eat / Action //Death //Reproduce  update gamestate

@@ -29,13 +29,9 @@ void Map::buildMap(int width, int height) {
 			//(*bufferboard)[i][j] = new Tile(i, j, this);
 		}
 	}
-	counter = Game::COUNTER;
-
 }
 
 void Map::updateEachTile() {
-
-	if (counter == 0) {
 
 		for (Animal* a : animals) {
 
@@ -76,9 +72,6 @@ void Map::updateEachTile() {
 		}
 		toDestroyAnimals.clear();
 		toDestroyPlants.clear();
-	counter = Game::COUNTER;
-}
---counter;
 
 /*
 	if (counter == 0) {

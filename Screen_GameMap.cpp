@@ -8,10 +8,9 @@
 #include <algorithm>
 #include "Screen.h"
 #include "EventHandler.h"
-#include "Button_ZoomIn.h"
-#include "Button_ZoomOut.h"
 #include "Map.h"
 #include "Screen_GameMap.h"
+#include "Game.h"
 
 
 using namespace std;
@@ -24,8 +23,84 @@ height(h), worldposX(0), worldposY(0) {
 	scaleY = height / map.height;
 	button_zoomIn = new Button_ZoomIn(xpos + width / 20, ypos + height / 20, width / 10, height / 10, r, scaleX, scaleY);
 	components.push_back(button_zoomIn);
-	button_zoomOut = new Button_ZoomOut(xpos + width / 20, ypos + height / 6, width / 10, height / 10, r, scaleX, scaleY);
+	button_zoomOut = new Button_ZoomOut(xpos + width / 20, ypos + 7 * height / 40 , width / 10, height / 10, r, scaleX, scaleY);
 	components.push_back(button_zoomOut);
+	showplot = false;
+	button_plot = new Button_Plot(xpos + width / 20, ypos + 12 *height / 40, width / 10, height / 10, r, showplot);
+	components.push_back(button_plot);
+	counter = Game::COUNTER;
+	gameTicks = 0;
+
+
+	caption_list = NULL;
+
+	caption_list=push_back_caption(caption_list,"Animals",0,0xFF0000);
+	caption_list=push_back_caption(caption_list,"Plants"  ,1,0x00FF00);
+
+	coordinate_list = NULL;
+	coordinate_list=push_back_coord(coordinate_list, 0, 0,0);
+	coordinate_list=push_back_coord(coordinate_list, 1, 0,0);
+
+
+
+	//string path = "opensans.ttf";
+	//char *fontpath = new char [path.length()+1];
+	//strcpy(fontpath, path.c_str());
+
+	params.screen_xpos= xpos + 20;
+	params.screen_ypos= ypos +  8*height/20;
+	params.screen_width= width/2;
+	params.screen_heigth= height/2;
+	//params.font_text_path = fontpath;
+	params.font_text_size=18;
+	params.caption_text_x="Time";
+	params.caption_text_y="Number";
+	params.caption_list = caption_list;
+	params.coordinate_list = coordinate_list;
+	params.scale_x = 1;
+	params.scale_y = 10;
+	params.max_x = 10;
+	params.max_y = 100;
+
+
+	setvbuf (stdout, NULL, _IONBF, 0);
+
+	surfacelist surface_list = NULL;
+
+
+
+	if(TTF_Init() == -1)
+	{
+		fprintf(stderr, "Error SDL TTF_Init error : %s\n", TTF_GetError());
+	}
+	if (SDL_Init(SDL_INIT_VIDEO)==-1){
+
+		fprintf(stderr, "Error SDL init failure : %s\n", SDL_GetError());
+	}
+
+
+	plot.font                 = NULL;
+	plot.screen               = NULL;
+	plot.plot_surface         = NULL;
+	plot.plot_mask_surface    = NULL;
+	plot.caption_surface      = NULL;
+	plot.caption_mask_surface = NULL;
+	plot.captionX             = NULL;
+	plot.captionY             = NULL;
+	plot.textureX             = NULL;
+	plot.textureY             = NULL;
+	plot.renderer             = NULL;
+
+	//font specs
+	plot.font = TTF_OpenFont("OpenSans-Light.ttf", params.font_text_size);
+	if(plot.font==NULL)
+	{
+		printf("Error font file read failure, check your font file\n");
+		clean_plot(&plot,&params,&surface_list);
+
+		//return EXIT_FAILURE;
+	}
+
 }
 
 //void Screen_GameMap::mousePressedUp() {
@@ -41,13 +116,30 @@ void Screen_GameMap::mousePressedDown() {
 void Screen_GameMap::mouseDown() {
 	worldposX = min(max(worldInitX - (eventHandler->xMouse - mouseInitX), 0), map.width * scaleX - width);
 	worldposY = min(max(worldInitY - (eventHandler->yMouse - mouseInitY), 0), map.height * scaleY - height);
-	//cout << worldposX << " " << worldposY << endl;
+
+	for (Component* c : components) {
+		if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
+			c->pressed();
+		}
+	}
 }
 
 void Screen_GameMap::update() {
+if (counter == 0) {
 	map.updateEachTile();
+	if (gameTicks % 10 == 0) {
+		coordinate_list=push_back_coord(coordinate_list, 0, gameTicks/10,map.animals.size());
+		coordinate_list=push_back_coord(coordinate_list, 1,gameTicks/10,map.plants.size());
+		params.max_x = max(10, gameTicks/10);
+		params.max_y = max(100, (int)(map.animals.size() + map.plants.size()));
+		params.scale_x = params.max_x / 10;
+		params.scale_y = params.max_y / 10;
+	}
 
-
+	++gameTicks;
+	counter = Game::COUNTER;
+}
+--counter;
 	//move
 	//Eat / Action
 	//Death
@@ -66,9 +158,16 @@ void Screen_GameMap::render() {
 		for (int j = 0; j < map.height; ++j) {
 
 			//TO ADD: render only elements on display
-			(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer);
+			if ((i+1)*scaleX - worldposX >= 0 && (j+1)*scaleY - worldposY >= 0 && j*scaleY - worldposY <= map.height * scaleY - height && i*scaleX - worldposX <= map.width * scaleX - width) {
+				(*map.mapGrid)[i][j]->render(xpos, ypos, worldposX, worldposY, scaleX, scaleY, renderer);
+			}
+
 		}
 	}
 	button_zoomIn->render();
 	button_zoomOut->render();
+	button_plot->render();
+	if (showplot) {
+			draw_plot(&plot, &params, &surface_list);
+	}
 }

@@ -12,6 +12,10 @@
 #include "EventHandler.h"
 #include "Button_ZoomIn.h"
 #include "Button_ZoomOut.h"
+#include "Button_Plot.h"
+#include "plotsdl/plot.h"
+#include "plotsdl/llist.h"
+#include "Button_Plot.h"
 //#include "ScreenManager.h"
 #include "Map.h"
 
@@ -75,9 +79,20 @@ public:
 	int scaleY;
 	int width;
 	int height;
+
+	int counter; //from screen_world / screen_gamemap
+	int gameTicks;
 	Map& map;
 	Button_ZoomIn* button_zoomIn;
 	Button_ZoomOut* button_zoomOut;
+	Button_Plot* button_plot;
+
+	splot plot;
+	surfacelist surface_list;
+	plot_params params;
+	captionlist caption_list;
+	coordlist coordinate_list;
+	bool showplot;
 };
 
 #endif /* SCREEN_WORLD_H_DEFINED */
