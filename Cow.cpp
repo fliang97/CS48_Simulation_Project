@@ -10,6 +10,7 @@
 //#include "Tile.h"
 //#include "Entity.h"
 #include "Cow.h"
+#include "Plant.h"
 
 using namespace std;
 
