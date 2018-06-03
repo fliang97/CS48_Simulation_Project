@@ -29,6 +29,10 @@
 	@author Bertrand Martel
 	@version 0.1
 */
+
+//Enable this to disable warning messages
+//#define _CRT_SECURE_NO_WARNINGS
+
 #include "stdio.h"
 #include "plotsdl/plot.h"
 #include "Game.h"
@@ -115,9 +119,9 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 		SDL_RenderFillRect( plot->renderer, &screen );
 		//---------------------------------------------
 
-		float plot_width=params->screen_width*0.8;
-		float plot_heigth=params->screen_heigth*0.8;
-		float plot_caption_heigth=params->screen_heigth*0.05;
+		double plot_width=params->screen_width*0.8;
+		double plot_heigth=params->screen_heigth*0.8;
+		double plot_caption_heigth=params->screen_heigth*0.05;
 
 		SDL_Rect plot_position;
 		plot_position.x=params->screen_xpos + (params->screen_width/2)-(plot_width*0.47);
@@ -262,26 +266,26 @@ void draw_points(
 	SDL_Renderer* renderer,
 	caption_item* caption_item,
 	plot_params *params,
-	float plot_width,
-	float plot_heigth,
+	double plot_width,
+	double plot_heigth,
 	SDL_Rect plot_mask_position)
 {
 	coordinate_item* tmp=params->coordinate_list;
 
-	float scale_x_num=plot_width/(params->max_x/params->scale_x);
-	float scale_y_num=plot_heigth/(params->max_y/params->scale_y);
+	double scale_x_num=plot_width/(params->max_x/params->scale_x);
+	double scale_y_num=plot_heigth/(params->max_y/params->scale_y);
 
 	unsigned char isFirst=1;
 
-	float previous_x=0;
-	float previous_y=0;
+	double previous_x=0;
+	double previous_y=0;
 
 	while (tmp!=NULL)
 	{
 		if (tmp->caption_id==caption_item->caption_id)
 		{
-			float circle_x1=plot_mask_position.x+1+(tmp->x/params->scale_x)*scale_x_num;
-			float circle_y1=plot_mask_position.y+plot_heigth-(tmp->y/params->scale_y)*scale_y_num;
+			double circle_x1=plot_mask_position.x+1+(tmp->x/params->scale_x)*scale_x_num;
+			double circle_y1=plot_mask_position.y+plot_heigth-(tmp->y/params->scale_y)*scale_y_num;
 
 			SDL_SetRenderDrawColor(renderer,0,0,0,255);
 
@@ -339,8 +343,8 @@ void draw_points(
 void draw_scale_graduation(SDL_Renderer * renderer,
 	plot_params *params,
 	splot *plot,
-	float plot_width,
-	float plot_heigth,
+	double plot_width,
+	double plot_heigth,
 	SDL_Rect plot_mask_position,
 	TTF_Font *font,
 	SDL_Color font_color,
@@ -369,7 +373,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		SDL_RenderDrawLine(renderer,init_pos_x,init_pos_y,init_pos_x,init_pos_y-GRADUATION_HEIGTH);
 
 		char text[10];
-		sprintf(text,"%d",current_scale);
+		sprintf_s(text,"%d",current_scale);
 
 		SDL_Surface *caption_text_surface = TTF_RenderText_Blended(font, text, font_color);
 		SDL_Rect caption_text;
@@ -397,7 +401,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		SDL_RenderDrawLine(renderer,init_pos_x,init_pos_y,init_pos_x+GRADUATION_HEIGTH,init_pos_y);
 
 		char text[10];
-		sprintf(text,"%d",current_scale);
+		sprintf_s(text,"%d",current_scale);
 
 		SDL_Surface *caption_text_surface = TTF_RenderText_Blended(font, text, font_color);
 		SDL_Rect caption_text;

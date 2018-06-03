@@ -13,6 +13,8 @@
 #include "Game.h"
 #include "Button_Speedup.h"
 #include "Button_Speeddown.h"
+#include "plotsdl\llist.h"
+#include "plotsdl\plot.h"
 
 
 using namespace std;
@@ -36,8 +38,11 @@ height(h), worldposX(0), worldposY(0) {
 
 	caption_list = NULL;
 
-	caption_list=push_back_caption(caption_list,"Animals",0,0xFF0000);
-	caption_list=push_back_caption(caption_list,"Plants"  ,1,0x00FF00);
+	char textAnimals[] = "Animals";
+	char textPlants[] = "Plants";
+
+	caption_list=push_back_caption(caption_list,textAnimals,0,0xFF0000);
+	caption_list=push_back_caption(caption_list,textPlants,1,0x00FF00);
 
 	coordinate_list = NULL;
 	coordinate_list=push_back_coord(coordinate_list, 0, 0,0);
@@ -55,8 +60,10 @@ height(h), worldposX(0), worldposY(0) {
 	params.screen_heigth= height/2;
 	//params.font_text_path = fontpath;
 	params.font_text_size=18;
-	params.caption_text_x="Time";
-	params.caption_text_y="Number";
+	char textTime[] = "Time";
+	char textNumber[] = "Number";
+	params.caption_text_x= textTime;
+	params.caption_text_y= textNumber;
 	params.caption_list = caption_list;
 	params.coordinate_list = coordinate_list;
 	params.scale_x = 1;
@@ -129,10 +136,10 @@ void Screen_GameMap::mouseDown() {
 void Screen_GameMap::update() {
 	map.updateEachTile();
 	if (gameTicks % 10 == 0) {
-		coordinate_list=push_back_coord(coordinate_list, 0, gameTicks/10,map.animals.size());
-		coordinate_list=push_back_coord(coordinate_list, 1,gameTicks/10,map.plants.size());
-		params.max_x = max(10, gameTicks/10);
-		params.max_y = max(100, (int)(map.animals.size() + map.plants.size()));
+		coordinate_list=push_back_coord(coordinate_list, 0, static_cast<float>(gameTicks/10), static_cast<float>(map.animals.size()));
+		coordinate_list=push_back_coord(coordinate_list, 1, static_cast<float>(gameTicks/10), static_cast<float>(map.plants.size()));
+		params.max_x = static_cast<float>(max(10, gameTicks/10));
+		params.max_y = static_cast<float>(max(100, (int)(map.animals.size() + map.plants.size())));
 		params.scale_x = params.max_x / 10;
 		params.scale_y = params.max_y / 10;
 	}

@@ -17,13 +17,13 @@ class Animal : public Entity {
 public:
 	Animal(Tile* parentTile);
 	virtual void checkMove();
-  virtual void checkAction() ;
-  virtual void checkDeath() ;
+	virtual void checkAction();
+	virtual void checkDeath();
 	virtual void checkReproduce();
 
-  int health;
+	int health;
 	int hunger;
-  int age;
+	int age;
 };
 
 

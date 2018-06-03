@@ -62,10 +62,10 @@ typedef struct plot_params_struct{
 	char *      caption_text_y    ;
 	captionlist caption_list      ;
 	coordlist   coordinate_list   ;
-	float       scale_x           ;
-	float       scale_y           ;
-	float       max_x             ;
-	float       max_y             ;
+	double       scale_x           ;
+	double       scale_y           ;
+	double       max_x             ;
+	double       max_y             ;
 
 } plot_params;
 
@@ -123,8 +123,8 @@ int plot_graph(plot_params *params);
 void draw_scale_graduation(SDL_Renderer * renderer,
 	plot_params *params,
 	splot *plot,
-	float plot_width,
-	float plot_heigth,
+	double plot_width,
+	double plot_heigth,
 	SDL_Rect plot_mask_position,
 	TTF_Font *font,
 	SDL_Color font_color,
@@ -148,7 +148,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
  * @param plot_mask_position
  *      SDL rectangle giving position of plot base (x,y) from max x or max y due to stroke width
  */
-void draw_points(SDL_Renderer* renderer,caption_item* caption_item,plot_params *params,float plot_width,float plot_heigth,SDL_Rect plot_mask_position);
+void draw_points(SDL_Renderer* renderer,caption_item* caption_item,plot_params *params,double plot_width,double plot_heigth,SDL_Rect plot_mask_position);
 
 /**
  * @brief draw_plot
