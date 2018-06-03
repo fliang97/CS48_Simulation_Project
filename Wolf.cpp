@@ -53,6 +53,12 @@ void Cow::update(vector< vector<Tile*> >* nextIterboard) {
 }
 */
 void Wolf::checkMove() {
+
+
+	//Add neighboring squares to queue.
+	//Unordered_set of reached.
+	//
+	//pair<int, int> next
 	int x = rand() % 3 - 1;
 	int y = rand() % 3 - 1;
 
