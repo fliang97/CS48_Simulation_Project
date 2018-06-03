@@ -64,7 +64,7 @@ public:
 	static ScreenManager* screenManager;
 	static SDL_Event event; //make this a pointer?
 
-	const static int COUNTER = 30; //60 fps / COUNTER = gamefps.
+	//const static int COUNTER = 30; //60 fps / COUNTER = gamefps.
 
 private:
 	SDL_Window* window;

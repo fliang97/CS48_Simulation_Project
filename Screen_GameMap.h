@@ -80,7 +80,7 @@ public:
 	int width;
 	int height;
 
-	int counter; //from screen_world / screen_gamemap
+
 	int gameTicks;
 	Map& map;
 	Button_ZoomIn* button_zoomIn;

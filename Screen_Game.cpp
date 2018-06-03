@@ -18,11 +18,19 @@ class ScreenManager;
 
 Screen_Game::Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map) : Screen(eventHandler, r, w, h), map(map) {
 	screen_world = new Screen_GameMap(eventHandler, r, width / 6, 0, 5 * width / 6, 5 * height / 6, cs, map);
+	speedup = new Button_Speedup(4 * width / 20, 17 * height / 20, width / 10, height / 10, r, COUNTER);
+	components.push_back(speedup);
+	speeddown = new Button_Speeddown(width / 20, 17 *height / 20, width / 10, height / 10, r, COUNTER);
+	components.push_back(speeddown);
+	COUNTER = 30;
+	counter = COUNTER;
 
 }
 
 void Screen_Game::mousePressedUp() {
+	//possibly Screen::mousePressedUp()
 	for (Component* c : components) {
+		c->released();
 		if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
 			c->clicked();
 		}
@@ -40,13 +48,23 @@ void Screen_Game::mousePressedDown() {
 }
 
 void Screen_Game::mouseDown() {
+	for (Component* c : components) {
+		if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
+			c->pressed();
+		}
+	}
+
 	if (eventHandler->xMouse >= screen_world->xpos && eventHandler->yMouse >= screen_world->ypos && eventHandler->xMouse <= screen_world->xpos + screen_world->width && eventHandler->yMouse <= screen_world->ypos + screen_world->height) {
 		screen_world->mouseDown();
 	}
 }
 
 void Screen_Game::update() {
-	screen_world->update();
+	if (counter == 0) {
+		screen_world->update();
+		counter = COUNTER;
+	}
+	--counter;
 }
 
 void Screen_Game::render() {
@@ -57,5 +75,6 @@ void Screen_Game::render() {
 	SDL_Rect rect2 = { screen_world->xpos, screen_world->height, screen_world->width, height - screen_world->height };
 	SDL_SetRenderDrawColor(renderer, 0, 200, 50, 255);
 	SDL_RenderFillRect(renderer, &rect2);
-
+	speedup->render();
+	speeddown->render();
 }

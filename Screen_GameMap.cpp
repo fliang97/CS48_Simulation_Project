@@ -11,6 +11,8 @@
 #include "Map.h"
 #include "Screen_GameMap.h"
 #include "Game.h"
+#include "Button_Speedup.h"
+#include "Button_Speeddown.h"
 
 
 using namespace std;
@@ -28,7 +30,7 @@ height(h), worldposX(0), worldposY(0) {
 	showplot = false;
 	button_plot = new Button_Plot(xpos + width / 20, ypos + 12 *height / 40, width / 10, height / 10, r, showplot);
 	components.push_back(button_plot);
-	counter = Game::COUNTER;
+
 	gameTicks = 0;
 
 
@@ -125,7 +127,6 @@ void Screen_GameMap::mouseDown() {
 }
 
 void Screen_GameMap::update() {
-if (counter == 0) {
 	map.updateEachTile();
 	if (gameTicks % 10 == 0) {
 		coordinate_list=push_back_coord(coordinate_list, 0, gameTicks/10,map.animals.size());
@@ -137,9 +138,6 @@ if (counter == 0) {
 	}
 
 	++gameTicks;
-	counter = Game::COUNTER;
-}
---counter;
 	//move
 	//Eat / Action
 	//Death

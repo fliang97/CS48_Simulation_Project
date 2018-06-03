@@ -5,6 +5,8 @@
 #include <SDL2/SDL_image.h>
 #include <cstdlib>
 
+#include "Button_Speedup.h"
+#include "Button_Speeddown.h"
 #include "Screen.h"
 #include "EventHandler.h"
 #include "Screen_GameMap.h"
@@ -48,7 +50,12 @@ public:
   //Postcondition: Renders the worldscreen first then overlays an L shaped border around it. Then calls the zoom button's render.
 	void render() override;
 
+	Button_Speedup* speedup;
+	Button_Speeddown* speeddown;
 	Screen_GameMap* screen_world;
 	Map& map;
+
+	int COUNTER; //60 fps / COUNTER = gamefps.
+	int counter; //from screen_world / screen_gamemap
 };
 #endif /* SCREEN_GAME_H_DEFINED */
