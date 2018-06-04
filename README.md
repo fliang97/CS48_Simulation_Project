@@ -30,7 +30,8 @@ Importing SDL Libraries in XCode:
   
   SDL2_Image: `sdl2_image/2.0.3/lib/libSDL2_image-2.0.0.dylib`
 
-
+  SDL2_TTF: `sdl2_ttf/2.0.14/lib/libSDL2_ttf-2.0.0.dyblib`
+  
 ## Running the draft project simulation
 For the first draft of this project, we have focused on creating the core game engine and core simulation features. For this reason, most elements still take the apperance of simple, colored rectangular boxes. Further efforts on improving the visuals will be implemented in later iterations, such as adding sprites and animations.
 
