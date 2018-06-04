@@ -11,6 +11,7 @@ using namespace std;
 class Grass : public Plant {
 public:
 	Grass(Tile* parentTile);
+	virtual ~Grass() override;
 
 	//Parameters:
 	//vector< vector<Tile*> >* nextIterboard: Pointer to 2d vector of Tiles. Cow changes nextIterboard to affect future actions (e.g. moving)
@@ -33,6 +34,10 @@ public:
 
 	void checkReproduce() override;
 	void checkDeath() override;
+
+	static int getPopulationCount();
+private:
+	static int populationCount;
 };
 
 #endif /* GRASS_H_DEFINED */

@@ -134,7 +134,7 @@ void Screen_GameMap::mouseDown() {
 }
 
 void Screen_GameMap::update() {
-	map.updateEachTile();
+	map.updateEntities();
 	if (gameTicks % 10 == 0) {
 		coordinate_list=push_back_coord(coordinate_list, 0, static_cast<float>(gameTicks/10), static_cast<float>(map.animals.size()));
 		coordinate_list=push_back_coord(coordinate_list, 1, static_cast<float>(gameTicks/10), static_cast<float>(map.plants.size()));

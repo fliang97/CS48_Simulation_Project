@@ -15,6 +15,7 @@
 
 using namespace std;
 
+int Wolf::populationCount = 0;
 
 //PUBLIC FUNCTIONS
 
@@ -23,6 +24,11 @@ Wolf::Wolf(Tile* parentTile) : Animal(parentTile) {
 	health = 100;
 	hunger = 100;
 	age = 0;
+	Wolf::populationCount++;
+}
+
+Wolf::~Wolf() {
+	Wolf::populationCount--;
 }
 
 /*
@@ -132,4 +138,8 @@ void Wolf::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	SDL_SetRenderDrawColor(r, max(0, hunger), health, min(age, 255), 255);
 	SDL_RenderFillRect(r, &rect);
 	//SDL_RenderPresent( renderer);
+}
+
+int Wolf::getPopulationCount() {
+	return Wolf::populationCount;
 }

@@ -19,7 +19,7 @@ public:
   //Return Values:
   //Precondition:
   //Postcondition:  Calls the update function for each Tile. Then switches between mapGrid and bufferboard.
-	void updateEachTile();
+	void updateEntities();
 	void buildMap(int width, int height);
 	Tile *getTile(int posX, int posY);
 	Tile* getRandomTile();

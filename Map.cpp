@@ -4,12 +4,13 @@
 #include "Map.h"
 #include "Game.h"
 #include <stdlib.h>
+#include "EntityManager.h"
 
-Map::Map(int width, int height){
+Map::Map(int width, int height) {
 	buildMap(width, height);
 }
 
-Map::Map(){
+Map::Map() {
 	buildMap(0, 0);
 }
 
@@ -45,47 +46,68 @@ Tile* Map::getRandomTile() {
 
 
 
-void Map::updateEachTile() {
-		for (Animal* a : animals) {
-			a->checkMove();
-		}
-		for (Animal* a : animals) {
-			a->checkAction();
-		}
-		for (Animal* a : animals) {
-			a->checkReproduce();
-		}
-		for (Plant* p : plants) {
-			p->checkReproduce();
-		}
-		for (Animal* a : animals) {
-			a->checkDeath();
-		}
-		for (Plant* p : plants) {
-			p->checkDeath();
-		}
-		for (Animal* a : toDestroyAnimals) {
-			animals.erase(a);
-		}
-		for (Plant* p : toDestroyPlants) {
-			plants.erase(p);
-		}
-		toDestroyAnimals.clear();
-		toDestroyPlants.clear();
+void Map::updateEntities() {
 
-/*
-	if (counter == 0) {
-		for (int i = 0; i < this->width; ++i) {
-			for (int j = 0; j < this->height; ++j) {
-				(*this->mapGrid)[i][j]->update(this->bufferboard);
-			}
-		}
-		vector< vector<Tile*> >* temp = this->mapGrid;
-		this->mapGrid = this->bufferboard;
-		this->bufferboard = temp;
-		counter = Game::COUNTER;
+
+	if (Cow::getPopulationCount() < 3) {
+		Tile* tmpTile = this->getRandomTile();
+		EntityManager::createEntity(EntityID::cow, tmpTile);
 	}
-	--counter;
-	//cout << counter << endl;
-*/
+
+	if (Grass::getPopulationCount() < 3) {
+		Tile* tmpTile = this->getRandomTile();
+		EntityManager::createEntity(EntityID::grass, tmpTile);
+	}
+
+	//if (Wolf::getPopulationCount() < 3) {
+	//	Tile* tmpTile = this->getRandomTile();
+	//	EntityManager::createEntity(EntityID::wolf, tmpTile);
+	//}
+	
+
+
+	for (Animal* a : animals) {
+		a->checkMove();
+	}
+	for (Animal* a : animals) {
+		a->checkAction();
+	}
+	for (Animal* a : animals) {
+		a->checkReproduce();
+	}
+	for (Plant* p : plants) {
+		p->checkReproduce();
+	}
+	for (Animal* a : animals) {
+		a->checkDeath();
+	}
+	for (Plant* p : plants) {
+		p->checkDeath();
+	}
+	for (Animal* a : toDestroyAnimals) {
+		animals.erase(a);
+		delete a;
+	}
+	for (Plant* p : toDestroyPlants) {
+		plants.erase(p);
+		delete p;
+	}
+	toDestroyAnimals.clear();
+	toDestroyPlants.clear();
+
+	/*
+		if (counter == 0) {
+			for (int i = 0; i < this->width; ++i) {
+				for (int j = 0; j < this->height; ++j) {
+					(*this->mapGrid)[i][j]->update(this->bufferboard);
+				}
+			}
+			vector< vector<Tile*> >* temp = this->mapGrid;
+			this->mapGrid = this->bufferboard;
+			this->bufferboard = temp;
+			counter = Game::COUNTER;
+		}
+		--counter;
+		//cout << counter << endl;
+	*/
 }

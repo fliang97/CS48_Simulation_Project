@@ -11,13 +11,20 @@ class Tile;
 
 using namespace std;
 
+int Entity::populationCount = 0;
 
 //PUBLIC FUNCTIONS
 
 Entity::Entity(Tile* parentTile) {
 	this->parentTile = parentTile;
 	id = 0;
+	Entity::populationCount++;
 }
+
+Entity::~Entity() {
+	populationCount--;
+}
+
 //don't move
 /*
 void Entity::update(vector< vector<Tile*> >* nextIterboard) {
@@ -30,4 +37,8 @@ void Entity::render(int x, int y, int w, int h, SDL_Renderer* r) {
 
 Tile* Entity::getParentTile() {
 	return this->parentTile;
+}
+
+int Entity::getPopulationCount() {
+	return Entity::populationCount;
 }

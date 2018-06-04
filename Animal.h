@@ -16,6 +16,7 @@ using namespace std;
 class Animal : public Entity {
 public:
 	Animal(Tile* parentTile);
+	virtual ~Animal() override;
 	virtual void checkMove();
 	virtual void checkAction();
 	virtual void checkDeath();
@@ -24,6 +25,11 @@ public:
 	int health;
 	int hunger;
 	int age;
+
+	static int getPopulationCount();
+	static int populationCount;
+private:
+
 };
 
 

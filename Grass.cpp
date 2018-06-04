@@ -14,11 +14,19 @@
 
 using namespace std;
 
+int Grass::populationCount = 0;
+
 Grass::Grass(Tile* parentTile) : Plant(parentTile) {
 	id = 4;
 	health = 10;
+	Grass::populationCount++;
+	cout << "Grass population: " << Grass::populationCount << endl;
 }
 
+Grass::~Grass() {
+	Grass::populationCount--;
+	cout << "Grass population: " << Grass::populationCount << endl;
+}
 /*
 void Grass::update(vector< vector<Tile*> >* nextIterboard) {
 	//Fix rand() to make it change.
@@ -68,4 +76,8 @@ void Grass::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	SDL_SetRenderDrawColor(r, 0, 255, 0, 255);
 	SDL_RenderFillRect(r, &rect);
 
+}
+
+int Grass::getPopulationCount() {
+	return Grass::populationCount;
 }

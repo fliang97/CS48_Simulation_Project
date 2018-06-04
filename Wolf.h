@@ -17,6 +17,7 @@ using namespace std;
 class Wolf : public Animal {
 public:
 	Wolf(Tile* parentTile);
+	~Wolf() override;
 
 	//Parameters:
 	//vector< vector<Tile*> >* nextIterboard: Pointer to 2d vector of Tiles. Cow changes nextIterboard to affect future actions (e.g. moving)
@@ -41,6 +42,9 @@ public:
 	void checkAction() override;
 	void checkDeath() override;
 	void checkReproduce() override;
+	static int getPopulationCount();
 
+private:
+	static int populationCount;
 };
 #endif /* WOLF_H_DEFINED */

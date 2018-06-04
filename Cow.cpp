@@ -15,6 +15,7 @@
 
 using namespace std;
 
+int Cow::populationCount = 0;
 
 //PUBLIC FUNCTIONS
 
@@ -23,7 +24,15 @@ Cow::Cow(Tile* parentTile) : Animal(parentTile) {
 	health = 100;
 	hunger = 100;
 	age = 0;
+	Cow::populationCount++;
+	cout << "Cow population: " << Cow::populationCount << endl;
 }
+
+Cow::~Cow() {
+	Cow::populationCount--;
+	cout << "Cow population: " << Cow::populationCount << endl;
+}
+
 
 /*
 void Cow::update(vector< vector<Tile*> >* nextIterboard) {
@@ -119,4 +128,8 @@ void Cow::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	SDL_SetRenderDrawColor(r, health, max(0, hunger), min(age, 255), 255);
 	SDL_RenderFillRect(r, &rect);
 	//SDL_RenderPresent( renderer);
+}
+
+int Cow::getPopulationCount() {
+	return Cow::populationCount;
 }

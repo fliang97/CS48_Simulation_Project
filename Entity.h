@@ -15,6 +15,7 @@ class Entity {
 public:
 
 	Entity(Tile* parentTile);
+	virtual ~Entity();
 
 	//Parameters:
 	//vector< vector<Tile*> >* nextIterboard: Pointer to 2d vector of Tiles. Cow changes nextIterboard to affect future actions (e.g. moving)
@@ -32,9 +33,13 @@ public:
 	virtual void render(int x, int y, int w, int h, SDL_Renderer* r);
 
 	Tile* getParentTile();
-
 	Tile* parentTile;
 	int id;
+
+	static int getPopulationCount();
+private:
+	static int populationCount;
+
 };
 
 #endif /* ENTITY_H_DEFINED */
