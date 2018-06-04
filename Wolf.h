@@ -16,7 +16,7 @@ using namespace std;
 
 class Wolf : public Animal {
 public:
-	Cow(Tile* parentTile);
+	Wolf(Tile* parentTile);
 
 	//Parameters:
 	//vector< vector<Tile*> >* nextIterboard: Pointer to 2d vector of Tiles. Cow changes nextIterboard to affect future actions (e.g. moving)

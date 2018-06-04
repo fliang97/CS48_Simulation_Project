@@ -124,28 +124,28 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 		double plot_caption_heigth=params->screen_heigth*0.05;
 
 		SDL_Rect plot_position;
-		plot_position.x=params->screen_xpos + (params->screen_width/2)-(plot_width*0.47);
-		plot_position.y=params->screen_ypos + (params->screen_heigth*0.50)-(plot_heigth/2);
-		plot_position.w=plot_width;
-		plot_position.h=plot_heigth;
+		plot_position.x=params->screen_xpos + static_cast<int>(params->screen_width/2)-static_cast<int>(plot_width*0.47);
+		plot_position.y=params->screen_ypos + static_cast<int>(params->screen_heigth*0.50)- static_cast<int>(plot_heigth/2);
+		plot_position.w= static_cast<int>(plot_width);
+		plot_position.h= static_cast<int>(plot_heigth);
 
 		SDL_Rect plot_mask_position;
 		plot_mask_position.x=plot_position.x-stroke_width;
 		plot_mask_position.y=plot_position.y-stroke_width;
-		plot_mask_position.w=plot_width+stroke_width*2;
-		plot_mask_position.h=plot_heigth+stroke_width*2;
+		plot_mask_position.w= static_cast<int>(plot_width+stroke_width*2);
+		plot_mask_position.h= static_cast<int>(plot_heigth+stroke_width*2);
 
 		SDL_Rect plot_caption_position;
 		plot_caption_position.x=plot_position.x;
-		plot_caption_position.y=plot_position.y-20-plot_caption_heigth;
-		plot_caption_position.w=plot_width;
-		plot_caption_position.h=plot_caption_heigth;
+		plot_caption_position.y= static_cast<int>(plot_position.y-20-plot_caption_heigth);
+		plot_caption_position.w= static_cast<int>(plot_width);
+		plot_caption_position.h= static_cast<int>(plot_caption_heigth);
 
 		SDL_Rect plot_caption_mask_position;
 		plot_caption_mask_position.x=plot_caption_position.x-stroke_width;
 		plot_caption_mask_position.y=plot_caption_position.y-stroke_width;
-		plot_caption_mask_position.w=plot_width+stroke_width*2;
-		plot_caption_mask_position.h=plot_caption_heigth+stroke_width*2;
+		plot_caption_mask_position.w= static_cast<int>(plot_width+stroke_width*2);
+		plot_caption_mask_position.h= static_cast<int>(plot_caption_heigth+stroke_width*2);
 
 		SDL_SetRenderDrawColor(plot->renderer,0, 0, 0,255);
 		SDL_RenderFillRect(plot->renderer,&plot_mask_position);
@@ -188,7 +188,7 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 				{
 					//plot cercle1
 					int circle_x1=plot_caption_mask_position.x+caption_offset;
-					int circle_y1=plot_caption_mask_position.y+plot_caption_heigth/2+stroke_width;
+					int circle_y1=plot_caption_mask_position.y+ static_cast<int>(plot_caption_heigth/2)+stroke_width;
 
 					SDL_SetRenderDrawColor(plot->renderer,0,0,0,255);
 					fill_circle(plot->renderer,circle_x1,circle_y1,DOT_RADIUS);
@@ -289,17 +289,17 @@ void draw_points(
 
 			SDL_SetRenderDrawColor(renderer,0,0,0,255);
 
-			fill_circle(renderer,circle_x1,circle_y1,DOT_RADIUS);
+			fill_circle(renderer, static_cast<int>(circle_x1), static_cast<int>(circle_y1),DOT_RADIUS);
 
 			SDL_SetRenderDrawColor(renderer,(caption_item->caption_color & 0xFF0000)>>16,
 				(caption_item->caption_color & 0x00FF00)>>8,
 				caption_item->caption_color & 0x0000FF,255);
 
-			fill_circle(renderer,circle_x1,circle_y1,DOT_RADIUS-2);
+			fill_circle(renderer, static_cast<int>(circle_x1), static_cast<int>(circle_y1),DOT_RADIUS-2);
 
 			if (!isFirst)
 			{
-				SDL_RenderDrawLine(renderer,previous_x,previous_y,circle_x1,circle_y1);
+				SDL_RenderDrawLine(renderer, static_cast<int>(previous_x), static_cast<int>(previous_y), static_cast<int>(circle_x1), static_cast<int>(circle_y1));
 			}
 
 			previous_x=circle_x1;
@@ -352,15 +352,15 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 	int plot_position_x,
 	int plot_position_y){
 
-	int scale_x_num=plot_width/(params->max_x/params->scale_x);
-	int scale_y_num=plot_heigth/(params->max_y/params->scale_y);
+	int scale_x_num= static_cast<int>(plot_width/(params->max_x/params->scale_x));
+	int scale_y_num= static_cast<int>(plot_heigth/(params->max_y/params->scale_y));
 
 	int init_pos_x=plot_mask_position.x+1;
-	int init_pos_y=plot_mask_position.y+plot_heigth+1;
+	int init_pos_y= static_cast<int>(plot_mask_position.y+plot_heigth+1);
 
 	int current_scale=0;
 
-	int point_number_x=(params->max_x/params->scale_x);
+	int point_number_x= static_cast<int>(params->max_x/params->scale_x);
 
 	int i = 0;
 
@@ -386,14 +386,14 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		*surface_list=push_back_surface(*surface_list,caption_text_surface);
 
 		init_pos_x+=scale_x_num;
-		current_scale+=params->scale_x;
+		current_scale+= static_cast<int>(params->scale_x);
 
 		regular_caption_text_heigth=caption_text.h;
 	}
 
 	current_scale=0;
 	init_pos_x=plot_mask_position.x+1;
-	init_pos_y=plot_mask_position.y+plot_heigth+2;
+	init_pos_y= static_cast<int>(plot_mask_position.y+plot_heigth+2);
 
 	for (i = 0; i< (params->max_y/params->scale_y)+1;i++){
 
@@ -415,7 +415,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 
 		init_pos_y-=scale_y_num;
 
-		current_scale+=params->scale_y;
+		current_scale+= static_cast<int>(params->scale_y);
 
 		regular_caption_text_width=caption_text.w;
 	}
@@ -425,7 +425,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 	plot->textureY = SDL_CreateTextureFromSurface(plot->renderer, plot->captionY);
 	SDL_QueryTexture(plot->textureY, NULL, NULL, &text_caption_y.w, &text_caption_y.h);
 	text_caption_y.x=-1*regular_caption_text_width;
-	text_caption_y.y= params->screen_ypos + plot_mask_position.y+plot_heigth/2 - text_caption_y.w;
+	text_caption_y.y= static_cast<int>(params->screen_ypos + plot_mask_position.y+plot_heigth/2 - text_caption_y.w);
 
 	//rotate caption y
 	SDL_Point caption_center={plot_position_x-CAPTION_Y_LABEL_OFFSET,0};
@@ -437,7 +437,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 	plot->textureX = SDL_CreateTextureFromSurface(plot->renderer, plot->captionX);
 	SDL_QueryTexture(plot->textureX, NULL, NULL, &text_caption_x.w, &text_caption_x.h);
 	text_caption_x.x=params->screen_xpos + params->screen_width/2-text_caption_x.w/2;
-	text_caption_x.y=plot_position_y+plot_heigth+1*regular_caption_text_heigth;
+	text_caption_x.y= static_cast<int>(plot_position_y+plot_heigth+1*regular_caption_text_heigth);
 	SDL_RenderCopy(plot->renderer, plot->textureX, NULL, &text_caption_x);
 }
 
@@ -543,7 +543,7 @@ void fill_circle(SDL_Renderer *renderer, int cx, int cy, int radius)
 		// with a center and we need left/right coordinates.
 
 		double dx = floor(sqrt((2.0 * r * dy) - (dy * dy)));
-		int x = cx - dx;
+		int x = static_cast<int>(cx - dx);
 
 		for (; x <= cx + dx; x++)
 		{

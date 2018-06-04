@@ -78,9 +78,16 @@ void Wolf::checkMove() {
 void Wolf::checkAction() {
 	++age;
 	hunger -= 2;
+
+
+	if (hunger < 75) {
+
+
+	}
+
 	Entity* e = parentTile->layer1;
-	if (hunger < 75 && e && e->id == 4) {
-		((Plant*) parentTile->layer1)->health -= 50;
+	if (hunger < 75 && e && e->id == 3) {
+		((Cow*) parentTile->layer1)->health -= 50;
 		hunger = min(100, hunger + 75);
 	}
 }
@@ -107,9 +114,9 @@ void Wolf::checkReproduce() {
 			Tile* s = (*parentTile->map->mapGrid)[parentTile->x + x][parentTile->y + y];
 			//Square must know Entity
 			if (!s->layer2) {
-				Cow* c = new Cow(s);
-				parentTile->map->animals.insert(c);
-				s->layer2 = c;
+				Wolf* w = new Wolf(s);
+				parentTile->map->animals.insert(w);
+				s->layer2 = w;
 			}
 		}
 	}
