@@ -16,6 +16,7 @@ SDL2: `brew install sdl2`
 
 SDL2_Image: `brew install sdl2_image`
 
+SDL2_TTF: `brew install sdl2_ttf`
 
 Importing SDL Libraries in XCode:
 - Open Xcode, and create a new project. Choose C++ as the language.
