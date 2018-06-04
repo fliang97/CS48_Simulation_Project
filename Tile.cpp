@@ -14,12 +14,12 @@ class Map;
 using namespace std;
 
 Tile::Tile(int x, int y, Map* map) {
-		this->x = x;
-		this->y = y;
-		this->map = map;
-		this->layer1 = NULL;
-		this->layer2 = NULL;
-	}
+	this->x = x;
+	this->y = y;
+	this->map = map;
+	this->layer1 = NULL;
+	this->layer2 = NULL;
+}
 /*
 	void Tile::update(vector< vector<Tile*> >* nextIterboard) {
 		//cout << "TileUpdate" << endl;
@@ -27,8 +27,18 @@ Tile::Tile(int x, int y, Map* map) {
 		//if (layer2) layer2->update(nextIterboard);
 	}
 */
-	void Tile::render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r) {
-		//render self
-		if (layer1) layer1->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
-		if (layer2) layer2->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
+void Tile::render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r) {
+	//render self
+	if (layer1) layer1->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
+	if (layer2) layer2->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
+}
+
+
+Entity* Tile::getEntity(int layerNum) {
+	switch (layerNum) {
+	case(1): return this->layer1;
+	case(2): return this->layer2;
 	}
+
+	return nullptr;
+}

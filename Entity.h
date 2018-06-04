@@ -13,6 +13,7 @@ class Tile;
 
 class Entity {
 public:
+
 	Entity(Tile* parentTile);
 
 	//Parameters:
@@ -29,6 +30,8 @@ public:
 	//Precondition: all parameters are defined.
 	//Postcondition: Abstract functionality
 	virtual void render(int x, int y, int w, int h, SDL_Renderer* r);
+
+	Tile* getParentTile();
 
 	Tile* parentTile;
 	int id;

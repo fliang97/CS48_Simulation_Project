@@ -22,6 +22,9 @@ public:
 	int x;
 	int y;
 	Map* map;
+
+	Entity* getEntity(int layerNum);
+
 };
 
 #endif /* TILE_H_DEFINED */

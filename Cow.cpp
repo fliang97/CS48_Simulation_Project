@@ -11,6 +11,7 @@
 //#include "Entity.h"
 #include "Cow.h"
 #include "Plant.h"
+#include "EntityManager.h"
 
 using namespace std;
 
@@ -100,11 +101,7 @@ void Cow::checkReproduce() {
 			&& parentTile->y + y >= 0 && parentTile->y + y < parentTile->map->height) {
 			Tile* s = (*parentTile->map->mapGrid)[parentTile->x + x][parentTile->y + y];
 			//Square must know Entity
-			if (!s->layer2) {
-				Cow* c = new Cow(s);
-				parentTile->map->animals.insert(c);
-				s->layer2 = c;
-			}
+			EntityManager::createEntity(EntityID::cow, s);
 		}
 	}
 }

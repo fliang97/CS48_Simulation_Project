@@ -27,3 +27,7 @@ void Entity::update(vector< vector<Tile*> >* nextIterboard) {
 */
 void Entity::render(int x, int y, int w, int h, SDL_Renderer* r) {
 }
+
+Tile* Entity::getParentTile() {
+	return this->parentTile;
+}

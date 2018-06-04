@@ -14,6 +14,8 @@
 //#include <typeinfo>
 //#include <chrono>
 #include "Game.h"
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 //using namespace std::chrono_literals;
@@ -24,6 +26,8 @@ const int SCREEN_HEIGHT = 800;
 
 
 int main(int argc, char *argv[]) {
+
+	srand((unsigned int)time(NULL)); //Seed the random function that will be used in the rest of the program.
 
 	Game* game = new Game(); //No reason for this to be pointer but idk
 	game->init(SCREEN_WIDTH, SCREEN_HEIGHT);

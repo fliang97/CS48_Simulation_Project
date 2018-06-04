@@ -10,6 +10,8 @@
 #include "Tile.h"
 #include "Entity.h"
 #include "Grass.h"
+#include "EntityManager.h"
+
 using namespace std;
 
 Grass::Grass(Tile* parentTile) : Plant(parentTile) {
@@ -56,11 +58,7 @@ void Grass::checkReproduce() {
 			&& parentTile->y + y >= 0 && parentTile->y + y < static_cast<int>(parentTile->map->height)) {
 			Tile* s = (*parentTile->map->mapGrid)[parentTile->x + x][parentTile->y + y];
 			//Square must know Entity
-			if (!s->layer1) {
-				Grass* g = new Grass(s);
-				parentTile->map->plants.insert(g);
-				s->layer1 = g;
-			}
+			EntityManager::createEntity(EntityID::grass, s);
 		}
 	}
 }

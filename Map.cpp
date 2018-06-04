@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include "Map.h"
 #include "Game.h"
+#include <stdlib.h>
 
 Map::Map(int width, int height){
 	buildMap(width, height);
@@ -31,6 +32,19 @@ void Map::buildMap(int width, int height) {
 	}
 }
 
+
+Tile* Map::getTile(int posX, int posY) {
+	return (*mapGrid)[posX][posY];
+}
+
+Tile* Map::getRandomTile() {
+	int posX = rand() % this->width;
+	int posY = rand() % this->height;
+	return getTile(posX, posY);
+}
+
+
+
 void Map::updateEachTile() {
 		for (Animal* a : animals) {
 			a->checkMove();
@@ -46,9 +60,6 @@ void Map::updateEachTile() {
 		}
 		for (Animal* a : animals) {
 			a->checkDeath();
-		}
-		for (Plant* p : plants) {
-			p->checkDeath();
 		}
 		for (Plant* p : plants) {
 			p->checkDeath();
