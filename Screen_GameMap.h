@@ -99,6 +99,12 @@ public:
 	char textWolves[10];
 	char textTime[10];
 	char textNumber[10];
+
+
+
+	static SDL_Texture *static_img;
+	static void setTextureImg();
+
 };
 
 #endif /* SCREEN_WORLD_H_DEFINED */

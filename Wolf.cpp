@@ -130,7 +130,7 @@ void Wolf::checkDeath() {
 }
 
 void Wolf::checkReproduce() {
-	if (age > 10 && hunger > 90 && rand() % 10 == 0) {
+	if (age > 10 && hunger > 80 && rand() % 10 == 0) {
 		int x = rand() % 3 - 1;
 		int y = rand() % 3 - 1;
 		if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width

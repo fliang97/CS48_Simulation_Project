@@ -44,3 +44,4 @@ void Screen_MainMenu::render() {
 	//cout <<  rect.w << endl;
 	button_start->render();
 }
+

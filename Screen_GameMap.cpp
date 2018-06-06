@@ -22,6 +22,8 @@ using namespace std;
 //#include "ScreenManager.h"
 class ScreenManager;
 
+SDL_Texture* Screen_GameMap::static_img = NULL;
+
 Screen_GameMap::Screen_GameMap(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map) : Screen(eventHandler, r, w, h), map(map), xpos(x), ypos(y), width(w),
 height(h), worldposX(0), worldposY(0) {
 	scaleX = width / map.width;
@@ -131,8 +133,8 @@ void Screen_GameMap::mousePressedDown() {
 }
 
 void Screen_GameMap::mouseDown() {
-	worldposX = min(max(worldInitX - (eventHandler->xMouse - mouseInitX), 0), map.width * scaleX - width);
-	worldposY = min(max(worldInitY - (eventHandler->yMouse - mouseInitY), 0), map.height * scaleY - height);
+	worldposX = min(max(worldInitX - (eventHandler->xMouse - mouseInitX), -20), map.width * scaleX - width + 20);
+	worldposY = min(max(worldInitY - (eventHandler->yMouse - mouseInitY), -20), map.height * scaleY - height + 20);
 
 	for (Component* c : components) {
 		if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
@@ -148,7 +150,7 @@ void Screen_GameMap::update() {
 		coordinate_list=push_back_coord(coordinate_list, 1, static_cast<float>(gameTicks/10), static_cast<float>(Grass::getPopulationCount()));
 		coordinate_list=push_back_coord(coordinate_list, 2, static_cast<float>(gameTicks/10), static_cast<float>(Wolf::getPopulationCount()));
 		params.max_x = static_cast<float>(max(12, gameTicks/10));
-		params.max_y = static_cast<float>(max(120, (int)(map.animals.size() + map.plants.size())));
+		params.max_y = static_cast<float>( max( max(120, (int)(map.animals.size() + map.plants.size())), static_cast<int>(params.max_y)));
 		params.scale_x = params.max_x / 12;
 		params.scale_y = params.max_y / 12;
 	}
@@ -162,11 +164,17 @@ void Screen_GameMap::update() {
 }
 
 
+void Screen_GameMap::setTextureImg() {
+	cout << "map_water_background.jpg" << endl;
+	Screen_GameMap::static_img = IMG_LoadTexture(Game::renderer, "map_water_background.jpg");
+}
+
 void Screen_GameMap::render() {
 	SDL_Rect rect = { xpos, ypos, width, height };
 
-	SDL_SetRenderDrawColor(renderer, 0, 240, 220, 205);
+	SDL_SetRenderDrawColor(renderer, 0, 200, 255, 205);
 	SDL_RenderFillRect(renderer, &rect);
+	//SDL_RenderCopy(renderer, Screen_GameMap::static_img, NULL, &rect);
 
 	for (int i = 0; i < map.width; ++i) {
 		for (int j = 0; j < map.height; ++j) {

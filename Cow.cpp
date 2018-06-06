@@ -104,8 +104,8 @@ void Cow::checkAction() {
 	Entity* e = parentTile->layer1;
 	if (hunger < 75 && e && e->id == 4) {
 		((Plant*) parentTile->layer1)->health -= 50;
-		hunger = min(100, hunger + 50);
-		//health = min(100, health + 2);
+		hunger = min(100, hunger + 75);
+		health = min(100, health + 25);
 	}
 }
 
