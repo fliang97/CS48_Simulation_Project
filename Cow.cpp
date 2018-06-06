@@ -9,6 +9,7 @@
 //#include "Map.h"
 //#include "Tile.h"
 //#include "Entity.h"
+#include "Game.h"
 #include "Cow.h"
 #include "Plant.h"
 #include "EntityManager.h"
@@ -26,6 +27,7 @@ Cow::Cow(Tile* parentTile) : Animal(parentTile) {
 	age = 0;
 	Cow::populationCount++;
 	cout << "Cow population: " << Cow::populationCount << endl;
+	static_img = IMG_LoadTexture(Game::renderer, "cow.png");
 }
 
 Cow::~Cow() {
@@ -125,9 +127,11 @@ void Cow::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
 
 	//SDL_SetRenderDrawColor(r, 100, 50, 0, 255);
-	SDL_SetRenderDrawColor(r, health, max(0, hunger), min(age, 255), 255);
-	SDL_RenderFillRect(r, &rect);
+	//SDL_SetRenderDrawColor(r, health, max(0, hunger), min(age, 255), 255);
+	//SDL_RenderFillRect(r, &rect);
 	//SDL_RenderPresent( renderer);
+	//SDL_Rect rect = { x, y, w, h };
+	SDL_RenderCopy(r, static_img, NULL, &rect);
 }
 
 int Cow::getPopulationCount() {

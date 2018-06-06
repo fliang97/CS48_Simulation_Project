@@ -242,7 +242,7 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 			}
 		}
 
-		SDL_RenderPresent(plot->renderer);
+		//SDL_RenderPresent(plot->renderer);
 
 }
 
