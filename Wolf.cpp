@@ -27,7 +27,7 @@ Wolf::Wolf(Tile* parentTile) : Animal(parentTile) {
 	age = 0;
 	Wolf::populationCount++;
 	static_img = IMG_LoadTexture(Game::renderer, "wolf.png");
-	static_img_sick = IMG_LoadTexture(Game::renderer, "wolf.png");
+	static_img_sick = IMG_LoadTexture(Game::renderer, "wolf_sick.png");
 }
 
 Wolf::~Wolf() {
@@ -69,13 +69,18 @@ void Wolf::checkMove() {
 	//Unordered_set of reached.
 	//
 	//pair<int, int> next
-	int x = rand() % 3 - 1;
-	int y = rand() % 3 - 1;
 
-	if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width
-		&& parentTile->y + y >= 0 && parentTile->y + y < parentTile->map->height) {
+
+	int changeX = rand() % 3 - 1;
+	int changeY = rand() % 3 - 1;
+
+	int newX = parentTile->getPosX() + changeX;
+	int newY = parentTile->getPosY() + changeY;
+
+	if (parentTile->map->getTile(newX, newY)) {
 		vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
-		Tile* s = (*grid)[parentTile->x + x][parentTile->y + y];//getting tentative location in iter
+		Tile* s = (*grid)[newX][newY];//getting tentative location in iter
+
 		//Square must know Entity
 		if (!s->layer2) {
 			s->layer2 = this; //setting iterboard tile entity to this
@@ -100,7 +105,7 @@ void Wolf::checkMove() {
 
 void Wolf::checkAction() {
 	++age;
-	hunger -= 2;
+	hunger -= 5;
 
 
 	if (hunger < 75) {
@@ -109,6 +114,7 @@ void Wolf::checkAction() {
 		if (prey) {
 			prey->modifyHealth(-50);
 			hunger = min(100, hunger + 75);
+			health = min(100, health + 25);
 		}
 	}
 }
@@ -116,6 +122,7 @@ void Wolf::checkAction() {
 void Wolf::checkDeath() {
 	if (hunger <= 0) {
 		health += hunger;
+		//health -= 5;
 	}
 	if (health <= 0 || age > 300) {
 		parentTile->layer2 = NULL;
@@ -127,7 +134,7 @@ void Wolf::checkDeath() {
 }
 
 void Wolf::checkReproduce() {
-	if (age > 10 && hunger > 90 && rand() % 12 == 0) {
+	if (age > 10 && hunger > 90 && rand() % 10 == 0) {
 		int x = rand() % 3 - 1;
 		int y = rand() % 3 - 1;
 		if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width
@@ -154,7 +161,7 @@ void Wolf::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_RenderPresent( renderer);
 
 
-	if (health < 25 || age > ageMax - 25) {
+	if (health < 75 || age > ageMax - 25) {
 		SDL_RenderCopy(r, static_img_sick, NULL, &rect);
 	}
 	else {

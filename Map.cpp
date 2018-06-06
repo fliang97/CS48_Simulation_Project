@@ -37,7 +37,7 @@ void Map::buildMap(int width, int height) {
 Tile* Map::getTile(int posX, int posY) {
 
 	//return a tile after checking that request in bounds.
-	if ((posX > 0) && (posX < this->width) && (posY > 0) && (posY < this->height)) {
+	if ((posX >= 0) && (posX < this->width) && (posY >= 0) && (posY < this->height)) {
 		return (*mapGrid)[posX][posY];
 	}
 	else {
@@ -131,7 +131,7 @@ void Map::updateEntities() {
 		EntityManager::createEntity(EntityID::grass, tmpTile);
 	}
 
-	if (Wolf::getPopulationCount() < 3) {
+	if (Wolf::getPopulationCount() < 2) {
 		Tile* tmpTile = this->getRandomTile();
 		EntityManager::createEntity(EntityID::wolf, tmpTile);
 	}

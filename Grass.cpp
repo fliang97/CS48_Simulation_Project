@@ -62,14 +62,29 @@ void Grass::checkDeath() {
 
 void Grass::checkReproduce() {
 	if (rand() % 10 == 0) {
-		int x = rand() % 3 - 1;
-		int y = rand() % 3 - 1;
-		if (parentTile->x + x >= 0 && parentTile->x + x < static_cast<int>(parentTile->map->width)
-			&& parentTile->y + y >= 0 && parentTile->y + y < static_cast<int>(parentTile->map->height)) {
-			Tile* s = (*parentTile->map->mapGrid)[parentTile->x + x][parentTile->y + y];
+
+		//bounds not correct for this new version?  Doesn't grow on edge..
+
+		int changeX = rand() % 3 - 1;
+		int changeY = rand() % 3 - 1;
+
+		int newX = parentTile->getPosX() + changeX;
+		int newY = parentTile->getPosY() + changeY;
+
+		if (parentTile->map->getTile(newX, newY)) {
+			Tile* s = (*parentTile->map->mapGrid)[newX][newY];//getting tentative location in iter
 			//Square must know Entity
 			EntityManager::createEntity(EntityID::grass, s);
 		}
+
+		//int x = rand() % 3 - 1;
+		//int y = rand() % 3 - 1;
+		//if (parentTile->x + x >= 0 && parentTile->x + x < static_cast<int>(parentTile->map->width)
+		//	&& parentTile->y + y >= 0 && parentTile->y + y < static_cast<int>(parentTile->map->height)) {
+		//	Tile* s = (*parentTile->map->mapGrid)[parentTile->x + x][parentTile->y + y];
+		//	//Square must know Entity
+		//	EntityManager::createEntity(EntityID::grass, s);
+		//}
 	}
 }
 
