@@ -32,7 +32,7 @@ public:
 	//Return Values:
   //Precondition:
   //Postcondition:
-	//void mousePressedUp() override;
+	void mousePressedUp() override;
 
 	//Parameters:
 	//Return Values:

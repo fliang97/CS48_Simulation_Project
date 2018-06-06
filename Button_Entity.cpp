@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Button.h"
 #include "Entity.h"
+#include "Button_Entity.h"
 
 
 using namespace std;
@@ -19,5 +20,9 @@ Button_Entity::Button_Entity(int x, int y, int w, int h, SDL_Renderer* r, int id
 }
 
 void Button_Entity::clicked() {
-
+	if(EventHandler::mouseID == EntityID) {
+		EventHandler::mouseID = -1;
+	} else {
+		EventHandler::mouseID = EntityID;
+	}
 }

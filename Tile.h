@@ -26,9 +26,12 @@ public:
 
 
 	Entity* getEntityFromLayer(int layerNum);
-	
+
 	Entity* getEntityOfType(int entityType, int layerNum);
-	
+
+	bool isOver(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, int mousex, int mousey);
+	void clicked();
+
 	int getPosX();
 	int getPosY();
 

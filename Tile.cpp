@@ -40,6 +40,24 @@ void Tile::render(int screenX, int screenY, int worldX, int worldY, int scaleX, 
 }
 
 
+bool Tile::isOver(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, int mousex, int mousey) {
+	//render self
+	//SDL_Rect rect = { (screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY };
+	int xpos = (screenX - worldX) + x * scaleX;
+	int ypos = (screenY - worldY) + y * scaleY;
+	bool over = (mousex >= xpos && mousex < (xpos + scaleX) && mousey >= ypos && mousey < (ypos + scaleY));
+	return over;
+}
+
+void Tile::clicked() {
+	int mid = EventHandler::mouseID;
+	if (mid != -1) {
+		//weird, fix
+		EntityManager::createEntity(static_cast<EntityID>(mid), this);
+	}
+}
+
+
 Entity* Tile::getEntityFromLayer(int layerNum) {
 	switch (layerNum) {
 	case(1): return this->layer1;

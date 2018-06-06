@@ -7,6 +7,7 @@ public:
 	int xMouse;
 	int yMouse;
 	bool mouseLeftDown;
+	static int mouseID;
 
 	// TO DO:
 	// Fully implement getters and setters in other classes.  Some classes still access this data directly.

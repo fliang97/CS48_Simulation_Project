@@ -122,8 +122,20 @@ height(h), worldposX(0), worldposY(0) {
 
 }
 
-//void Screen_GameMap::mousePressedUp() {
-//}
+void Screen_GameMap::mousePressedUp() {
+	for (int i = 0; i < map.width; ++i) {
+		for (int j = 0; j < map.height; ++j) {
+
+			//TO ADD: render only elements on display
+			if ((i+1)*scaleX - worldposX >= 0 && (j+1)*scaleY - worldposY >= 0 && j*scaleY - worldposY <=  height && i*scaleX - worldposX <=  width) {
+				Tile* t = (*map.mapGrid)[i][j];
+				if (t->isOver(xpos, ypos, worldposX, worldposY, scaleX, scaleY, eventHandler->xMouse, eventHandler->yMouse))
+					t->clicked();
+			}
+
+		}
+	}
+}
 
 void Screen_GameMap::mousePressedDown() {
 	mouseInitX = eventHandler->xMouse;
