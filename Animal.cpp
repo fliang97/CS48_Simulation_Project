@@ -9,6 +9,7 @@ int Animal::populationCount;
 
 Animal::Animal(Tile* parentTile): Entity(parentTile) {
 	id = 1;
+	ageMax = 300;
 	Animal::populationCount++;
 	cout << "Animal population: " << Animal::populationCount << endl;
 }

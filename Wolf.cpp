@@ -12,6 +12,7 @@
 #include "Cow.h"
 #include "Wolf.h"
 #include "EntityManager.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -25,6 +26,8 @@ Wolf::Wolf(Tile* parentTile) : Animal(parentTile) {
 	hunger = 100;
 	age = 0;
 	Wolf::populationCount++;
+	static_img = IMG_LoadTexture(Game::renderer, "wolf.png");
+	static_img_sick = IMG_LoadTexture(Game::renderer, "wolf.png");
 }
 
 Wolf::~Wolf() {
@@ -146,15 +149,25 @@ void Wolf::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_FillRect(screenSurface, &rect, SDL_MapRGB(screenSurface->format, 0x00, 0xFF, 0x00));
 
 	//SDL_SetRenderDrawColor(r, 100, 50, 0, 255);
-	SDL_SetRenderDrawColor(r, max(0, hunger), health, min(age, 255), 255);
-	SDL_RenderFillRect(r, &rect);
+	//SDL_SetRenderDrawColor(r, max(0, hunger), health, min(age, 255), 255);
+	//SDL_RenderFillRect(r, &rect);
 	//SDL_RenderPresent( renderer);
+
+
+	if (health < 25 || age > ageMax - 25) {
+		SDL_RenderCopy(r, static_img_sick, NULL, &rect);
+	}
+	else {
+		SDL_RenderCopy(r, static_img, NULL, &rect);
+	}
 }
 
 int Wolf::getPopulationCount() {
 	return Wolf::populationCount;
 }
 
+
+//This function not currently used?
 void Wolf::modifyHealth(int healthChange) {
 	health += healthChange;
 	return;

@@ -42,6 +42,8 @@ public:
 	void checkDeath() override;
 	void checkReproduce() override;
 	static int getPopulationCount();
+	void modifyHealth(int healthChange);
+
 private:
 	static int populationCount;
 

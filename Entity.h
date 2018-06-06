@@ -36,6 +36,7 @@ public:
 	Tile* parentTile;
 	int id;
 	SDL_Texture *static_img;
+	SDL_Texture *static_img_sick;
 	int health;
 
 	static int getPopulationCount();

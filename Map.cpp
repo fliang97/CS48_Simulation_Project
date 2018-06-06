@@ -70,10 +70,7 @@ Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* cen
 
 	int centerX = centerTile->getPosX();
 	int centerY = centerTile->getPosY();
-
 	Entity* tmpEntity = nullptr;
-	
-	int curRadius = 0;
 
 	// Check central tile
 	tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, centerTile);
@@ -82,12 +79,11 @@ Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* cen
 
 	// Loop through checking progressively larger squares
 	int minX, maxX, minY, maxY;
-	curRadius = 1;
-	while (curRadius <= maxRadius) {
-		minX = centerX - curRadius;
-		maxX = centerX + curRadius;
-		minY = centerY - curRadius;
-		maxY = centerY + curRadius;
+	for (int currentRadius = 1; currentRadius <= maxRadius; currentRadius++) {
+		minX = centerX - currentRadius;
+		maxX = centerX + currentRadius;
+		minY = centerY - currentRadius;
+		maxY = centerY + currentRadius;
 
 		// Search top row
 		for (int posX = minX; posX <= maxX; posX++) {
@@ -116,8 +112,6 @@ Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* cen
 			if (tmpEntity)
 				return tmpEntity;
 		}
-
-		curRadius++;
 	}
 
 	return nullptr;

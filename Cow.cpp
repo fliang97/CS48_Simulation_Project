@@ -28,6 +28,7 @@ Cow::Cow(Tile* parentTile) : Animal(parentTile) {
 	Cow::populationCount++;
 	cout << "Cow population: " << Cow::populationCount << endl;
 	static_img = IMG_LoadTexture(Game::renderer, "cow.png");
+	static_img_sick = IMG_LoadTexture(Game::renderer, "cow_sick.png");
 }
 
 Cow::~Cow() {
@@ -95,7 +96,7 @@ void Cow::checkDeath() {
 	if (hunger <= 0) {
 		health += hunger;
 	}
-	if (health <= 0 || age > 300) {
+	if (health <= 0 || age > ageMax) {
 		parentTile->layer2 = NULL;
 		cout << "TestDestroy: " << health << " " << age << endl;
 		parentTile->map->toDestroyAnimals.insert(this);
@@ -131,9 +132,25 @@ void Cow::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_RenderFillRect(r, &rect);
 	//SDL_RenderPresent( renderer);
 	//SDL_Rect rect = { x, y, w, h };
-	SDL_RenderCopy(r, static_img, NULL, &rect);
+
+	if (health < 25 || age > ageMax - 25) {
+		SDL_RenderCopy(r, static_img_sick, NULL, &rect);
+	}
+	else {
+		SDL_RenderCopy(r, static_img, NULL, &rect);
+	}
+	
+
+
+
 }
 
 int Cow::getPopulationCount() {
 	return Cow::populationCount;
+}
+
+
+void Cow::modifyHealth(int healthChange) {
+	health += healthChange;
+	return;
 }

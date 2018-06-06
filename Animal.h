@@ -25,6 +25,7 @@ public:
 	int health;
 	int hunger;
 	int age;
+	int ageMax;
 
 	static int getPopulationCount();
 private:
