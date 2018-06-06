@@ -17,8 +17,8 @@ Button_ZoomIn::Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r, int & 
 }
 
 void Button_ZoomIn::clicked() {
-	scx *= 1.2;
-	scy *= 1.2;
+	scx = static_cast<int>(scx*1.2);
+	scy = static_cast<int>(scy*1.2);
 }
 
 //void Button_ZoomIn::render() {

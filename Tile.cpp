@@ -9,6 +9,7 @@
 #include "Game.h"
 #include "Entity.h"
 #include "Tile.h"
+#include "EntityManager.h"
 
 
 class Map;
@@ -59,7 +60,7 @@ Entity* Tile::getEntityOfType(int entityType, int layerNum) {
 					break;
 				}
 
-				if (tmpEntity && entityType == tmpEntity->getID)
+				if (tmpEntity && entityType == tmpEntity->getID())
 					return tmpEntity;
 
 	return nullptr;
