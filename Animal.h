@@ -27,9 +27,8 @@ public:
 	int age;
 
 	static int getPopulationCount();
-	static int populationCount;
 private:
-
+	static int populationCount;
 };
 
 
