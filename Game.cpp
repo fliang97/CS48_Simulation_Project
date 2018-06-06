@@ -12,6 +12,8 @@
 #include "Wolf.h"
 #include "ScreenManager.h"
 #include "EventHandler.h"
+#include "Screen_GameMap.h"
+#include "Screen_Game.h"
 
 using namespace std;
 
@@ -47,6 +49,8 @@ void Game::init(int SCREEN_WIDTH, int SCREEN_HEIGHT){
 		Wolf::setTextureImg();
 		Wolf::setTextureImgSick();
 		Grass::setTextureImg();
+		Screen_GameMap::setTextureImg();
+		Screen_Game::setTextureImg();
 }
 
 void Game::close(){

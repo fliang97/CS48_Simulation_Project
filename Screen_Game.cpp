@@ -74,15 +74,15 @@ void Screen_Game::render() {
 	screen_world->render();
 	
 	SDL_Rect rect1 = { 0, 0, screen_world->xpos, height };
-	SDL_SetRenderDrawColor(renderer, 61, 40, 1, 255);
-	SDL_RenderFillRect(renderer, &rect1);
-	//SDL_RenderCopy(Game::renderer, static_img, NULL, &rect1);
+	//SDL_SetRenderDrawColor(renderer, 61, 40, 1, 255);
+	//SDL_RenderFillRect(renderer, &rect1);
+	SDL_RenderCopy(Game::renderer, static_img, NULL, &rect1);
 
 
 	SDL_Rect rect2 = { screen_world->xpos, screen_world->height, screen_world->width, height - screen_world->height };
-	SDL_SetRenderDrawColor(renderer, 61, 40, 1, 255);
-	SDL_RenderFillRect(renderer, &rect2);
-	//SDL_RenderCopy(Game::renderer, static_img, NULL, &rect2);
+	//SDL_SetRenderDrawColor(renderer, 61, 40, 1, 255);
+	//SDL_RenderFillRect(renderer, &rect2);
+	SDL_RenderCopy(Game::renderer, static_img, NULL, &rect2);
 
 	speedup->render();
 	speeddown->render();

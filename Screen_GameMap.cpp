@@ -172,9 +172,9 @@ void Screen_GameMap::setTextureImg() {
 void Screen_GameMap::render() {
 	SDL_Rect rect = { xpos, ypos, width, height };
 
-	SDL_SetRenderDrawColor(renderer, 0, 200, 255, 205);
-	SDL_RenderFillRect(renderer, &rect);
-	//SDL_RenderCopy(renderer, Screen_GameMap::static_img, NULL, &rect);
+	//SDL_SetRenderDrawColor(renderer, 0, 200, 255, 205);
+	//SDL_RenderFillRect(renderer, &rect);
+	SDL_RenderCopy(renderer, Screen_GameMap::static_img, NULL, &rect);
 
 	for (int i = 0; i < map.width; ++i) {
 		for (int j = 0; j < map.height; ++j) {
