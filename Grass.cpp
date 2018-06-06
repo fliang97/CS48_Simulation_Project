@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstdlib>
 
+#include "Game.h"
 #include "Map.h"
 #include "Tile.h"
 #include "Entity.h"
@@ -21,6 +22,7 @@ Grass::Grass(Tile* parentTile) : Plant(parentTile) {
 	health = 10;
 	Grass::populationCount++;
 	cout << "Grass population: " << Grass::populationCount << endl;
+	static_img = IMG_LoadTexture(Game::renderer, "grass_1.jpg");
 }
 
 Grass::~Grass() {
@@ -72,9 +74,12 @@ void Grass::checkReproduce() {
 }
 
 void Grass::render(int x, int y, int w, int h, SDL_Renderer* r) {
+	//SDL_Rect rect = { x, y, w, h };
+	//SDL_SetRenderDrawColor(r, 0, 255, 0, 255);
+	//SDL_RenderFillRect(r, &rect);
+
 	SDL_Rect rect = { x, y, w, h };
-	SDL_SetRenderDrawColor(r, 0, 255, 0, 255);
-	SDL_RenderFillRect(r, &rect);
+	SDL_RenderCopy(Game::renderer, static_img, NULL, &rect);
 
 }
 

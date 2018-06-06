@@ -22,6 +22,8 @@ public:
 	int x;
 	int y;
 	Map* map;
+	SDL_Texture *static_img;
+
 
 	Entity* getEntity(int layerNum);
 

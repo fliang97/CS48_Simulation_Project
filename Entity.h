@@ -35,10 +35,12 @@ public:
 	Tile* getParentTile();
 	Tile* parentTile;
 	int id;
+	SDL_Texture *static_img;
 
 	static int getPopulationCount();
 private:
 	static int populationCount;
+
 
 };
 

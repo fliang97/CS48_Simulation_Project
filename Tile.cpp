@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstdlib>
 
+#include "Game.h"
 #include "Entity.h"
 #include "Tile.h"
 
@@ -19,6 +20,7 @@ Tile::Tile(int x, int y, Map* map) {
 	this->map = map;
 	this->layer1 = NULL;
 	this->layer2 = NULL;
+	static_img = IMG_LoadTexture(Game::renderer, "grass_3.jpg");
 }
 /*
 	void Tile::update(vector< vector<Tile*> >* nextIterboard) {
@@ -29,6 +31,9 @@ Tile::Tile(int x, int y, Map* map) {
 */
 void Tile::render(int screenX, int screenY, int worldX, int worldY, int scaleX, int scaleY, SDL_Renderer* r) {
 	//render self
+	SDL_Rect rect = { (screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY };
+	SDL_RenderCopy(r, static_img, NULL, &rect);
+
 	if (layer1) layer1->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
 	if (layer2) layer2->render((screenX - worldX) + x * scaleX, (screenY - worldY) + y * scaleY, scaleX, scaleY, r);
 }
