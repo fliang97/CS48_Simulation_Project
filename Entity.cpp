@@ -42,3 +42,7 @@ Tile* Entity::getParentTile() {
 int Entity::getPopulationCount() {
 	return Entity::populationCount;
 }
+
+int Entity::getID() {
+	return id;
+}

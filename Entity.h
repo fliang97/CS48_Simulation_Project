@@ -38,6 +38,9 @@ public:
 	SDL_Texture *static_img;
 
 	static int getPopulationCount();
+	int getID();
+
+
 private:
 	static int populationCount;
 

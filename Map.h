@@ -23,6 +23,8 @@ public:
 	void buildMap(int width, int height);
 	Tile *getTile(int posX, int posY);
 	Tile* getRandomTile();
+	Entity* getEntityOfTypeFromTile(int entityType, int layerNum, Tile* tile);
+	Entity* getClosestEntityInRange(int entityType, int getLayerToCheck, Tile* centerTile, int radius);
 
 	vector< vector<Tile*> >* mapGrid;
 	//vector< vector<Tile*> >* bufferboard;

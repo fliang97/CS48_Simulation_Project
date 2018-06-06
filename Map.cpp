@@ -35,7 +35,14 @@ void Map::buildMap(int width, int height) {
 
 
 Tile* Map::getTile(int posX, int posY) {
-	return (*mapGrid)[posX][posY];
+
+	//return a tile after checking that request in bounds.
+	if ((posX > 0) && (posX < this->width) && (posY > 0) && (posY < this->height)) {
+		return (*mapGrid)[posX][posY];
+	}
+	else {
+		return nullptr;
+	}
 }
 
 Tile* Map::getRandomTile() {
@@ -44,6 +51,75 @@ Tile* Map::getRandomTile() {
 	return getTile(posX, posY);
 }
 
+Entity* Map::getEntityOfTypeFromTile(int entityType, int layerNum, Tile* tile) {
+
+	if (tile) {
+		Entity* tmpEntity = tile->getEntityOfType(entityType, layerNum);
+		if (tmpEntity)
+			return tmpEntity;
+	}
+
+	return nullptr;
+}
+
+
+// Consider writing another function function that returns a vector of all entities in range.
+Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* centerTile, int radius) {
+
+	int centerX = centerTile->getPosX;
+	int centerY = centerTile->getPosY;
+	int minX = centerX - radius;
+	int maxX = centerX + radius;
+	int minY = centerY - radius;
+	int maxY = centerY + radius;
+
+	Entity* tmpEntity = nullptr;
+
+	// Base case
+	if (radius == 0) {
+		tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, centerTile);
+		if (tmpEntity)
+			return tmpEntity;
+	}
+
+
+	// Search one bigger
+
+
+	// Return 
+
+
+
+	// Search top row
+	for (int posX = minX; posX <= maxX; posX++) {
+		tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(posX, maxY));
+		if (tmpEntity)
+			return tmpEntity;
+	}
+
+	// Search bottom row
+	for (int posX = minX; posX <= maxX; posX++) {
+		tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(posX, minY));
+		if (tmpEntity)
+			return tmpEntity;
+	}
+
+	// Search left column
+	for (int posY = minY + 1; posY <= maxY - 1; posY++) {  // + and - 1 to skip searching corners twice.
+		tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(minX, posY));
+		if (tmpEntity)
+			return tmpEntity;
+	}
+
+	// Search right column
+	for (int posY = minY + 1; posY <= maxY - 1; posY++) {  // + and - 1 to skip searching corners twice.
+		tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(maxX, posY));
+		if (tmpEntity)
+			return tmpEntity;
+	}
+
+	return nullptr;
+}
 
 
 void Map::updateEntities() {

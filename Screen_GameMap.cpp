@@ -178,6 +178,6 @@ void Screen_GameMap::render() {
 	button_zoomOut->render();
 	button_plot->render();
 	if (showplot) {
-			draw_plot(&plot, &params, &surface_list);
+			//draw_plot(&plot, &params, &surface_list);
 	}
 }

@@ -39,11 +39,37 @@ void Tile::render(int screenX, int screenY, int worldX, int worldY, int scaleX, 
 }
 
 
-Entity* Tile::getEntity(int layerNum) {
+Entity* Tile::getEntityFromLayer(int layerNum) {
 	switch (layerNum) {
 	case(1): return this->layer1;
 	case(2): return this->layer2;
 	}
 
 	return nullptr;
+}
+
+Entity* Tile::getEntityOfType(int entityType, int layerNum) {
+
+				Entity* tmpEntity = nullptr;
+
+				switch (layerNum) {
+				case 1: tmpEntity = this->getEntityFromLayer(1);
+					break;
+				case 2: tmpEntity = this->getEntityFromLayer(2);
+					break;
+				}
+
+				if (tmpEntity && entityType == tmpEntity->getID)
+					return tmpEntity;
+
+	return nullptr;
+}
+
+
+int Tile::getPosX() {
+	return this->x;
+}
+
+int Tile::getPosY() {
+	return this->y;
 }

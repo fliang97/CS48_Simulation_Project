@@ -25,7 +25,13 @@ public:
 	SDL_Texture *static_img;
 
 
-	Entity* getEntity(int layerNum);
+	Entity* getEntityFromLayer(int layerNum);
+	
+	Entity* getEntityOfType(int entityType, int layerNum);
+	
+	int getPosX();
+	int getPosY();
+
 
 };
 
