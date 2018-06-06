@@ -66,8 +66,8 @@ Entity* Map::getEntityOfTypeFromTile(int entityType, int layerNum, Tile* tile) {
 // Consider writing another function function that returns a vector of all entities in range.
 Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* centerTile, int radius) {
 
-	int centerX = centerTile->getPosX;
-	int centerY = centerTile->getPosY;
+	int centerX = centerTile->getPosX();
+	int centerY = centerTile->getPosY();
 	int minX = centerX - radius;
 	int maxX = centerX + radius;
 	int minY = centerY - radius;
@@ -75,12 +75,14 @@ Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* cen
 
 	Entity* tmpEntity = nullptr;
 
-	// Base case
+	// Base cases
 	if (radius == 0) {
 		tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, centerTile);
 		if (tmpEntity)
 			return tmpEntity;
 	}
+
+	if (radius )
 
 
 	// Search one bigger
