@@ -25,7 +25,7 @@ public:
 
 private:
 	Button_Start * button_start;
-
+	SDL_Texture* static_img_main_menu_background;
 };
 
 

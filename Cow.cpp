@@ -80,13 +80,15 @@ void Cow::setTextureImgSick() {
 }
 
 void Cow::checkMove() {
-	int x = rand() % 3 - 1;
-	int y = rand() % 3 - 1;
+	int changeX = rand() % 3 - 1;
+	int changeY = rand() % 3 - 1;
 
-	if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width
-		&& parentTile->y + y >= 0 && parentTile->y + y < parentTile->map->height) {
+	int newX = parentTile->getPosX() + changeX;
+	int newY = parentTile->getPosY() + changeY;
+
+	if (parentTile->map->getTile(newX,newY)) {
 		vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
-		Tile* s = (*grid)[parentTile->x + x][parentTile->y + y];//getting tentative location in iter
+		Tile* s = (*grid)[newX][newY];//getting tentative location in iter
 		//Square must know Entity
 		if (!s->layer2) {
 			s->layer2 = this; //setting iterboard tile entity to this
@@ -98,12 +100,12 @@ void Cow::checkMove() {
 
 void Cow::checkAction() {
 	++age;
-	hunger -= 2;
+	hunger -= 9;
 	Entity* e = parentTile->layer1;
 	if (hunger < 75 && e && e->id == 4) {
 		((Plant*) parentTile->layer1)->health -= 50;
 		hunger = min(100, hunger + 50);
-		health = min(100, health + 2);
+		//health = min(100, health + 2);
 	}
 }
 
@@ -121,12 +123,16 @@ void Cow::checkDeath() {
 }
 
 void Cow::checkReproduce() {
-	if (age > 10 && hunger > 90 && rand() % 12 == 0) {
-		int x = rand() % 3 - 1;
-		int y = rand() % 3 - 1;
-		if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width
-			&& parentTile->y + y >= 0 && parentTile->y + y < parentTile->map->height) {
-			Tile* s = (*parentTile->map->mapGrid)[parentTile->x + x][parentTile->y + y];
+	if (age > 10 && hunger > 90 && rand() % 7 == 0) {
+		int changeX = rand() % 3 - 1;
+		int changeY = rand() % 3 - 1;
+
+		int newX = parentTile->getPosX() + changeX;
+		int newY = parentTile->getPosY() + changeY;
+
+		if (parentTile->map->getTile(newX, newY)) {
+			vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
+			Tile* s = (*grid)[newX][newY];
 			//Square must know Entity
 			EntityManager::createEntity(EntityID::cow, s);
 		}
@@ -148,7 +154,7 @@ void Cow::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_RenderPresent( renderer);
 	//SDL_Rect rect = { x, y, w, h };
 
-	if (health <= 25 || age > ageMax - 25) {
+	if (health <= 95 || age > ageMax - 25) {
 		SDL_RenderCopy(r, Cow::static_img_sick, NULL, &rect);
 	}
 	else {

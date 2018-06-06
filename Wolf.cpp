@@ -69,13 +69,15 @@ void Wolf::checkMove() {
 	//Unordered_set of reached.
 	//
 	//pair<int, int> next
-	int x = rand() % 3 - 1;
-	int y = rand() % 3 - 1;
+	int changeX = rand() % 3 - 1;
+	int changeY = rand() % 3 - 1;
 
-	if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width
-		&& parentTile->y + y >= 0 && parentTile->y + y < parentTile->map->height) {
+	int newX = parentTile->getPosX() + changeX;
+	int newY = parentTile->getPosY() + changeY;
+
+	if (parentTile->map->getTile(newX, newY)) {
 		vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
-		Tile* s = (*grid)[parentTile->x + x][parentTile->y + y];//getting tentative location in iter
+		Tile* s = (*grid)[newX][newY];//getting tentative location in iter
 		//Square must know Entity
 		if (!s->layer2) {
 			s->layer2 = this; //setting iterboard tile entity to this
@@ -100,7 +102,7 @@ void Wolf::checkMove() {
 
 void Wolf::checkAction() {
 	++age;
-	hunger -= 2;
+	hunger -= 5;
 
 
 	if (hunger < 80) {
@@ -128,7 +130,7 @@ void Wolf::checkDeath() {
 }
 
 void Wolf::checkReproduce() {
-	if (age > 10 && hunger > 90 && rand() % 12 == 0) {
+	if (age > 10 && hunger > 90 && rand() % 10 == 0) {
 		int x = rand() % 3 - 1;
 		int y = rand() % 3 - 1;
 		if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width
@@ -155,7 +157,7 @@ void Wolf::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_RenderPresent( renderer);
 
 
-	if (health < 25 || age > ageMax - 25) {
+	if (health < 75 || age > ageMax - 25) {
 		SDL_RenderCopy(r, static_img_sick, NULL, &rect);
 	}
 	else {
@@ -182,5 +184,5 @@ void Wolf::setTextureImg() {
 
 void Wolf::setTextureImgSick() {
 		cout << "wolf_sick" << endl;
-		Wolf::static_img_sick = IMG_LoadTexture(Game::renderer, "wolf.png");
+		Wolf::static_img_sick = IMG_LoadTexture(Game::renderer, "wolf_sick.png");
 }
