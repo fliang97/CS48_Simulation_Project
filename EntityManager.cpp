@@ -33,5 +33,3 @@ Entity* EntityManager::createEntity(EntityID id, Tile* parentTile) {
 
 	return nullptr;
 }
-
-

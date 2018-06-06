@@ -373,7 +373,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		SDL_RenderDrawLine(renderer,init_pos_x,init_pos_y,init_pos_x,init_pos_y-GRADUATION_HEIGTH);
 
 		char text[10];
-		sprintf_s(text,"%d",current_scale);
+		sprintf(text,"%d",current_scale);
 
 		SDL_Surface *caption_text_surface = TTF_RenderText_Blended(font, text, font_color);
 		SDL_Rect caption_text;
@@ -401,7 +401,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		SDL_RenderDrawLine(renderer,init_pos_x,init_pos_y,init_pos_x+GRADUATION_HEIGTH,init_pos_y);
 
 		char text[10];
-		sprintf_s(text,"%d",current_scale);
+		sprintf(text,"%d",current_scale);
 
 		SDL_Surface *caption_text_surface = TTF_RenderText_Blended(font, text, font_color);
 		SDL_Rect caption_text;
