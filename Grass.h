@@ -36,6 +36,8 @@ public:
 	void checkDeath() override;
 
 	static int getPopulationCount();
+	static void setTextureImg();
+	static SDL_Texture *static_img;
 private:
 	static int populationCount;
 };

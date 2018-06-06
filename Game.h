@@ -58,11 +58,13 @@ public:
 	//Postcondition: Calls ScreenManager's render function
 	void render();
 
+
 	// TO DO: Move some of these to private
 	static SDL_Renderer* renderer;
 	static EventHandler* eventHandler;
 	static ScreenManager* screenManager;
 	static SDL_Event event; //make this a pointer?
+
 
 	//const static int COUNTER = 30; //60 fps / COUNTER = gamefps.
 

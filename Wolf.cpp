@@ -19,6 +19,8 @@ using namespace std;
 int Wolf::populationCount = 0;
 
 //PUBLIC FUNCTIONS
+SDL_Texture* Wolf::static_img = NULL;
+SDL_Texture* Wolf::static_img_sick = NULL;
 
 Wolf::Wolf(Tile* parentTile) : Animal(parentTile) {
 	id = 5;
@@ -26,8 +28,6 @@ Wolf::Wolf(Tile* parentTile) : Animal(parentTile) {
 	hunger = 100;
 	age = 0;
 	Wolf::populationCount++;
-	static_img = IMG_LoadTexture(Game::renderer, "wolf.png");
-	static_img_sick = IMG_LoadTexture(Game::renderer, "wolf.png");
 }
 
 Wolf::~Wolf() {
@@ -103,12 +103,13 @@ void Wolf::checkAction() {
 	hunger -= 2;
 
 
-	if (hunger < 75) {
+	if (hunger < 80) {
 		Entity* prey = parentTile->map->getClosestEntityInRange(EntityID::cow, 2, parentTile, 1);
 
 		if (prey) {
-			prey->modifyHealth(-50);
-			hunger = min(100, hunger + 75);
+			prey->modifyHealth(-25);
+			hunger = min(100, hunger + 20);
+			health = min(100, health + 2);
 		}
 	}
 }
@@ -171,4 +172,15 @@ int Wolf::getPopulationCount() {
 void Wolf::modifyHealth(int healthChange) {
 	health += healthChange;
 	return;
+}
+
+
+void Wolf::setTextureImg() {
+		cout << "wolf.png" << endl;
+		Wolf::static_img = IMG_LoadTexture(Game::renderer, "wolf.png");
+}
+
+void Wolf::setTextureImgSick() {
+		cout << "wolf_sick" << endl;
+		Wolf::static_img_sick = IMG_LoadTexture(Game::renderer, "wolf.png");
 }

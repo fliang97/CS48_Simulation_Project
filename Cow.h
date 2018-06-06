@@ -44,6 +44,12 @@ public:
 	static int getPopulationCount();
 	void modifyHealth(int healthChange);
 
+	static void setTextureImg();
+	static void setTextureImgSick();
+
+	static SDL_Texture *static_img;
+	static SDL_Texture *static_img_sick;
+
 private:
 	static int populationCount;
 

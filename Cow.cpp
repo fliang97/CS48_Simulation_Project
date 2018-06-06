@@ -2,9 +2,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-//#include <iostream>
+#include <iostream>
+#include <string>
 //#include <vector>
-//#include <cstdlib>
+#include <cstdlib>
 
 //#include "Map.h"
 //#include "Tile.h"
@@ -20,6 +21,10 @@ int Cow::populationCount = 0;
 
 //PUBLIC FUNCTIONS
 
+
+SDL_Texture* Cow::static_img = NULL;
+SDL_Texture* Cow::static_img_sick = NULL;
+
 Cow::Cow(Tile* parentTile) : Animal(parentTile) {
 	id = 3;
 	health = 100;
@@ -27,8 +32,6 @@ Cow::Cow(Tile* parentTile) : Animal(parentTile) {
 	age = 0;
 	Cow::populationCount++;
 	cout << "Cow population: " << Cow::populationCount << endl;
-	static_img = IMG_LoadTexture(Game::renderer, "cow.png");
-	static_img_sick = IMG_LoadTexture(Game::renderer, "cow_sick.png");
 }
 
 Cow::~Cow() {
@@ -65,6 +68,17 @@ void Cow::update(vector< vector<Tile*> >* nextIterboard) {
 	}
 }
 */
+
+void Cow::setTextureImg() {
+		cout << "cow.png" << endl;
+	Cow::static_img = IMG_LoadTexture(Game::renderer, "cow.png");
+}
+
+void Cow::setTextureImgSick() {
+		cout << "cow_sick" << endl;
+		Cow::static_img_sick = IMG_LoadTexture(Game::renderer, "cow_sick.png");
+}
+
 void Cow::checkMove() {
 	int x = rand() % 3 - 1;
 	int y = rand() % 3 - 1;
@@ -88,7 +102,8 @@ void Cow::checkAction() {
 	Entity* e = parentTile->layer1;
 	if (hunger < 75 && e && e->id == 4) {
 		((Plant*) parentTile->layer1)->health -= 50;
-		hunger = min(100, hunger + 75);
+		hunger = min(100, hunger + 50);
+		health = min(100, health + 2);
 	}
 }
 
@@ -133,15 +148,12 @@ void Cow::render(int x, int y, int w, int h, SDL_Renderer* r) {
 	//SDL_RenderPresent( renderer);
 	//SDL_Rect rect = { x, y, w, h };
 
-	if (health < 25 || age > ageMax - 25) {
-		SDL_RenderCopy(r, static_img_sick, NULL, &rect);
+	if (health <= 25 || age > ageMax - 25) {
+		SDL_RenderCopy(r, Cow::static_img_sick, NULL, &rect);
 	}
 	else {
-		SDL_RenderCopy(r, static_img, NULL, &rect);
+		SDL_RenderCopy(r, Cow::static_img, NULL, &rect);
 	}
-	
-
-
 
 }
 

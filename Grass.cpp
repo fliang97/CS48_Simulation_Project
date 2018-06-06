@@ -17,12 +17,13 @@ using namespace std;
 
 int Grass::populationCount = 0;
 
+SDL_Texture* Grass::static_img = NULL;
+
 Grass::Grass(Tile* parentTile) : Plant(parentTile) {
 	id = 4;
 	health = 10;
 	Grass::populationCount++;
 	cout << "Grass population: " << Grass::populationCount << endl;
-	static_img = IMG_LoadTexture(Game::renderer, "grass_1.jpg");
 }
 
 Grass::~Grass() {
@@ -85,4 +86,9 @@ void Grass::render(int x, int y, int w, int h, SDL_Renderer* r) {
 
 int Grass::getPopulationCount() {
 	return Grass::populationCount;
+}
+
+void Grass::setTextureImg() {
+	cout << "grass_1.jpg" << endl;
+	Grass::static_img = IMG_LoadTexture(Game::renderer, "grass_1.jpg");
 }

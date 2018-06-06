@@ -7,6 +7,9 @@
 #include <typeinfo>
 
 #include "Game.h"
+#include "Cow.h"
+#include "Grass.h"
+#include "Wolf.h"
 #include "ScreenManager.h"
 #include "EventHandler.h"
 
@@ -39,6 +42,11 @@ void Game::init(int SCREEN_WIDTH, int SCREEN_HEIGHT){
     //SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); //why is this here?
 
     //SDL_RenderClear(renderer); // Seems unnecessary
+		Cow::setTextureImg();
+		Cow::setTextureImgSick();
+		Wolf::setTextureImg();
+		Wolf::setTextureImgSick();
+		Grass::setTextureImg();
 }
 
 void Game::close(){

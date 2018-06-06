@@ -35,14 +35,12 @@ public:
 	Tile* getParentTile();
 	Tile* parentTile;
 	int id;
-	SDL_Texture *static_img;
-	SDL_Texture *static_img_sick;
 	int health;
 
 	static int getPopulationCount();
 	int getID();
 	virtual void modifyHealth(int healthChange);
-
+	
 
 private:
 	static int populationCount;
