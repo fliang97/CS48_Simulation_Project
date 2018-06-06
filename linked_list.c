@@ -184,6 +184,20 @@ coordlist push_back_coord(coordlist list,int caption_id, float x,float y)
 	}
 }
 
+coordlist pop_top_coord(coordlist list)
+{
+	if(list == NULL)
+	{
+		return list;
+	}
+	else {
+
+		coordinate_item* next = list->nxt;
+		free(list);
+		return next;
+	}
+}
+
 /**
  * @brief print_list_coord
  *      print coordinate table
