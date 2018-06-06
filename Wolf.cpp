@@ -63,17 +63,36 @@ void Cow::update(vector< vector<Tile*> >* nextIterboard) {
 }
 */
 void Wolf::checkMove() {
+	int changeX = 0;
+	int changeY = 0;
 
+	int eaterX = parentTile->getPosX();
+	int eaterY = parentTile->getPosY();
 
-	//Add neighboring squares to queue.
-	//Unordered_set of reached.
-	//
-	//pair<int, int> next
-	int changeX = rand() % 3 - 1;
-	int changeY = rand() % 3 - 1;
+	Entity* tmpFood = parentTile->map->getClosestEntityInRange(EntityID::cow, 2, parentTile, 1);
+	if (tmpFood) {
+
+		int foodX = tmpFood->getParentTile()->getPosX();
+		int foodY = tmpFood->getParentTile()->getPosY();
+
+		if (eaterX < foodX)
+			changeX = 1;
+		if (eaterX > foodX)
+			changeX = -1;
+
+		if (eaterY < foodY)
+			changeY = 1;
+		if (eaterY > foodY)
+			changeY = -1;
+	}
+	else {
+		changeX = rand() % 3 - 1;
+		changeY = rand() % 3 - 1;
+	}
 
 	int newX = parentTile->getPosX() + changeX;
 	int newY = parentTile->getPosY() + changeY;
+
 
 	if (parentTile->map->getTile(newX, newY)) {
 		vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
@@ -130,7 +149,7 @@ void Wolf::checkDeath() {
 }
 
 void Wolf::checkReproduce() {
-	if (age > 10 && hunger > 80 && rand() % 10 == 0) {
+	if (age > 10 && hunger > 80 && rand() % 12 == 0) {
 		int x = rand() % 3 - 1;
 		int y = rand() % 3 - 1;
 		if (parentTile->x + x >= 0 && parentTile->x + x < parentTile->map->width

@@ -126,7 +126,8 @@ void Map::updateEntities() {
 		EntityManager::createEntity(EntityID::cow, tmpTile);
 	}
 
-	if (Grass::getPopulationCount() < 3) {
+
+	if (Grass::getPopulationCount() < 3 || (rand() % 30 == 0)) {
 		Tile* tmpTile = this->getRandomTile();
 		EntityManager::createEntity(EntityID::grass, tmpTile);
 	}

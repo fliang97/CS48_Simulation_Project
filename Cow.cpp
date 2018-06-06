@@ -80,11 +80,35 @@ void Cow::setTextureImgSick() {
 }
 
 void Cow::checkMove() {
-	int changeX = rand() % 3 - 1;
-	int changeY = rand() % 3 - 1;
+	int changeX = 0;
+	int changeY = 0;
 
-	int newX = parentTile->getPosX() + changeX;
-	int newY = parentTile->getPosY() + changeY;
+	int eaterX = parentTile->getPosX();
+	int eaterY = parentTile->getPosY();
+	
+	Entity* tmpFood = parentTile->map->getClosestEntityInRange(EntityID::grass, 1, parentTile, 1);
+	if (tmpFood) {
+
+		int foodX = tmpFood->getParentTile()->getPosX();
+		int foodY = tmpFood->getParentTile()->getPosY();
+
+		if (eaterX < foodX)
+			changeX = 1;
+		if (eaterX > foodX)
+			changeX = -1;
+
+		if (eaterY < foodY)
+			changeY = 1;
+		if (eaterY > foodY)
+			changeY = -1;
+	}
+	else {
+		changeX = rand() % 3 - 1;
+		changeY = rand() % 3 - 1;
+	}
+
+	int newX = eaterX + changeX;
+	int newY = eaterY + changeY;
 
 	if (parentTile->map->getTile(newX,newY)) {
 		vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
