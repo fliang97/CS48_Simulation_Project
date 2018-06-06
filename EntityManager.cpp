@@ -12,6 +12,9 @@ using namespace std;
 //PUBLIC FUNCTIONS
 
 Entity* EntityManager::createEntity(EntityID id, Tile* parentTile) {
+	if (parentTile == nullptr)
+		return nullptr;
+
 	if (id == EntityID::grass && parentTile->getEntityFromLayer(1)==nullptr) {
 		Grass* grass = new Grass(parentTile);
 		parentTile->map->plants.insert(grass);
