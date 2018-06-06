@@ -36,9 +36,11 @@ public:
 	Tile* parentTile;
 	int id;
 	SDL_Texture *static_img;
+	int health;
 
 	static int getPopulationCount();
 	int getID();
+	virtual void modifyHealth(int healthChange);
 
 
 private:

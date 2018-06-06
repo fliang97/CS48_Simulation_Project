@@ -82,20 +82,31 @@ void Wolf::checkMove() {
 	}
 }
 
+
+
+//void Cow::checkAction() {
+//	++age;
+//	hunger -= 2;
+//	Entity* e = parentTile->layer1;
+//	if (hunger < 75 && e && e->id == 4) {
+//		((Plant*)parentTile->layer1)->health -= 50;
+//		hunger = min(100, hunger + 75);
+//	}
+//}
+
+
 void Wolf::checkAction() {
 	++age;
 	hunger -= 2;
 
 
 	if (hunger < 75) {
+		Entity* prey = parentTile->map->getClosestEntityInRange(EntityID::cow, 2, parentTile, 1);
 
-
-	}
-
-	Entity* e = parentTile->layer1;
-	if (hunger < 75 && e && e->id == 3) {
-		((Cow*) parentTile->layer1)->health -= 50;
-		hunger = min(100, hunger + 75);
+		if (prey) {
+			prey->modifyHealth(-50);
+			hunger = min(100, hunger + 75);
+		}
 	}
 }
 
@@ -142,4 +153,9 @@ void Wolf::render(int x, int y, int w, int h, SDL_Renderer* r) {
 
 int Wolf::getPopulationCount() {
 	return Wolf::populationCount;
+}
+
+void Wolf::modifyHealth(int healthChange) {
+	health += healthChange;
+	return;
 }

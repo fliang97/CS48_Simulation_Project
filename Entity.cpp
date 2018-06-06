@@ -46,3 +46,7 @@ int Entity::getPopulationCount() {
 int Entity::getID() {
 	return id;
 }
+
+void Entity::modifyHealth(int healthChange) {
+	return;
+}
