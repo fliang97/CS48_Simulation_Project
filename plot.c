@@ -100,7 +100,6 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 	//plot->renderer = SDL_CreateRenderer(plot->screen, 0, 0);
 	plot->renderer = Game::renderer;
 
-	//if (plot->screen != NULL) {
 
 		int stroke_width=2;
 
@@ -225,6 +224,7 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 					caption_text.x= circle_x2+DOT_RADIUS+CAPTION_OFFSET_CIRCLE_TO_TEXT;
 					caption_text.y= circle_y2-caption_text.h/2;
 					SDL_RenderCopy(plot->renderer, texture_text, NULL, &caption_text);
+					SDL_DestroyTexture(texture_text);
 
 					*surface_list=push_back_surface(*surface_list,caption_text_surface);
 
@@ -241,6 +241,19 @@ void draw_plot(splot *plot, plot_params *params, surfacelist *surface_list)
 				}
 			}
 		}
+		SDL_DestroyTexture(plot->textureX);
+		SDL_DestroyTexture(plot->textureY);
+		SDL_FreeSurface   (plot->plot_mask_surface);
+		SDL_FreeSurface   (plot->plot_surface);
+		SDL_FreeSurface   (plot->caption_mask_surface);
+		SDL_FreeSurface   (plot->caption_surface);
+		SDL_FreeSurface   (plot->captionX);
+		SDL_FreeSurface   (plot->captionY);
+
+		//params->caption_list    = clear_caption(params->caption_list);
+		//params->coordinate_list = clear_coord(params->coordinate_list);
+
+		*surface_list=clear_surface(*surface_list);
 }
 
 /**
@@ -379,6 +392,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		caption_text.x=init_pos_x-caption_text.w/2;
 		caption_text.y=init_pos_y+5;
 		SDL_RenderCopy(renderer, texture_text, NULL, &caption_text);
+		SDL_DestroyTexture(texture_text);
 
 		*surface_list=push_back_surface(*surface_list,caption_text_surface);
 
@@ -407,6 +421,7 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 		caption_text.x=init_pos_x-caption_text.w-10;
 		caption_text.y=init_pos_y-caption_text.h/2;
 		SDL_RenderCopy(renderer, texture_text, NULL, &caption_text);
+		SDL_DestroyTexture(texture_text);
 
 		*surface_list=push_back_surface(*surface_list,caption_text_surface);
 
@@ -436,6 +451,12 @@ void draw_scale_graduation(SDL_Renderer * renderer,
 	text_caption_x.x=params->screen_xpos + params->screen_width/2-text_caption_x.w/2;
 	text_caption_x.y= static_cast<int>(plot_position_y+plot_heigth+1*regular_caption_text_heigth);
 	SDL_RenderCopy(plot->renderer, plot->textureX, NULL, &text_caption_x);
+
+
+
+
+	//params->caption_list    = clear_caption(params->caption_list);
+	//params->coordinate_list = clear_coord(params->coordinate_list);
 }
 
 
