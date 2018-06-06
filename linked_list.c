@@ -78,6 +78,7 @@ captionlist push_back_caption(captionlist liste, char * valeur,int caption_id,in
 {
 	caption_item* caption_new_item = (caption_item*)malloc(sizeof(caption_item));
 	caption_new_item->caption_txt = valeur;
+	//printf(caption_new_item->caption_txt);
 	caption_new_item->caption_id=caption_id;
 	caption_new_item->caption_color=color;
 

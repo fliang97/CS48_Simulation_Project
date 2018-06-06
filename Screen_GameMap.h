@@ -93,6 +93,12 @@ public:
 	captionlist caption_list;
 	coordlist coordinate_list;
 	bool showplot;
+
+	char textCows[10];
+	char textGrass[10];
+	char textWolves[10];
+	char textTime[10];
+	char textNumber[10];
 };
 
 #endif /* SCREEN_WORLD_H_DEFINED */
