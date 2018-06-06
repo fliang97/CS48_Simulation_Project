@@ -38,14 +38,18 @@ height(h), worldposX(0), worldposY(0) {
 
 
 	caption_list = NULL;
+	strcpy(textCows, "Cows");
+	strcpy(textGrass, "Grass");
+	strcpy(textWolves, "Wolves");
 
-	char textCows[] = "Cows";
-	char textGrass[] = "Grass";
-	char textWolves[] = "Wolves";
 
 	caption_list=push_back_caption(caption_list,textCows,0,0xFF0000);
 	caption_list=push_back_caption(caption_list,textGrass,1,0x00FF00);
 	caption_list=push_back_caption(caption_list,textWolves,2,0x0000FF);
+
+	//caption_list=push_back_caption(caption_list,"Cows",0,0xFF0000);
+	//caption_list=push_back_caption(caption_list,"Grass",1,0x00FF00);
+	//caption_list=push_back_caption(caption_list,"Wolves",2,0x0000FF);
 
 	coordinate_list = NULL;
 	coordinate_list=push_back_coord(coordinate_list, 0, 0,0);
@@ -60,7 +64,7 @@ height(h), worldposX(0), worldposY(0) {
 
 	params.screen_xpos= xpos + 20;
 	params.screen_ypos= ypos +  9*height/20;
-	params.screen_width= width/2;
+	params.screen_width= 3 * width/4;
 	params.screen_heigth= height/2;
 	//params.font_text_path = fontpath;
 	params.font_text_size=18;
@@ -143,10 +147,10 @@ void Screen_GameMap::update() {
 		coordinate_list=push_back_coord(coordinate_list, 0, static_cast<float>(gameTicks/10), static_cast<float>(Cow::getPopulationCount()));
 		coordinate_list=push_back_coord(coordinate_list, 1, static_cast<float>(gameTicks/10), static_cast<float>(Grass::getPopulationCount()));
 		coordinate_list=push_back_coord(coordinate_list, 2, static_cast<float>(gameTicks/10), static_cast<float>(Wolf::getPopulationCount()));
-		params.max_x = static_cast<float>(max(10, gameTicks/10));
-		params.max_y = static_cast<float>(max(100, (int)(map.animals.size() + map.plants.size())));
-		params.scale_x = params.max_x / 10;
-		params.scale_y = params.max_y / 10;
+		params.max_x = static_cast<float>(max(12, gameTicks/10));
+		params.max_y = static_cast<float>(max(120, (int)(map.animals.size() + map.plants.size())));
+		params.scale_x = params.max_x / 12;
+		params.scale_y = params.max_y / 12;
 	}
 
 	++gameTicks;
