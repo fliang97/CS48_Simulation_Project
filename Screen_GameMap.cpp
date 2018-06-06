@@ -68,8 +68,8 @@ height(h), worldposX(0), worldposY(0) {
 	params.screen_heigth= height/2;
 	//params.font_text_path = fontpath;
 	params.font_text_size=18;
-	char textTime[] = "Time";
-	char textNumber[] = "Number";
+	strcpy(textTime, "Time");
+	strcpy(textNumber, "Number");
 	params.caption_text_x= textTime;
 	params.caption_text_y= textNumber;
 	params.caption_list = caption_list;
