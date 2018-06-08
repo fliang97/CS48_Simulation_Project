@@ -13,6 +13,8 @@
 using namespace std;
 
 Button_Entity::Button_Entity(int x, int y, int w, int h, SDL_Renderer* r, int id) : Button(x, y, w, h, r), EntityID(id) {
+	EventHandler::mouseID = -1; //Require user to click an entity before enabling placement.
+
 	//TO DO: Set Images
 	//unclicked_img = IMG_LoadTexture(renderer, "grass3.png");
 	//clicked_img = IMG_LoadTexture(renderer, "grass3.png");

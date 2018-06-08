@@ -17,8 +17,15 @@ Button_ZoomIn::Button_ZoomIn(int x, int y, int w, int h, SDL_Renderer* r, int & 
 }
 
 void Button_ZoomIn::clicked() {
+
+	// Restrict from zooming too far in.
+	if (scx > 100000 || scy > 100000)
+		return;
+
 	scx = static_cast<int>(scx*1.2);
+	cout << "scx: " << scx << endl;
 	scy = static_cast<int>(scy*1.2);
+	cout << "scy: " << scy << endl;
 }
 
 //void Button_ZoomIn::render() {
