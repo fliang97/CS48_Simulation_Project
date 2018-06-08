@@ -18,12 +18,32 @@ using namespace std;
 
 class ScreenManager {
  public:
-	 ScreenManager(EventHandler* eventHandler, SDL_Renderer* r, const int w, const int h);
+	
+    //Parameters: eventHandler is used to get the (x,y) of the current event and to judge whether it is running
+    //Parameters: r represents the SDL_Renderer used to render the image in the proper location.
+    //Parameters: w-width of the screen h-height of the screen
+    //Precondition: background image
+    //Postcondition: load background image
+    ScreenManager(EventHandler* eventHandler, SDL_Renderer* r, const int w, const int h);
 	//~ScreenManager();
+    
+    //Precondition: Mouse Pressed Up (Occurs Once)
+    //Postcondition: Goes through every component and calls its released function. If the mouse is over the square, it also calls the components clicked function
 	void mousePressedUp();
+   
+    //Precondition: Mouse Pressed Down (Occurs Once)
+    //Postcondition: Abstract functionality
 	void mousePressedDown();
-	void mouseDown();
+	
+    //Precondition: Mouse Pressed Up (Occurs Continuously)
+    //Postcondition: Abstract functionality
+    void mouseDown();
+    
+    //Precondition:current screen
+    //Postcondition: Abstract functionality
 	void update();
+    
+    //Postcondition: Abstract functionality
 	void render();
 
 private:

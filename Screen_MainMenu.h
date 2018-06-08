@@ -17,10 +17,20 @@ class ScreenManager;
 
 class Screen_MainMenu : public Screen {
 public:
-	Screen_MainMenu(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map);
+	
+    //Parameters: eventHandler is used to get the (x,y) of the current event and to judge whether it is running
+    //Parameters: r represents the SDL_Renderer used to render the image in the proper location.
+    //Parameters: w-width of the screen h-height of the screen
+    //Precondition: background image
+    //Postcondition: load background image
+    Screen_MainMenu(EventHandler* eventHandler, SDL_Renderer* r, int w, int h, int& cs, Map& map);
 	//~Screen_MainMenu();
+    
+    //Precondition: click down
 	void mousePressedDown() override;
+    //Postcondition: abstract
 	void update() override;
+    //Postcondition: update new position
 	void render() override;
 
 
