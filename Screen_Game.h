@@ -7,6 +7,7 @@
 
 #include "Button_Speedup.h"
 #include "Button_Speeddown.h"
+#include "Button_Entity.h"
 #include "Screen.h"
 #include "EventHandler.h"
 #include "Screen_GameMap.h"
@@ -52,6 +53,9 @@ public:
 
 	Button_Speedup* speedup;
 	Button_Speeddown* speeddown;
+	Button_Entity* entity3;
+	Button_Entity* entity4;
+	Button_Entity* entity5;
 	Screen_GameMap* screen_world;
 	Map& map;
 

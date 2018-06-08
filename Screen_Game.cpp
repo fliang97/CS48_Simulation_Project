@@ -25,6 +25,12 @@ Screen_Game::Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int
 	components.push_back(speedup);
 	speeddown = new Button_Speeddown(width / 20, 17 *height / 20, width / 10, height / 10, r, COUNTER);
 	components.push_back(speeddown);
+	entity3 = new Button_Entity(8 *width / 20, 17 *height / 20, width / 10, height / 10, r, 3);
+	components.push_back(entity3);
+	entity4 = new Button_Entity(12 *width / 20, 17 *height / 20, width / 10, height / 10, r, 4);
+	components.push_back(entity4);
+	entity5 = new Button_Entity(16 *width / 20, 17 *height / 20, width / 10, height / 10, r, 5);
+	components.push_back(entity5);
 	COUNTER = 30;
 	counter = COUNTER;
 
@@ -72,7 +78,7 @@ void Screen_Game::update() {
 
 void Screen_Game::render() {
 	screen_world->render();
-	
+
 	SDL_Rect rect1 = { 0, 0, screen_world->xpos, height };
 	//SDL_SetRenderDrawColor(renderer, 61, 40, 1, 255);
 	//SDL_RenderFillRect(renderer, &rect1);
@@ -86,6 +92,10 @@ void Screen_Game::render() {
 
 	speedup->render();
 	speeddown->render();
+	entity3->render();
+	entity4->render();
+	entity5->render();
+
 }
 
 

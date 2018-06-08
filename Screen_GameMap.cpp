@@ -123,6 +123,12 @@ height(h), worldposX(0), worldposY(0) {
 }
 
 void Screen_GameMap::mousePressedUp() {
+	for (Component* c : components) {
+		c->released();
+		if (c->isOver(eventHandler->xMouse, eventHandler->yMouse)) {
+			c->clicked();
+		}
+	}
 	for (int i = 0; i < map.width; ++i) {
 		for (int j = 0; j < map.height; ++j) {
 

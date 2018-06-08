@@ -24,7 +24,9 @@ public:
 	//Return Values:
 	//Precondition:
 	//Postcondition: Renders purple rectangle at position and size (temporary)
-	//void render() override;
+	void render() override;
+
+
 
 	int EntityID;
 };
