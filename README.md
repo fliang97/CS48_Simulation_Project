@@ -37,15 +37,15 @@ Importing SDL Libraries in XCode:
 In the final draft of this projects, we made more efforts to implement better graphics for the simulation, as promised in the first draft project. 
 
 First, click on the large "START" button in the center of the initial screen to start the simulation. 
+
 ![Main Menu](https://i.imgur.com/6RRlW91.jpg "Main Menu - Final Project")
 
 In the game/simulation screen, the current simulation automatically runs on its own.
 - Light blue area is the main game board
-- Green tiles represent **Grass**, which grow and spread randomly on the board
-- Brown tile represents a **Cow**, which travels in random directions and eats any Grass (green tile) along its path
-- Purple button in the top left corner is a placeholder for future feature buttons
-- Dark green area is background
-- User can *drag* Entities on the game board (Cows, Grass) and move them along with cursor movement (not yet implemented).
+- Green areas represent **Grass**, which grow and spread randomly on the board
+- Yellow areas represent **Dirt**, which (in a way) serve as the board
+- **Cows** travel in random directions and eats any Grass (green tile) along its path. A pink color indicates that it's either too hungry or too old to live.
+- **Wolves** use a pathing algorithm to chase after Cows when they are hungry. A dark purple color indicates that it's either too hungry or too old to live.
 
 ![Game Screen](https://i.imgur.com/3sC7DLO.jpg "Game Screen - Final Project")
 
