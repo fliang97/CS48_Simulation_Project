@@ -37,7 +37,7 @@ For the first draft of this project, we have focused on creating the core game e
 
 First, click on the center of the initial screen to start the simulation.  There is a known bug here where a start button image will be displayed for some Linux installations, but not on xCode Mac installations.  Despite the image not rendering, the clickable start button area is there and can be clicked on.
 
-![Main Menu](https://i.imgur.com/M4m9SZJ.png "Main Menu - Draft 1")
+![Main Menu](https://i.imgur.com/6RRlW91.jpg "Main Menu - Final Project")
 
 In the game/simulation screen, the current simulation automatically runs on its own.
 - Light blue area is the main game board
@@ -47,7 +47,7 @@ In the game/simulation screen, the current simulation automatically runs on its 
 - Dark green area is background
 - User can *drag* Entities on the game board (Cows, Grass) and move them along with cursor movement (not yet implemented).
 
-![Game Screen](https://i.imgur.com/lZZNXxw.png "Game Screen - Draft 1")
+![Game Screen](https://i.imgur.com/3sC7DLO.jpg "Game Screen - Final Project")
 
 
 Known bugs

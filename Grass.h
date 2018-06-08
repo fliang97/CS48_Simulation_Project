@@ -10,7 +10,19 @@ using namespace std;
 
 class Grass : public Plant {
 public:
+	
+	//static_img - Used to store the grass_1.png image for the Grass class.
+	static SDL_Texture *static_img;
+
+	//Grass - Grass constructor to create a Grass at a specified Tile
+	//Param parentTile - The Tile in which the created Grass should be located.
+	//Pre - A valid tile is available and passed to this constructor.
+	//Post - A Grass has been created. It has parentTile, id, health member variables set and has incremented the Grass populationCount.
 	Grass(Tile* parentTile);
+
+	//~Grass - Grass destructor.
+	//Pre - TRUE
+	//Post - The grass's memory has been unallocated and the Grass class populationCount has been decremented.
 	virtual ~Grass() override;
 
 	//Parameters:
@@ -31,14 +43,30 @@ public:
 	//Postcondition: Image rendered at x, y with width w and height h.
 	void render(int x, int y, int w, int h, SDL_Renderer* r) override;
 
-
+	//checkReproduce - With random chance, creates a grass in an adjacent open Tile to the calling grass.
+	//Pre - The calling grass has been properly associated with a Tile.
+	//Post - If an open Tile was randomly selected, a new grass has been created in an adjacent Tile to calling grass.
 	void checkReproduce() override;
+
+	//checkDeath - Checks the Grass's current status and adds it to a list of to remove Plants if conditions are met.
+	//Pre - TRUE
+	//Post - If health is negative, add grass to removal list.
 	void checkDeath() override;
 
+	//getPopulationCount - Gets the populationCount for the Grass class.
+	//Return - populationCount for the Grass class.
+	//Pre - TRUE
+	//Post - populationCount for the Grass class has been returned.
 	static int getPopulationCount();
+
+	//setTextureImg - Sets static_img for the Grass class to the image for the default grass sprite.
+	//Pre - The grass_1.png image is in the project folder.
+	//Post - static_img has been set for the Grass class.
 	static void setTextureImg();
-	static SDL_Texture *static_img;
+
 private:
+
+	//populationCount - The current number of Grass instances in the game.
 	static int populationCount;
 };
 

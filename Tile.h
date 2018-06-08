@@ -28,8 +28,8 @@ public:
 	//getEntityFromLayer - 
 	//Param layerNum - 
 	//Return - 
-	//Pre - 
-	//Post - 
+	//Pre -
+	//Post -
 	Entity* getEntityFromLayer(int layerNum);
 
 	Entity* getEntityOfType(int entityType, int layerNum);

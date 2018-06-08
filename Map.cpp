@@ -65,15 +65,18 @@ Entity* Map::getEntityOfTypeFromTile(int entityType, int layerNum, Tile* tile) {
 
 
 
-// Consider writing another function function that returns a vector of all entities in range.
-Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* centerTile, int maxRadius) {
+// Consider writing another function function that returns a vector or list of all entities in range.
+
+
+
+Entity* Map::getClosestEntityInRange(int entityType, int layerNum, Tile* centerTile, int maxRadius) {
 
 	int centerX = centerTile->getPosX();
 	int centerY = centerTile->getPosY();
 	Entity* tmpEntity = nullptr;
 
 	// Check central tile
-	tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, centerTile);
+	tmpEntity = this->getEntityOfTypeFromTile(entityType, layerNum, centerTile);
 	if (tmpEntity)
 		return tmpEntity;
 
@@ -87,28 +90,28 @@ Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* cen
 
 		// Search top row
 		for (int posX = minX; posX <= maxX; posX++) {
-			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(posX, maxY));
+			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerNum, this->getTile(posX, maxY));
 			if (tmpEntity)
 				return tmpEntity;
 		}
 
 		// Search bottom row
 		for (int posX = minX; posX <= maxX; posX++) {
-			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(posX, minY));
+			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerNum, this->getTile(posX, minY));
 			if (tmpEntity)
 				return tmpEntity;
 		}
 
 		// Search left column
 		for (int posY = minY + 1; posY <= maxY - 1; posY++) {  // + and - 1 to skip searching corners twice.
-			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(minX, posY));
+			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerNum, this->getTile(minX, posY));
 			if (tmpEntity)
 				return tmpEntity;
 		}
 
 		// Search right column
 		for (int posY = minY + 1; posY <= maxY - 1; posY++) {  // + and - 1 to skip searching corners twice.
-			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerToCheck, this->getTile(maxX, posY));
+			tmpEntity = this->getEntityOfTypeFromTile(entityType, layerNum, this->getTile(maxX, posY));
 			if (tmpEntity)
 				return tmpEntity;
 		}
@@ -120,18 +123,18 @@ Entity* Map::getClosestEntityInRange(int entityType, int layerToCheck, Tile* cen
 
 void Map::updateEntities() {
 
-
+	//Generate a cow at random location on the map if there are less than 3.
 	if (Cow::getPopulationCount() < 3) {
 		Tile* tmpTile = this->getRandomTile();
 		EntityManager::createEntity(EntityID::cow, tmpTile);
 	}
 
-
+	//Generate a grass at random location on the map if there are less than 3 or given a small random chance.
 	if (Grass::getPopulationCount() < 3 || (rand() % 30 == 0)) {
 		Tile* tmpTile = this->getRandomTile();
 		EntityManager::createEntity(EntityID::grass, tmpTile);
 	}
-
+	//Generate a cow at random location on the map if there are less than 2.
 	if (Wolf::getPopulationCount() < 2) {
 		Tile* tmpTile = this->getRandomTile();
 		EntityManager::createEntity(EntityID::wolf, tmpTile);

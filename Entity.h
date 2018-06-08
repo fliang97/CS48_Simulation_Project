@@ -22,13 +22,11 @@ public:
 	//health - The current health of the entity.  Used to determine whether the entity should die.
 	int health;
 
-
 	//Entity - Entity constructor to create an Entity at a specified Tile
 	//Param parentTile - The Tile in which the created entity should be located.
 	//Pre - A valid tile is available and passed to this constructor.
 	//Post - An entity has been created. It has parentTile and id member variables set and has incremented the Entity populationCount.
 	Entity(Tile* parentTile);
-
 
 	//~Entity - Entity destructor.
 	//Pre - TRUE
