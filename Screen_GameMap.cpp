@@ -168,7 +168,7 @@ void Screen_GameMap::update() {
 		coordinate_list=push_back_coord(coordinate_list, 1, static_cast<float>(gameTicks/10), static_cast<float>(Grass::getPopulationCount()));
 		coordinate_list=push_back_coord(coordinate_list, 2, static_cast<float>(gameTicks/10), static_cast<float>(Wolf::getPopulationCount()));
 		params.max_x = static_cast<float>(max(12, gameTicks/10));
-		params.max_y = static_cast<float>( max( max(120, (int)(map.animals.size() + map.plants.size())), static_cast<int>(params.max_y)));
+		params.max_y = static_cast<float>( max( max(120, max((int)map.animals.size(), (int)map.plants.size())), static_cast<int>(params.max_y)));
 		params.scale_x = params.max_x / 12;
 		params.scale_y = params.max_y / 12;
 	}

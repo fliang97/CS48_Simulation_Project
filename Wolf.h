@@ -38,7 +38,12 @@ public:
 
 	void render(int x, int y, int w, int h, SDL_Renderer* r) override;
 
+	//checkMove - moves the Cow to an adjacent, open square.  It will move towards food if it's nearby, otherwise it will wander randomly.
+	//pre TRUE
+	//post The cow is on a square that is in the map bounds and isn't overlapping with another annimal.
 	void checkMove() override;
+
+
 	void checkAction() override;
 	void checkDeath() override;
 	void checkReproduce() override;

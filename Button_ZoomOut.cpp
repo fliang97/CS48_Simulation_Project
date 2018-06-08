@@ -18,7 +18,9 @@ Button_ZoomOut::Button_ZoomOut(int x, int y, int w, int h, SDL_Renderer* r, int 
 
 void Button_ZoomOut::clicked() {
 	scx = static_cast<int>(scx/1.2);
+	cout << "scx: " << scx << endl;
 	scy = static_cast<int>(scy/1.2);
+	cout << "scy: " << scy << endl;
 }
 
 //void Button_ZoomIn::render() {

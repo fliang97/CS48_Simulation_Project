@@ -79,6 +79,8 @@ void Cow::setTextureImgSick() {
 		Cow::static_img_sick = IMG_LoadTexture(Game::renderer, "cow_sick.png");
 }
 
+
+// checkMove moves the Cow towards adjacent food or in a random direction if no food is directly nearby
 void Cow::checkMove() {
 	int changeX = 0;
 	int changeY = 0;
@@ -86,7 +88,10 @@ void Cow::checkMove() {
 	int eaterX = parentTile->getPosX();
 	int eaterY = parentTile->getPosY();
 	
+	// Find the closet adjacent grass square within 1 range.
 	Entity* tmpFood = parentTile->map->getClosestEntityInRange(EntityID::grass, 1, parentTile, 1);
+
+	// If food is found within range, calculate the relative change in position necessary to move there
 	if (tmpFood) {
 
 		int foodX = tmpFood->getParentTile()->getPosX();
@@ -102,21 +107,24 @@ void Cow::checkMove() {
 		if (eaterY > foodY)
 			changeY = -1;
 	}
-	else {
+	else { // If food is not found nearby, randomly select a direction to move
 		changeX = rand() % 3 - 1;
 		changeY = rand() % 3 - 1;
 	}
 
+	// Calculate the new square position based on the Cow's current square and calculated change in position
 	int newX = eaterX + changeX;
 	int newY = eaterY + changeY;
 
+
+	// Move the Cow to the new tile position if that tile is open
 	if (parentTile->map->getTile(newX,newY)) {
 		vector< vector<Tile*> >* grid = parentTile->map->mapGrid;
 		Tile* s = (*grid)[newX][newY];//getting tentative location in iter
 		//Square must know Entity
 		if (!s->layer2) {
-			s->layer2 = this; //setting iterboard tile entity to this
-			parentTile->layer2 = NULL; // old tile parent in old board to null
+			s->layer2 = this;
+			parentTile->layer2 = NULL;
 			parentTile = s; // set parent to new tile
 		}
 	}

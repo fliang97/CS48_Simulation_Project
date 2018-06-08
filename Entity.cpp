@@ -17,7 +17,7 @@ int Entity::populationCount = 0;
 
 Entity::Entity(Tile* parentTile) {
 	this->parentTile = parentTile;
-	id = 0;
+	id = 0; // Number that corresponds with the Entity class type.
 	Entity::populationCount++;
 }
 
