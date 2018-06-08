@@ -66,3 +66,6 @@ In the game/simulation screen, the current simulation automatically runs on its 
 - Cow sprite: https://www.spriters-resource.com/snes/harvestmoon/sheet/31564/ by NFinity.
 - Wolf sprite: https://www.spriters-resource.com/ds_dsi/pururun1/sheet/45405/ by Dazz.
 - Grass textures: https://opengameart.org/content/grass-texture-pack under the Public Domain License (CC0).
+- Water textures: https://dadrian.deviantart.com/art/Water-Texture-49283686
+- Wood background: https://www.photohdx.com/pic-917/brown-vintage-wood-background
+- Main theme (pasture background): https://commons.wikimedia.org/wiki/File:Dairy_cows_on_pasture_in_Ireland.jpg
