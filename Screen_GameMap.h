@@ -28,34 +28,29 @@ class Screen_GameMap : public Screen {
 public:
 	Screen_GameMap(EventHandler* eventHandler, SDL_Renderer* r, int x, int y, int w, int h, int& currentScreen, Map& map);
 
-	//Parameters:
-	//Return Values:
-  //Precondition:
-  //Postcondition:
-	void mousePressedUp() override;
+    //Parameters: component c, tile t
+    //Precondition: Mouse was released over the screen.
+    //Postcondition: Goes through all the component functions and calls there clicked function if mouse is over their borders.
+    // Checks to see if mouse is over world screen. If it is, then it calls its mousePressedUp function.
+    void mousePressedUp() override;
 
-	//Parameters:
-	//Return Values:
-	//Precondition:
+    //Parameters:component c, tile t
+    //Precondition: Mouse was pressed over the screen. (Called Once)
 	//Postcondition: Sets mouseInit and worldInit to current mouse and world coordinates. Used to remember translational motion during click and drag.
 	void mousePressedDown() override;
-
-	//Parameters:
-	//Return Values:
-	//Precondition:
+    
+    //Parameters: component c
+    //Precondition: Mouse is currently being pressed over the screen. (Continuous)
 	//Postcondition: Updates worldposition coordinates to be within the bounds. Attempts to translate worldposition by xMouse - mouseInitX for x and y.
 	void mouseDown() override;
 
-	//Parameters:
-	//Return Values:
-	//Precondition:
-	//Postcondition: Calls updateEachTile().
+	//Precondition: update entity
+	//Postcondition: Calls updateEachTile(). update cow, grass and wolf
 	void update() override;
 
-	//Parameters:
-	//Return Values:
-	//Precondition:
-	//Postcondition: Goes through every tile and renders it based of the gamemap coordinates, its coordinates, and zoom level (or scale).
+    //Parameters:The phorizontal ordinates and vertical coordinates of map and world.
+    //Precondition: Screen world
+    //Postcondition: Goes through every tile and renders it based of the gamemap coordinates, its coordinates, and zoom level (or scale).
 	void render() override;
 
 //Used for mouse drag computation.
