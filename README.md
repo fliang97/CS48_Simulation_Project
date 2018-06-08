@@ -1,7 +1,8 @@
 # Popiko - Population Ecology Simulation (CS48_G08)
 
+## How to run in Windows Visual Studio (to be added)
 
-## How to run
+## How to run in MacOS XCode
 Required components:
 - SDL2 Library
 - SDL2_Image Library
@@ -32,11 +33,10 @@ Importing SDL Libraries in XCode:
 
   SDL2_TTF: `sdl2_ttf/2.0.14/lib/libSDL2_ttf-2.0.0.dyblib`
   
-## Running the draft project simulation
-For the first draft of this project, we have focused on creating the core game engine and core simulation features. For this reason, most elements still take the apperance of simple, colored rectangular boxes. Further efforts on improving the visuals will be implemented in later iterations, such as adding sprites and animations.
+## How to run the simulation...and change your life forever
+In the final draft of this projects, we made more efforts to implement better graphics for the simulation, as promised in the first draft project. 
 
-First, click on the center of the initial screen to start the simulation.  There is a known bug here where a start button image will be displayed for some Linux installations, but not on xCode Mac installations.  Despite the image not rendering, the clickable start button area is there and can be clicked on.
-
+First, click on the large "START" button in the center of the initial screen to start the simulation. 
 ![Main Menu](https://i.imgur.com/6RRlW91.jpg "Main Menu - Final Project")
 
 In the game/simulation screen, the current simulation automatically runs on its own.
