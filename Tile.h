@@ -25,6 +25,11 @@ public:
 	SDL_Texture *static_img;
 
 
+	//getEntityFromLayer - 
+	//Param layerNum - 
+	//Return - 
+	//Pre - 
+	//Post - 
 	Entity* getEntityFromLayer(int layerNum);
 
 	Entity* getEntityOfType(int entityType, int layerNum);

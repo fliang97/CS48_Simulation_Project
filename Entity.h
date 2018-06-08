@@ -25,8 +25,8 @@ public:
 
 	//Entity - Entity constructor to create an Entity at a specified Tile
 	//Param parentTile - The Tile in which the created entity should be located.
-	//Pre
-	//Post - An entity has been created and has its parentTile set the passed Tile.
+	//Pre - A valid tile is available and passed to this constructor.
+	//Post - An entity has been created. It has parentTile and id member variables set and has incremented the Entity populationCount.
 	Entity(Tile* parentTile);
 
 

@@ -19,7 +19,9 @@ public:
 	virtual ~Plant() override;
 
 	virtual void checkReproduce();
+
 	virtual void checkDeath();
+
 	int health;
 
 	static int getPopulationCount();

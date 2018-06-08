@@ -28,21 +28,26 @@ public:
 	//Postcondition: Abstract functionality
 	virtual void pressed();
 
-	//Parameters:
-	//Return Values:
+
 	//Precondition: Mouse is just released. Note: doesn't have to be over Component border
 	//Postcondition: Abstract functionality
 	virtual void released();
 
-	//Parameters:
-  //Return Values:
+
   //Precondition:
   //Postcondition: Abstract functionality
 	virtual void render();
 
+	//x location on the screen
 	int xpos;
+
+	//y location on the screen
 	int ypos;
+
+	//width of the button
 	int width;
+
+	//height of the button
 	int height;
 	SDL_Renderer* renderer;
 };

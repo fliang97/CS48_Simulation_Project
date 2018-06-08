@@ -75,7 +75,7 @@ void Cow::setTextureImg() {
 }
 
 void Cow::setTextureImgSick() {
-		cout << "cow_sick" << endl;
+		cout << "cow_sick.png" << endl;
 		Cow::static_img_sick = IMG_LoadTexture(Game::renderer, "cow_sick.png");
 }
 
