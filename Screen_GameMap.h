@@ -55,12 +55,6 @@ public:
 	//Parameters:
 	//Return Values:
 	//Precondition:
-	//Postcondition: Calls updateEachTile().
-	void updateEachTile();
-
-	//Parameters:
-	//Return Values:
-	//Precondition:
 	//Postcondition: Goes through every tile and renders it based of the gamemap coordinates, its coordinates, and zoom level (or scale).
 	void render() override;
 
