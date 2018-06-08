@@ -49,6 +49,20 @@ In the game/simulation screen, the current simulation automatically runs on its 
 
 ![Game Screen](https://i.imgur.com/3sC7DLO.jpg "Game Screen - Final Project")
 
+### Supported features:
+- **Zoom in/out** with the purple (+) button or green (-) button
+- **Inspect graph** with the red button, which shows curves of overall populations as boom-bust cycles take place in the simulation
+- **Adjust speed** with the red arrows (-) or yellow arrows (+) in the bottom left corner.
+- **Manually place** a Cow, Grass or a Wolf by clicking the bottom right buttons and clicking on the board to place them. Click button a second time to disable placement when clicking.
 
-Known bugs
-The intial screen that is displayed should contain a start button in the center.
+### Known bugs:
+- Zoom in and out slightly changes aspect ratio
+- Scale width and height info is stored as an int and zooming muliplies it by a double scaler, which is then rounded.
+- Converting the scaling numbrs to doubles amy solve this issue, but would require extensive changes since it's used all over the program.
+- Animal placement buttons don't appear until user first clicks once in game.
+
+## Acknowledgements
+- Using plot.h and llist.h. (c) 2015 Bertrand Martel, under The MIT License (MIT).
+- Cow sprite: https://www.spriters-resource.com/snes/harvestmoon/sheet/31564/ by NFinity.
+- Wolf sprite: https://www.spriters-resource.com/ds_dsi/pururun1/sheet/45405/ by Dazz.
+- Grass textures: https://opengameart.org/content/grass-texture-pack under the Public Domain License (CC0).
