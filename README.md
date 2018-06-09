@@ -6,6 +6,7 @@
 Required components:
 - SDL2 Library
 - SDL2_Image Library
+- SDL2_TTF Library
 - Xcode (on MacOS)
 
 
@@ -21,22 +22,37 @@ SDL2_TTF: `brew install sdl2_ttf`
 
 Importing SDL Libraries in XCode:
 - Open Xcode, and create a new project. Choose C++ as the language.
-- Click the project (a blue icon in the left list), go into `Building Settings -> Header Search Paths`. 
+- Click the project (a blue icon in the left list), go into `Building Settings -> Header Search Paths`.
 - Enter `/usr/local/include/`
 - Go to `Build Phases -> Link Binary with Libraries -> '+' -> Add other`
 - Press **'Command+Shift+G'** -> `/usr/local/cellar`
 - Now open the corresponding libraries. (filename might be different due to different versions)
-  
+
   SDL2: `sdl2/2.0.4/lib/libSDL2-2.0.0.dyblib`
-  
+
   SDL2_Image: `sdl2_image/2.0.3/lib/libSDL2_image-2.0.0.dylib`
 
   SDL2_TTF: `sdl2_ttf/2.0.14/lib/libSDL2_ttf-2.0.0.dyblib`
-  
-## How to run the simulation...and change your life forever
-In the final draft of this projects, we made more efforts to implement better graphics for the simulation, as promised in the first draft project. 
 
-First, click on the large "START" button in the center of the initial screen to start the simulation. 
+
+## How to run in Linux using g++
+Required components:
+- SDL2 Library
+- SDL2_Image Library
+- SDL2_TTF Library
+
+SDL2: `sudo apt-get install libsdl2-2.0`
+SDL2_Image: `apt-get install libsdl2-image-dev`
+SDL2_TTF: `apt-get install libsdl2-ttf-2.0-0`
+
+Compile using this very long g++ command:
+
+g++ -std=c++14 Main.cpp Animal.cpp Button.cpp Button_Entity.cpp Button_Plot.cpp Button_Speedup.cpp Button_Speeddown.cpp Button_Start.cpp Button_ZoomIn.cpp Button_ZoomOut.cpp Component.cpp Cow.cpp Entity.cpp EntityManager.cpp EventHandler.cpp Game.cpp Grass.cpp linked_list.c Map.cpp Plant.cpp plot.c Screen.cpp Screen_Game.cpp Screen_MainMenu.cpp Screen_GameMap.cpp ScreenManager.cpp Tile.cpp Wolf.cpp -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image -lSDL2_ttf
+
+## How to run the simulation...and change your life forever
+In the final draft of this projects, we made more efforts to implement better graphics for the simulation, as promised in the first draft project.
+
+First, click on the large "START" button in the center of the initial screen to start the simulation.
 
 ![Main Menu](https://i.imgur.com/6RRlW91.jpg "Main Menu - Final Project")
 
@@ -59,7 +75,6 @@ In the game/simulation screen, the current simulation automatically runs on its 
 - Zoom in and out slightly changes aspect ratio
 - Scale width and height info is stored as an int and zooming muliplies it by a double scaler, which is then rounded.
 - Converting the scaling numbrs to doubles amy solve this issue, but would require extensive changes since it's used all over the program.
-- Animal placement buttons don't appear until user first clicks once in game.
 
 ## Acknowledgements
 - Using plot.h and llist.h. (c) 2015 Bertrand Martel, under The MIT License (MIT).
