@@ -55,6 +55,8 @@ public:
 	int COUNTER; //60 fps / COUNTER = gamefps.
 	int counter; //from screen_world / screen_gamemap
 
+	 SDL_Texture *mouse_img;
+
 	static void setTextureImg();
 	static SDL_Texture *static_img;
 

@@ -11,6 +11,7 @@
 #include "Screen_GameMap.h"
 #include "Screen_Game.h"
 #include "Game.h"
+#include "Wolf.h"
 
 
 using namespace std;
@@ -33,6 +34,7 @@ Screen_Game::Screen_Game(EventHandler* eventHandler, SDL_Renderer* r, int w, int
 	components.push_back(entity5);
 	COUNTER = 30;
 	counter = COUNTER;
+	mouse_img = NULL;
 
 }
 
@@ -47,6 +49,15 @@ void Screen_Game::mousePressedUp() {
 
 	if (eventHandler->xMouse >= screen_world->xpos && eventHandler->yMouse >= screen_world->ypos && eventHandler->xMouse <= screen_world->xpos + screen_world->width && eventHandler->yMouse <= screen_world->ypos + screen_world->height) {
 		screen_world->mousePressedUp();
+	}
+	if (eventHandler->mouseID == -1) {
+		mouse_img = NULL;
+	} else if(eventHandler->mouseID == 3) {
+		mouse_img = Cow::static_img;
+	} else if (eventHandler->mouseID == 4) {
+		mouse_img = Grass::static_img;
+	} else if (eventHandler->mouseID == 5) {
+		mouse_img = Wolf::static_img;
 	}
 }
 
@@ -95,7 +106,8 @@ void Screen_Game::render() {
 	entity3->render();
 	entity4->render();
 	entity5->render();
-
+	SDL_Rect mouserect = { eventHandler->xMouse - width/30, eventHandler->yMouse - height/30, width/15, height/15};
+	SDL_RenderCopy(renderer, mouse_img, NULL, &mouserect);
 }
 
 

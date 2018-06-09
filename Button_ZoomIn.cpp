@@ -23,9 +23,9 @@ void Button_ZoomIn::clicked() {
 		return;
 
 	scx = static_cast<int>(scx*1.2);
-	cout << "scx: " << scx << endl;
+	//cout << "scx: " << scx << endl;
 	scy = static_cast<int>(scy*1.2);
-	cout << "scy: " << scy << endl;
+	//cout << "scy: " << scy << endl;
 }
 
 //void Button_ZoomIn::render() {
