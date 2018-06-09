@@ -35,7 +35,7 @@ Importing SDL Libraries in XCode:
   SDL2_TTF: `sdl2_ttf/2.0.14/lib/libSDL2_ttf-2.0.0.dyblib`
 
 
-## How to run in Linux using g++
+## How to run on Debian
 Required components:
 - SDL2 Library
 - SDL2_Image Library
@@ -47,9 +47,13 @@ SDL2_Image: `apt-get install libsdl2-image-dev`
 
 SDL2_TTF: `apt-get install libsdl2-ttf-2.0-0`
 
+Download all files into a folder.
+
 Compile using this very long g++ command:
 
 g++ -std=c++14 Main.cpp Animal.cpp Button.cpp Button_Entity.cpp Button_Plot.cpp Button_Speedup.cpp Button_Speeddown.cpp Button_Start.cpp Button_ZoomIn.cpp Button_ZoomOut.cpp Component.cpp Cow.cpp Entity.cpp EntityManager.cpp EventHandler.cpp Game.cpp Grass.cpp linked_list.c Map.cpp Plant.cpp plot.c Screen.cpp Screen_Game.cpp Screen_MainMenu.cpp Screen_GameMap.cpp ScreenManager.cpp Tile.cpp Wolf.cpp -o sim \`pkg-config --cflags --libs sdl2\` -lSDL2 -lSDL2_image -lSDL2_ttf
+
+Run simulation using ./sim from directory containing all files.
 
 ## How to run the simulation...and change your life forever
 In the final draft of this projects, we made more efforts to implement better graphics for the simulation, as promised in the first draft project.
