@@ -23,7 +23,7 @@ Button_Start::Button_Start(int x, int y, int w, int h, SDL_Renderer* r, int& cur
 }
 
 void Button_Start::clicked() {
-	map.buildMap(20, 20);
+	map.buildMap(100, 100);
 	Tile* tile = (*map.mapGrid)[5][5];
 
 	//Square must know Entity
