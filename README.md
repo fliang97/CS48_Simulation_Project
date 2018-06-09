@@ -2,7 +2,7 @@
 
 ## How to run in Windows Visual Studio (to be added)
 
-## How to run in MacOS XCode
+## How to run in MacOS XCode  (Currently not working.  Please use the Debian install process instead)
 Required components:
 - SDL2 Library
 - SDL2_Image Library
