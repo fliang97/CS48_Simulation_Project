@@ -42,12 +42,14 @@ Required components:
 - SDL2_TTF Library
 
 SDL2: `sudo apt-get install libsdl2-2.0`
+
 SDL2_Image: `apt-get install libsdl2-image-dev`
+
 SDL2_TTF: `apt-get install libsdl2-ttf-2.0-0`
 
 Compile using this very long g++ command:
 
-g++ -std=c++14 Main.cpp Animal.cpp Button.cpp Button_Entity.cpp Button_Plot.cpp Button_Speedup.cpp Button_Speeddown.cpp Button_Start.cpp Button_ZoomIn.cpp Button_ZoomOut.cpp Component.cpp Cow.cpp Entity.cpp EntityManager.cpp EventHandler.cpp Game.cpp Grass.cpp linked_list.c Map.cpp Plant.cpp plot.c Screen.cpp Screen_Game.cpp Screen_MainMenu.cpp Screen_GameMap.cpp ScreenManager.cpp Tile.cpp Wolf.cpp -o sim `pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image -lSDL2_ttf
+g++ -std=c++14 Main.cpp Animal.cpp Button.cpp Button_Entity.cpp Button_Plot.cpp Button_Speedup.cpp Button_Speeddown.cpp Button_Start.cpp Button_ZoomIn.cpp Button_ZoomOut.cpp Component.cpp Cow.cpp Entity.cpp EntityManager.cpp EventHandler.cpp Game.cpp Grass.cpp linked_list.c Map.cpp Plant.cpp plot.c Screen.cpp Screen_Game.cpp Screen_MainMenu.cpp Screen_GameMap.cpp ScreenManager.cpp Tile.cpp Wolf.cpp -o sim \`pkg-config --cflags --libs sdl2\` -lSDL2 -lSDL2_image -lSDL2_ttf
 
 ## How to run the simulation...and change your life forever
 In the final draft of this projects, we made more efforts to implement better graphics for the simulation, as promised in the first draft project.
