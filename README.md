@@ -49,9 +49,10 @@ SDL2_TTF: `apt-get install libsdl2-ttf-2.0-0`
 
 Download all files into a folder.
 
-Compile using this very long g++ command:
+Compile using this g++ command:
 
-g++ -std=c++14 -O3 Main.cpp Animal.cpp Button.cpp Button_Entity.cpp Button_Plot.cpp Button_Speedup.cpp Button_Speeddown.cpp Button_Start.cpp Button_ZoomIn.cpp Button_ZoomOut.cpp Component.cpp Cow.cpp Entity.cpp EntityManager.cpp EventHandler.cpp Game.cpp Grass.cpp linked_list.c Map.cpp Plant.cpp plot.c Screen.cpp Screen_Game.cpp Screen_MainMenu.cpp Screen_GameMap.cpp ScreenManager.cpp Tile.cpp Wolf.cpp -o sim \`pkg-config --cflags --libs sdl2\` -lSDL2 -lSDL2_image -lSDL2_ttf
+g++ -std=c++14 -O3 \*.cpp \*.c -o sim \`pkg-config --cflags --libs sdl2\` -lSDL2 -lSDL2_image -lSDL2_ttf
+
 
 Run simulation using ./sim from directory containing all files.
 
