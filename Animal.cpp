@@ -11,12 +11,12 @@ Animal::Animal(Tile* parentTile): Entity(parentTile) {
 	id = 1;
 	ageMax = 300;
 	Animal::populationCount++;
-	cout << "Animal population: " << Animal::populationCount << endl;
+	//cout << "Animal population: " << Animal::populationCount << endl;
 }
 
 Animal::~Animal() {
 	Animal::populationCount--;
-	cout << "Animal population: " << Animal::populationCount << endl;
+	//cout << "Animal population: " << Animal::populationCount << endl;
 }
 
 void Animal::checkMove() {}

@@ -23,12 +23,12 @@ Grass::Grass(Tile* parentTile) : Plant(parentTile) {
 	id = 4;
 	health = 10;
 	Grass::populationCount++;
-	cout << "Grass population: " << Grass::populationCount << endl;
+	//cout << "Grass population: " << Grass::populationCount << endl;
 }
 
 Grass::~Grass() {
 	Grass::populationCount--;
-	cout << "Grass population: " << Grass::populationCount << endl;
+	//cout << "Grass population: " << Grass::populationCount << endl;
 }
 /*
 void Grass::update(vector< vector<Tile*> >* nextIterboard) {
@@ -89,6 +89,6 @@ int Grass::getPopulationCount() {
 }
 
 void Grass::setTextureImg() {
-	cout << "grass_1.jpg" << endl;
+	//cout << "grass_1.jpg" << endl;
 	Grass::static_img = IMG_LoadTexture(Game::renderer, "grass_1.jpg");
 }

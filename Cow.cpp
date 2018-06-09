@@ -31,22 +31,22 @@ Cow::Cow(Tile* parentTile) : Animal(parentTile) {
 	hunger = 100;
 	age = 0;
 	Cow::populationCount++;
-	cout << "Cow population: " << Cow::populationCount << endl;
+	//cout << "Cow population: " << Cow::populationCount << endl;
 }
 
 Cow::~Cow() {
 	Cow::populationCount--;
-	cout << "Cow population: " << Cow::populationCount << endl;
+	//cout << "Cow population: " << Cow::populationCount << endl;
 }
 
 
 void Cow::setTextureImg() {
-		cout << "cow.png" << endl;
+		//cout << "cow.png" << endl;
 	Cow::static_img = IMG_LoadTexture(Game::renderer, "cow.png");
 }
 
 void Cow::setTextureImgSick() {
-		cout << "cow_sick.png" << endl;
+		//cout << "cow_sick.png" << endl;
 		Cow::static_img_sick = IMG_LoadTexture(Game::renderer, "cow_sick.png");
 }
 
@@ -58,7 +58,7 @@ void Cow::checkMove() {
 
 	int eaterX = parentTile->getPosX();
 	int eaterY = parentTile->getPosY();
-	
+
 	// Find the closet adjacent grass square within 1 range.
 	Entity* tmpFood = parentTile->map->getClosestEntityInRange(EntityID::grass, 1, parentTile, 1);
 
@@ -118,7 +118,7 @@ void Cow::checkDeath() {
 	}
 	if (health <= 0 || age > ageMax) {
 		parentTile->layer2 = NULL;
-		cout << "TestDestroy: " << health << " " << age << endl;
+		//cout << "TestDestroy: " << health << " " << age << endl;
 		parentTile->map->toDestroyAnimals.insert(this);
 		//delete this;
 	}

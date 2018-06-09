@@ -100,6 +100,6 @@ void Screen_Game::render() {
 
 
 void Screen_Game::setTextureImg() {
-	cout << "game_wood_background.jpg" << endl;
+	//cout << "game_wood_background.jpg" << endl;
 	Screen_Game::static_img = IMG_LoadTexture(Game::renderer, "game_wood_background.jpg");
 }

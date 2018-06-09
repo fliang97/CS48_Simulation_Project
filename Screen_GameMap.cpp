@@ -84,7 +84,7 @@ height(h), worldposX(0), worldposY(0) {
 
 	setvbuf (stdout, NULL, _IONBF, 0);
 
-	surfacelist surface_list = NULL;
+	surface_list = NULL;
 
 
 
@@ -183,7 +183,7 @@ void Screen_GameMap::update() {
 
 
 void Screen_GameMap::setTextureImg() {
-	cout << "map_water_background.jpg" << endl;
+	//cout << "map_water_background.jpg" << endl;
 	Screen_GameMap::static_img = IMG_LoadTexture(Game::renderer, "map_water_background.jpg");
 }
 

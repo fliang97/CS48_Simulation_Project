@@ -44,7 +44,7 @@ void Wolf::checkMove() {
 
 	// Find the closet adjacent cow square within 2 range.
 	Entity* tmpFood = parentTile->map->getClosestEntityInRange(EntityID::cow, 2, parentTile, 1);
-	
+
 	// If food is found within range, calculate the relative change in position necessary to move there
 	if (tmpFood) {
 
@@ -106,7 +106,7 @@ void Wolf::checkDeath() {
 	}
 	if (health <= 0 || age > 300) {
 		parentTile->layer2 = NULL;
-		cout << "TestDestroy: " << health << " " << age << endl;
+		//cout << "TestDestroy: " << health << " " << age << endl;
 		parentTile->map->toDestroyAnimals.insert(this);
 		//delete this;
 	}
@@ -162,11 +162,11 @@ void Wolf::modifyHealth(int healthChange) {
 
 
 void Wolf::setTextureImg() {
-		cout << "wolf.png" << endl;
+		//cout << "wolf.png" << endl;
 		Wolf::static_img = IMG_LoadTexture(Game::renderer, "wolf.png");
 }
 
 void Wolf::setTextureImgSick() {
-		cout << "wolf_sick" << endl;
+		//cout << "wolf_sick" << endl;
 		Wolf::static_img_sick = IMG_LoadTexture(Game::renderer, "wolf_sick.png");
 }

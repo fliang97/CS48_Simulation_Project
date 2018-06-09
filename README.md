@@ -51,7 +51,7 @@ Download all files into a folder.
 
 Compile using this g++ command:
 
-g++ -std=c++14 -O3 \*.cpp \*.c -o sim \`pkg-config --cflags --libs sdl2\` -lSDL2 -lSDL2_image -lSDL2_ttf
+g++ -std=c++14 -O3 \*.cpp \*.c -o sim  -lSDL2 -lSDL2_image -lSDL2_ttf
 
 
 Run simulation using ./sim from directory containing all files.
